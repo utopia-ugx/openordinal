@@ -1,9 +1,10 @@
 ---
 import Layout from "../components/layout/Layout.astro";
 
-const dataFiles = Object.keys(import.meta.glob("/src/content/data/*.csv"))
+const dataFiles = Object.keys(import.meta.glob("/src/content/data/*.{csv,json}"))
   .map((path) => path.split("/").pop())
-  .filter((name) => name && name !== ".gitkeep");
+  .filter((name): name is string => Boolean(name && name !== ".gitkeep"))
+  .sort((a, b) => a.localeCompare(b));
 ---
 
 <Layout
