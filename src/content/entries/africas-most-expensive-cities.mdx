@@ -1,0 +1,411 @@
+---
+title: "Africa's Most Expensive Cities: Rankings, Drivers, and Limits"
+title_fr: ""
+slug: "africas-most-expensive-cities"
+category: "Economics"
+date: "2026-03-03"
+scope: "African cities with sufficient Numbeo data - 2025 mid-year snapshot"
+scope_fr: ""
+dataset: "Numbeo Cost of Living Index by City (Africa, 2025 Mid-Year)"
+source_org: "Numbeo"
+entry_number: "001"
+translated: true
+correction_of: ""
+description: "A 2025 snapshot of Africa's most expensive cities, with inflation, FX, and purchasing power context."
+key_stat: "Top 10 spans 10.7 index points, while local purchasing power ranges from 10.7 to 117.3."
+draft: false
+---
+
+The 2025 mid-year Numbeo ranking for Africa looks straightforward: a list of cities sorted by cost of living index value. But simple rankings can hide important differences in everyday experience. Abidjan is first at 44.0, Addis Ababa is second at 42.7, and Gaborone is third at 42.2. Lusaka is tenth at 33.3.<sup><a href="#ref-1">[1]</a></sup> The ranking tells us where prices are higher in this dataset. It does not, on its own, tell us where life feels hardest for local residents.
+
+That distinction is central to this analysis. The top ten spread is 10.7 points, which is meaningful but not extreme. At the same time, local purchasing power ranges from 10.7 to 117.3 within those same ten cities.<sup><a href="#ref-1">[1]</a></sup> So two cities can sit near each other in the cost ranking and still feel very different once incomes are considered.
+
+This entry uses a layered approach. It starts with city-level Numbeo data.<sup><a href="#ref-1">[1]</a></sup> It adds Numbeo's methodology context.<sup><a href="#ref-2">[2]</a></sup> It then adds macro context from IMF inflation data and World Bank indicator series.<sup><a href="#ref-3">[3]</a></sup>
+
+<HeroVisual
+  src="/images/addis-ababa-city-center-01.jpg"
+  alt="Addis Ababa city center skyline with mid-rise buildings and roads."
+  caption="Addis Ababa city center, one of the top-ranked cities in this snapshot."
+  source="Wikimedia Commons (Ninaras)"
+  sourceUrl="https://commons.wikimedia.org/wiki/File:Addis_Ababa_City_Center_01.jpg"
+  license="CC BY 4.0"
+  credit="Ninaras, own work (2018)"
+/>
+
+## What this analysis answers
+
+- Which cities are highest in the 2025 mid-year cost-of-living ranking for Africa.
+- Whether higher rank also means weaker affordability for local residents.
+- Which basket components appear to drive pressure in this top-ten group.
+- What national macro context may help explain city-level differences, without overstating causality.
+
+## The short takeaway
+
+> The top ten cities are all high-cost in this sample, but they are not high-cost in the same way. Price levels are clustered within a moderate range, while affordability is far more uneven because local purchasing power differs sharply across the same cities.<sup><a href="#ref-1">[1]</a></sup> Groceries are a stronger average pressure point than rent in this specific top-ten basket, and macro context varies widely across countries represented in the ranking.<sup><a href="#ref-3">[3]</a></sup>
+
+## How to read this entry
+
+A cost of living index is a relative measure, not an absolute household budget in local currency.<sup><a href="#ref-2">[2]</a></sup> It is valuable for comparison, but interpretation should stay disciplined.
+
+- Read it as a cross-sectional snapshot, not a long-term trend claim.
+- Pair price rank with local purchasing power before making affordability claims.
+- Treat macro indicators as context, because they are country-level values attached to city rows.
+
+Numbeo data is crowd-sourced and updated continuously, which supports timely cross-city comparison.<sup><a href="#ref-2">[2]</a></sup> As with any user-submitted dataset, coverage can vary across neighborhoods and respondent profiles.
+
+## Where costs are highest
+
+At headline level, the top ten is geographically mixed. It includes West, East, North, and Southern African cities. The key concentration is by country: South Africa has three cities in the top ten, and Morocco has two.<sup><a href="#ref-1">[1]</a></sup>
+
+The spread between rank 1 and rank 10 is 10.7 points. Put differently, the first city is about 32 percent above the tenth city in this index (44.0 vs 33.3).<sup><a href="#ref-1">[1]</a></sup> That is a real gap, but not a complete break. The top ten should be read as a high-cost tier, not as a winner-take-all ladder.
+
+The top-ten mean is 37.21 and the median is 35.4.<sup><a href="#ref-1">[1]</a></sup> Most entries sit in the mid-30s to low-40s. This is why later sections focus on affordability and basket composition, not just rank order.
+
+## Key figures
+
+<StatBlock
+  label="Top city index"
+  value="44.0"
+  note="Abidjan's cost of living index in Numbeo's 2025 mid-year Africa table [1]."
+/>
+
+<StatBlock
+  label="Top-10 spread"
+  value="10.7"
+  note="Difference between rank 1 and rank 10 (44.0 minus 33.3) in the same snapshot [1]."
+/>
+
+<StatBlock
+  label="Purchasing-power gap"
+  value="106.6"
+  note="Difference between highest and lowest local purchasing power within the top ten (117.3 minus 10.7) [1]."
+/>
+
+## Rank profile
+
+<ChartBlock
+  title="Top 10 Cost of Living Index Values"
+  subtitle="Numbeo Africa regional ranking, 2025-mid"
+  note="The distribution is broad but not extreme: all ten cities sit inside a 10.7-point band."
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="860" height="460" viewBox="0 0 860 460" role="img" aria-label="Top 10 African cities by Numbeo cost of living index, 2025 mid-year" style="width:100%;height:auto;">
+    <rect width="100%" height="100%" fill="var(--paper)" />
+
+    <line x1="220" y1="32" x2="220" y2="400" stroke="var(--rule)" stroke-width="1" />
+    <line x1="318" y1="32" x2="318" y2="400" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6" />
+    <line x1="416" y1="32" x2="416" y2="400" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6" />
+    <line x1="514" y1="32" x2="514" y2="400" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6" />
+    <line x1="612" y1="32" x2="612" y2="400" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6" />
+
+    <text x="318" y="22" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">10</text>
+    <text x="416" y="22" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">20</text>
+    <text x="514" y="22" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">30</text>
+    <text x="612" y="22" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">40</text>
+
+    <text x="208" y="58" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">1. Abidjan</text>
+    <rect x="220" y="42" width="430" height="22" fill="#1a3a5c" />
+    <text x="658" y="58" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">44.0</text>
+
+    <text x="208" y="92" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">2. Addis Ababa</text>
+    <rect x="220" y="76" width="417" height="22" fill="#1a3a5c" />
+    <text x="645" y="92" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">42.7</text>
+
+    <text x="208" y="126" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">3. Gaborone</text>
+    <rect x="220" y="110" width="412" height="22" fill="#1a3a5c" />
+    <text x="640" y="126" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">42.2</text>
+
+    <text x="208" y="160" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">4. Pretoria</text>
+    <rect x="220" y="144" width="354" height="22" fill="#1a3a5c" />
+    <text x="582" y="160" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">36.3</text>
+
+    <text x="208" y="194" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">5. Harare</text>
+    <rect x="220" y="178" width="348" height="22" fill="#1a3a5c" />
+    <text x="576" y="194" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">35.7</text>
+
+    <text x="208" y="228" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">6. Johannesburg</text>
+    <rect x="220" y="212" width="343" height="22" fill="#1a3a5c" />
+    <text x="571" y="228" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">35.1</text>
+
+    <text x="208" y="262" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">7. Casablanca</text>
+    <rect x="220" y="246" width="339" height="22" fill="#1a3a5c" />
+    <text x="567" y="262" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">34.7</text>
+
+    <text x="208" y="296" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">8. Cape Town</text>
+    <rect x="220" y="280" width="334" height="22" fill="#1a3a5c" />
+    <text x="562" y="296" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">34.2</text>
+
+    <text x="208" y="330" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">9. Rabat</text>
+    <rect x="220" y="314" width="331" height="22" fill="#1a3a5c" />
+    <text x="559" y="330" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">33.9</text>
+
+    <text x="208" y="364" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">10. Lusaka</text>
+    <rect x="220" y="348" width="325" height="22" fill="#1a3a5c" />
+    <text x="553" y="364" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">33.3</text>
+
+    <line x1="220" y1="394" x2="650" y2="394" stroke="var(--rule)" stroke-width="1" />
+  </svg>
+</ChartBlock>
+
+### So what this means
+
+> This chart shows where prices are highest, but it does not show whether those prices are equally affordable for residents.
+
+### How to interpret the ranking spread
+
+Abidjan, Addis Ababa, and Gaborone are clearly at the top of the group, but the lower half of the top ten is tightly packed. That means small rank changes can be less important than they appear in a headline. For interpretation, it is more useful to ask what sits underneath the rank.
+
+## Why rank does not equal affordability
+
+The same cities that appear in the highest-cost group show large differences in local purchasing power. This is the central reason to separate "expensive city" from "difficult cost burden." A city can have high prices and still offer stronger relative earning power than peers.
+
+In this top ten, the lowest local purchasing power is 10.7 and the highest is 117.3.<sup><a href="#ref-1">[1]</a></sup> That 106.6-point gap is much larger than the 10.7-point gap in the cost ranking itself. So affordability dispersion is wider than price-rank dispersion.
+
+## Affordability divergence inside the top ten
+
+<ChartBlock
+  title="Local Purchasing Power in the Same Top 10 Cities"
+  subtitle="Numbeo local purchasing power index, same city order as ranking"
+  note="Price-level rank and affordability are not interchangeable. South African entries show much higher local purchasing power than several higher-cost peers."
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="860" height="460" viewBox="0 0 860 460" role="img" aria-label="Top 10 African cities local purchasing power, Numbeo 2025 mid-year" style="width:100%;height:auto;">
+    <rect width="100%" height="100%" fill="var(--paper)" />
+
+    <line x1="220" y1="32" x2="220" y2="400" stroke="var(--rule)" stroke-width="1" />
+    <line x1="318" y1="32" x2="318" y2="400" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6" />
+    <line x1="416" y1="32" x2="416" y2="400" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6" />
+    <line x1="514" y1="32" x2="514" y2="400" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6" />
+    <line x1="612" y1="32" x2="612" y2="400" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6" />
+    <line x1="710" y1="32" x2="710" y2="400" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6" />
+
+    <text x="318" y="22" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">25</text>
+    <text x="416" y="22" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">50</text>
+    <text x="514" y="22" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">75</text>
+    <text x="612" y="22" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">100</text>
+    <text x="710" y="22" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">125</text>
+
+    <text x="208" y="58" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Abidjan</text>
+    <rect x="220" y="42" width="42" height="22" fill="#3a6b50" />
+    <text x="270" y="58" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">10.7</text>
+
+    <text x="208" y="92" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Addis Ababa</text>
+    <rect x="220" y="76" width="47" height="22" fill="#3a6b50" />
+    <text x="275" y="92" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">12.0</text>
+
+    <text x="208" y="126" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Gaborone</text>
+    <rect x="220" y="110" width="121" height="22" fill="#3a6b50" />
+    <text x="349" y="126" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">30.8</text>
+
+    <text x="208" y="160" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Pretoria</text>
+    <rect x="220" y="144" width="460" height="22" fill="#3a6b50" />
+    <text x="688" y="160" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">117.3</text>
+
+    <text x="208" y="194" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Harare</text>
+    <rect x="220" y="178" width="127" height="22" fill="#3a6b50" />
+    <text x="355" y="194" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">32.5</text>
+
+    <text x="208" y="228" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Johannesburg</text>
+    <rect x="220" y="212" width="438" height="22" fill="#3a6b50" />
+    <text x="666" y="228" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">111.9</text>
+
+    <text x="208" y="262" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Casablanca</text>
+    <rect x="220" y="246" width="169" height="22" fill="#3a6b50" />
+    <text x="397" y="262" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">43.0</text>
+
+    <text x="208" y="296" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Cape Town</text>
+    <rect x="220" y="280" width="450" height="22" fill="#3a6b50" />
+    <text x="678" y="296" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">114.7</text>
+
+    <text x="208" y="330" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Rabat</text>
+    <rect x="220" y="314" width="234" height="22" fill="#3a6b50" />
+    <text x="462" y="330" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">59.8</text>
+
+    <text x="208" y="364" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Lusaka</text>
+    <rect x="220" y="348" width="108" height="22" fill="#3a6b50" />
+    <text x="336" y="364" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">27.5</text>
+
+    <line x1="220" y1="394" x2="720" y2="394" stroke="var(--rule)" stroke-width="1" />
+  </svg>
+</ChartBlock>
+
+### So what this means
+
+> This chart matters as much as the ranking chart when the goal is to understand cost pressure on households. Price level and affordability are linked, but they are not interchangeable.
+
+Pretoria, Johannesburg, and Cape Town appear in the same high-cost top ten while also showing the strongest local purchasing power values in that group. Abidjan and Addis Ababa show the opposite pattern, with high cost rank and low purchasing power values. Casablanca and Rabat sit in the middle.<sup><a href="#ref-1">[1]</a></sup>
+
+This is where the analysis shifts from "which city is expensive" to "expensive for whom." That distinction is usually the one that matters for real decisions.
+
+## What is actually expensive in the basket
+
+After affordability, the next useful question is composition. Are these cities expensive mostly because of housing, groceries, restaurants, or a mix?
+
+In this top-ten set, groceries average 34.53, while rent averages 13.32. Restaurants average 29.21, and the combined cost-plus-rent index averages 26.80. So the broad pattern is clear: groceries are closer to the headline cost level than rent is.<sup><a href="#ref-1">[1]</a></sup>
+
+## What drives the basket in the top ten
+
+<ChartBlock
+  title="Top-10 Average Basket Components"
+  subtitle="Average indices across the top ten cities"
+  note="Groceries are the highest average component. Rent remains the lowest average component in this top-ten sample."
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="860" height="360" viewBox="0 0 860 360" role="img" aria-label="Average top ten indices for cost, groceries, restaurants, and rent" style="width:100%;height:auto;">
+    <rect width="100%" height="100%" fill="var(--paper)" />
+
+    <line x1="170" y1="38" x2="170" y2="300" stroke="var(--rule)" stroke-width="1" />
+    <line x1="290" y1="38" x2="290" y2="300" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6" />
+    <line x1="410" y1="38" x2="410" y2="300" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6" />
+    <line x1="530" y1="38" x2="530" y2="300" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6" />
+    <line x1="650" y1="38" x2="650" y2="300" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6" />
+
+    <text x="290" y="26" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">10</text>
+    <text x="410" y="26" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">20</text>
+    <text x="530" y="26" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">30</text>
+    <text x="650" y="26" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">40</text>
+
+    <text x="158" y="74" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Cost of living</text>
+    <rect x="170" y="58" width="446" height="28" fill="#1a3a5c" />
+    <text x="624" y="75" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">37.21</text>
+
+    <text x="158" y="132" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Groceries</text>
+    <rect x="170" y="116" width="414" height="28" fill="#6b4a1a" />
+    <text x="592" y="133" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">34.53</text>
+
+    <text x="158" y="190" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Restaurants</text>
+    <rect x="170" y="174" width="350" height="28" fill="#4a2e6b" />
+    <text x="528" y="191" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">29.21</text>
+
+    <text x="158" y="248" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Cost + rent</text>
+    <rect x="170" y="232" width="322" height="28" fill="#3a6b50" />
+    <text x="500" y="249" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">26.80</text>
+
+    <text x="158" y="306" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Rent</text>
+    <rect x="170" y="290" width="160" height="28" fill="#8b2a2a" />
+    <text x="338" y="307" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">13.32</text>
+
+    <line x1="170" y1="322" x2="650" y2="322" stroke="var(--rule)" stroke-width="1" />
+  </svg>
+</ChartBlock>
+
+### So what this means
+
+> In this top-ten group, food-related prices look closer to the headline cost index than rent does. For many households, that changes where pressure is felt month to month.
+
+This does not mean housing is irrelevant in every city. It means this specific top-ten sample shows a lower rent index average than grocery and restaurant averages.<sup><a href="#ref-1">[1]</a></sup> For real-world decisions, that is a practical signal: budget pressure can be concentrated in day-to-day consumption, not only in housing.
+
+## Country context that may explain differences
+
+City rankings and national macro series measure different things. Putting them side by side still supports plausible, limited interpretations.
+
+The top ten includes countries with very different 2025 inflation estimates.<sup><a href="#ref-3">[3]</a></sup> Exchange-rate paths from 2022 to 2024 are also very different across the same group.<sup><a href="#ref-4">[4]</a></sup> This is one reason a single explanation does not fit every city in the list.
+
+| Country in top 10 | IMF inflation 2025 (%) | FX change 2022-2024 (%) | Urban population growth 2024 (%) |
+| --- | ---: | ---: | ---: |
+| Ivory Coast | 1.0 | -2.8 | 3.49 |
+| Ethiopia | 13.0 | 59.6 | 5.00 |
+| Botswana | 3.4 | 9.7 | 2.29 |
+| South Africa | 3.4 | 12.1 | 1.42 |
+| Zimbabwe | 89.0 | 771.1 | 3.30 |
+| Morocco | 1.2 | -2.1 | 1.17 |
+| Zambia | 14.2 | 54.5 | 3.79 |
+
+`FX change` is calculated from official LCU-per-USD series, where higher positive values indicate depreciation over the period.<sup><a href="#ref-4">[4]</a></sup>
+
+### So what this means
+
+The macro context is heterogeneous. Some top-ranked cities sit in low-inflation environments. Others sit in high-inflation, high-depreciation environments. So a "single-cause story" is weaker than a multi-factor reading.
+
+## Fast city-by-city reading notes
+
+Use this section as a scanning guide before the detailed references. All values in this scan list come from the same top-ten Numbeo table.<sup><a href="#ref-1">[1]</a></sup>
+
+- `Abidjan`: Highest cost-of-living index in the table, paired with the lowest local purchasing power value in the top ten.
+- `Addis Ababa`: Very high cost rank and very low purchasing power value in this top-ten set.
+- `Gaborone`: High cost rank with moderate purchasing power relative to the group.
+- `Pretoria`: High cost rank but the strongest purchasing power in the top ten.
+- `Harare`: Mid-top-ten cost rank with lower purchasing power in this group.
+- `Johannesburg`: Similar cost level to nearby peers, but very high local purchasing power relative to most of the top ten.
+- `Casablanca`: Mid-range cost rank with moderate purchasing power in this group.
+- `Cape Town`: Cost level close to Casablanca and Rabat, but with high local purchasing power like other South African entries.
+- `Rabat`: Similar cost level to Casablanca and a higher purchasing power value than several cities ranked above it.
+- `Lusaka`: Lowest cost index in the top ten, but still part of the high-cost tier and paired with lower purchasing power than Morocco and South Africa entries.
+
+## What this means in practice
+
+The ranking answers one clear question: where prices are highest in this 2025 mid-year snapshot.<sup><a href="#ref-1">[1]</a></sup> It does not answer affordability by itself.
+
+To assess pressure at household level, pair the city rank with local purchasing power. In this top-ten group, that pairing changes the reading for multiple cities.<sup><a href="#ref-1">[1]</a></sup>
+
+For organizations setting relocation budgets or compensation, basket composition matters. In this sample, groceries and restaurant prices sit closer to the headline index than rent, so housing-only assumptions can miss part of day-to-day pressure.<sup><a href="#ref-1">[1]</a></sup>
+
+For communication and reporting, use the ranking as comparative evidence first, then add wage, expenditure, and transport data before drawing strong conclusions. The most accurate framing is conditional: higher prices in this snapshot, with differing affordability and macro context across cities.<sup><a href="#ref-4">[4]</a></sup>
+
+## Interpretation
+
+Three conclusions are defensible from this dataset.
+
+1. Top-ranked cities are high-cost in relative price terms, but rank distances are moderate inside the top ten.
+2. Affordability differences are larger than ranking differences because local purchasing power varies sharply.
+3. Macro context differs enough across countries to support multi-factor explanations rather than a single-cause narrative.<sup><a href="#ref-3">[3]</a></sup>
+
+Two conclusions are not defensible from this dataset alone.
+
+1. That one macro variable explains city rank outcomes across the entire top ten.
+2. That this one snapshot establishes long-term direction for each city.
+
+Read end to end, this entry separates three ideas clearly: price level, affordability, and macro context.
+
+## What this entry cannot settle yet
+
+Good data reporting also means saying what remains unresolved.
+
+This dataset cannot tell us, by itself, whether each city is becoming structurally more expensive year after year. It is a mid-year snapshot.<sup><a href="#ref-1">[1]</a></sup> It also cannot isolate the exact share of pressure caused by currency moves, domestic inflation, supply constraints, or local policy choices, because the macro variables here are attached at country level.<sup><a href="#ref-4">[4]</a></sup>
+
+It also does not answer distributional questions inside each city. A single city index cannot show how pressure differs between low-income households, middle-income households, and higher-income households, or between central neighborhoods and peripheral areas. Those questions require city-level household survey and labor market detail that is outside this entry.
+
+None of these limitations make the ranking unusable. They simply define its best use case: comparative orientation, not final causal diagnosis.
+
+## How to use this entry in real decisions
+
+Use this sequence when comparing cities for living, work, or relocation.
+
+1. Start with the ranking chart to see which cities sit in the high-cost tier.
+2. Move immediately to the purchasing-power chart to test whether a high-cost city also looks less affordable in relative terms.
+3. Check the basket-composition chart to understand where cost pressure may sit in day-to-day spending.
+4. Use the macro table only as background context, not as proof of one single explanation.
+
+When comparing two cities, avoid binary statements like "City A is expensive, City B is affordable." Use conditional framing instead: "City A has a higher price index in this snapshot, but City B may still impose higher practical pressure for certain households depending on income and spending structure."
+
+For public communication, keep the language simple and specific. "Higher prices" is clearer than abstract wording. "Lower local purchasing power" is clearer than broad terms like "economic stress." Clear wording increases trust and keeps non-specialist audiences engaged through the full analysis.
+
+<LimitationsList
+  items={[
+    "Numbeo is crowd-sourced and coverage can vary across neighborhoods and respondent profiles.",
+    "The ranking is a 2025 mid-year snapshot, not a full time-series analysis, so it does not establish whether each city is structurally becoming more or less expensive.",
+    "Inflation, exchange-rate, PPP, and urbanization indicators are country-level series applied as context to city rows; they are not city-specific macro indicators.",
+    "Repeated country entries in the top ten (for example South Africa and Morocco) share the same national inflation and currency regime, so they should not be treated as independent macro observations.",
+    "The component indices (groceries, rent, restaurants) are useful for directional comparison but do not replace city-level household expenditure surveys."
+  ]}
+/>
+
+<details class="entry-collapsible my-8 border-t border-rule pt-4">
+  <summary class="entry-collapsible__summary ui-meta text-[11px] uppercase tracking-[0.14em] text-dim">See also</summary>
+  <div class="entry-collapsible__body">
+    <p>To be added as related entries are published.</p>
+  </div>
+</details>
+
+<details class="entry-collapsible my-8 border-t border-rule pt-4">
+  <summary class="entry-collapsible__summary ui-meta text-[11px] uppercase tracking-[0.14em] text-dim">Sources</summary>
+  <div class="entry-collapsible__body">
+    <h3>References</h3>
+    <ol class="list-decimal pl-5 space-y-2">
+      <li id="ref-1">Numbeo. <em>Africa: Cost of Living Index by City 2025 Mid-Year.</em> https://www.numbeo.com/cost-of-living/region_rankings.jsp?title=2025-mid&region=002</li>
+      <li id="ref-2">Numbeo. <em>Methodology and Motivation.</em> https://www.numbeo.com/common/motivation_and_methodology.jsp</li>
+      <li id="ref-3">IMF. <em>DataMapper API (PCPIPCH, WEO 2025 inflation estimate).</em> https://www.imf.org/external/datamapper/api/v1/PCPIPCH</li>
+      <li id="ref-4">World Bank. <em>World Development Indicators API series used in this entry: PA.NUS.FCRF, NY.GDP.PCAP.PP.CD, SP.URB.GROW.</em> https://api.worldbank.org/v2/country/all/indicator/PA.NUS.FCRF</li>
+    </ol>
+
+    <h3>Method</h3>
+    <p>AI tools assisted with data extraction, cleaning, table assembly, chart drafting, and first-draft structuring. All interpretation and final wording were human-reviewed.</p>
+  </div>
+</details>

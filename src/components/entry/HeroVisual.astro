@@ -1,0 +1,51 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  source?: string;
+  sourceUrl?: string;
+  license?: string;
+  credit?: string;
+  lang?: "en" | "fr";
+}
+
+const {
+  src,
+  alt,
+  caption = "",
+  source = "",
+  sourceUrl = "",
+  license = "",
+  credit = "",
+  lang = "en"
+}: Props = Astro.props;
+
+const labels = {
+  source: lang === "fr" ? "Source" : "Source",
+  license: lang === "fr" ? "Licence" : "License",
+  credit: lang === "fr" ? "Credit" : "Credit"
+};
+---
+
+<figure class="entry-hero my-8 border border-rule p-3">
+  <img class="entry-hero__image" src={src} alt={alt} loading="lazy" />
+
+  {(caption || source || license || credit) && (
+    <figcaption class="entry-hero__caption">
+      {caption && <p class="entry-hero__text">{caption}</p>}
+
+      {(source || license || credit) && (
+        <ul class="entry-hero__meta">
+          {source && (
+            <li>
+              {labels.source}: {sourceUrl ? <a href={sourceUrl} target="_blank" rel="noreferrer">{source}</a> : source}
+            </li>
+          )}
+          {license && <li>{labels.license}: {license}</li>}
+          {credit && <li>{labels.credit}: {credit}</li>}
+        </ul>
+      )}
+    </figcaption>
+  )}
+</figure>

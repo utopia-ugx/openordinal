@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../../../components/layout/Layout.astro";
 import EntryHeader from "../../../components/entry/EntryHeader.astro";
+import HeroVisual from "../../../components/entry/HeroVisual.astro";
 import StatBlock from "../../../components/entry/StatBlock.astro";
 import ChartBlock from "../../../components/entry/ChartBlock.astro";
 import LimitationsList from "../../../components/entry/LimitationsList.astro";
@@ -84,7 +85,7 @@ const structuredData = {
     <EntryHeader entry={entry} lang="fr" />
 
     <div class="mt-8">
-      <Content components={{ StatBlock, ChartBlock, LimitationsList, SourcesList }} />
+      <Content components={{ HeroVisual, StatBlock, ChartBlock, LimitationsList, SourcesList }} />
     </div>
   </article>
 </Layout>

@@ -95,6 +95,11 @@ summary,
   padding: 64px 48px;
 }
 
+.entry-prose {
+  font-size: 1.1rem;
+  line-height: 1.68;
+}
+
 .entry-prose h1,
 .entry-prose h2,
 .entry-prose h3 {
@@ -110,6 +115,36 @@ summary,
   margin: 0.8rem 0;
 }
 
+.entry-prose table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.entry-prose th,
+.entry-prose td {
+  padding: 0.45rem 0.5rem;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+}
+
+.entry-prose thead th {
+  font-family: "Geist Mono", monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--dim);
+}
+
+.entry-prose ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+
+.entry-prose ol {
+  list-style: decimal;
+  padding-left: 1.4rem;
+}
+
 .entry-prose blockquote {
   margin-left: 0;
   padding-left: 1rem;
@@ -121,6 +156,16 @@ summary,
 .entry-prose pre {
   font-family: "Geist Mono", monospace;
   font-size: 0.9rem;
+}
+
+.entry-prose sup a {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.72em;
+  text-decoration: none;
+}
+
+.entry-prose sup a:hover {
+  text-decoration: underline;
 }
 
 .translation-notice {
@@ -184,6 +229,100 @@ summary,
   letter-spacing: 0.12em;
 }
 
+.entry-collapsible {
+  margin: 2rem 0;
+}
+
+.entry-collapsible > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  padding-bottom: 0.1rem;
+}
+
+.entry-collapsible > summary::-webkit-details-marker {
+  display: none;
+}
+
+.entry-collapsible > summary::after {
+  content: "+";
+  font-size: 12px;
+  color: var(--dim);
+  line-height: 1;
+}
+
+.entry-collapsible[open] > summary::after {
+  content: "-";
+}
+
+.entry-collapsible__body {
+  margin-top: 0.35rem;
+}
+
+.entry-chart {
+  width: min(980px, calc(100vw - 2rem));
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.entry-chart__scroller {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.entry-chart__inner {
+  min-width: 720px;
+}
+
+.entry-chart__inner > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.entry-hero {
+  width: min(940px, calc(100vw - 2rem));
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.entry-hero__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.entry-hero__caption {
+  margin-top: 0.6rem;
+}
+
+.entry-hero__text {
+  margin: 0;
+  color: var(--dim);
+  font-size: 0.98rem;
+}
+
+.entry-hero__meta {
+  margin: 0.45rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.8rem;
+  color: var(--dim);
+  font-family: "Geist Mono", monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.entry-hero__meta li {
+  margin: 0;
+}
+
 .dev-theme-toggle {
   position: fixed;
   right: 14px;
@@ -228,6 +367,28 @@ summary,
 @media (max-width: 768px) {
   .archive-shell {
     padding: 64px 20px;
+  }
+
+  .entry-prose table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+
+  .entry-chart {
+    width: calc(100vw - 1rem);
+    padding: 0.75rem;
+  }
+
+  .entry-chart__inner {
+    min-width: 640px;
+  }
+
+  .entry-hero {
+    width: calc(100vw - 1rem);
+    padding: 0.65rem;
   }
 }
 

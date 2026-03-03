@@ -6,22 +6,28 @@ interface SourceItem {
 
 interface Props {
   items?: SourceItem[];
+  label?: string;
+  open?: boolean;
 }
 
-const { items = [] }: Props = Astro.props;
+const { items = [], label = "Sources", open = false }: Props = Astro.props;
 ---
 
-<section class="my-8 border-t border-rule pt-4">
-  <h2 class="ui-meta text-[11px] uppercase tracking-[0.14em] text-dim">Sources</h2>
-  <ul class="mt-3 space-y-1 text-[16px]">
-    {
-      items.map((item) => (
-        <li>
-          <a href={item.url} target="_blank" rel="noreferrer">
-            {item.label}
-          </a>
-        </li>
-      ))
-    }
-  </ul>
-</section>
+<details class="entry-collapsible my-8 border-t border-rule pt-4" open={open}>
+  <summary class="entry-collapsible__summary ui-meta text-[11px] uppercase tracking-[0.14em] text-dim">
+    {label}
+  </summary>
+  <div class="entry-collapsible__body">
+    <ul class="mt-3 space-y-1 text-[16px]">
+      {
+        items.map((item) => (
+          <li>
+            <a href={item.url} target="_blank" rel="noreferrer">
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</details>

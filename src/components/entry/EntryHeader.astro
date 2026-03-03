@@ -6,7 +6,6 @@ const dateFmt = new Intl.DateTimeFormat(lang === "fr" ? "fr-FR" : "en-GB", {
   year: "numeric"
 }).format(entry.data.date);
 const title = lang === "fr" ? entry.data.title_fr || entry.data.title : entry.data.title;
-const scope = lang === "fr" ? entry.data.scope_fr || entry.data.scope : entry.data.scope;
 ---
 
 <header class="border-b border-rule pb-6">
@@ -14,6 +13,5 @@ const scope = lang === "fr" ? entry.data.scope_fr || entry.data.scope : entry.da
     {entry.data.entry_number} · {entry.data.category}
   </p>
   <h1 class="mt-2 text-[42px] font-medium leading-tight text-ink">{title}</h1>
-  <p class="ui-meta mt-3 text-[11px] text-dim">{scope} · {dateFmt}</p>
-  <p class="ui-meta mt-1 text-[11px] text-dim">Dataset: {entry.data.dataset} · Source: {entry.data.source_org}</p>
+  <p class="ui-meta mt-3 text-[11px] text-dim">{dateFmt}</p>
 </header>

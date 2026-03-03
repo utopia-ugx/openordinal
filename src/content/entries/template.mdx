@@ -16,4 +16,81 @@ key_stat: "12.4%"
 draft: true
 ---
 
-Use this file as a starting point for new English entries.
+Opening paragraph here. Frame the question and stakes in one paragraph.
+
+## Context image (optional)
+
+<HeroVisual
+  src="/images/template-entry-context.jpg"
+  alt="Describe what the image shows and why it gives useful context."
+  caption="Not used as core statistical evidence."
+  source="Institution or photographer"
+  sourceUrl="https://example.org/source"
+  license="CC BY 4.0"
+/>
+
+## Lead summary (optional)
+
+> 3 to 5 sentences. Summarize what was studied, key finding, and core limitation.
+
+## Evidence
+
+Use one of these format options:
+
+- Snapshot: current ranking or current-state map.
+- Trend: directional change over time.
+- Comparison: side-by-side differences across places/groups.
+- Driver: test one plausible explanatory mechanism.
+- Myth check: evaluate a specific claim against data.
+
+Write one or more evidence sections here with Wikipedia-style superscript citations,
+for example `<sup><a href="#ref-1">[1]</a></sup>`.
+
+## Key figures (optional)
+
+<StatBlock label="Key stat 1" value="0.0" note="Source and year." />
+<StatBlock label="Key stat 2" value="0.0" note="Source and year." />
+<StatBlock label="Key stat 3" value="0.0" note="Source and year." />
+
+## Visualisation
+
+<ChartBlock title="Chart title" subtitle="Source + year + scope" note="Selection criteria or caveat.">
+  <svg xmlns="http://www.w3.org/2000/svg" width="860" height="420" viewBox="0 0 860 420" role="img" aria-label="Chart description">
+    <rect width="100%" height="100%" fill="var(--paper)" />
+  </svg>
+</ChartBlock>
+
+## Interpretation (optional)
+
+Use cautious language: "the data suggests", "one reading is", "an alternative reading is".
+Avoid unsupported causal claims.
+
+<LimitationsList
+  items={[
+    "Data quality or coverage limitation.",
+    "Metric limitation.",
+    "Scope or comparability limitation."
+  ]}
+/>
+
+<details class="entry-collapsible my-8 border-t border-rule pt-4">
+  <summary class="entry-collapsible__summary ui-meta text-[11px] uppercase tracking-[0.14em] text-dim">See also</summary>
+  <div class="entry-collapsible__body">
+    <p>Add related entries when available.</p>
+  </div>
+</details>
+
+<details class="entry-collapsible my-8 border-t border-rule pt-4">
+  <summary class="entry-collapsible__summary ui-meta text-[11px] uppercase tracking-[0.14em] text-dim">Sources</summary>
+  <div class="entry-collapsible__body">
+    <h3>References</h3>
+    <ol>
+      <li id="ref-1">Primary dataset URL.</li>
+      <li id="ref-2">Secondary source URL.</li>
+      <li id="ref-3">Additional context source URL.</li>
+    </ol>
+
+    <h3>Method</h3>
+    <p>AI tools assisted with extraction, cleaning, and drafting structure. Interpretation was human-reviewed.</p>
+  </div>
+</details>

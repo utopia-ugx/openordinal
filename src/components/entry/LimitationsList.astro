@@ -1,14 +1,20 @@
 ---
 interface Props {
   items?: string[];
+  label?: string;
+  open?: boolean;
 }
 
-const { items = [] }: Props = Astro.props;
+const { items = [], label = "Limitations", open = false }: Props = Astro.props;
 ---
 
-<section class="my-8 border-t border-rule pt-4">
-  <h2 class="ui-meta text-[11px] uppercase tracking-[0.14em] text-dim">Limitations</h2>
-  <ul class="mt-3 list-disc pl-5 text-[17px] text-ink">
-    {items.map((item) => <li class="mb-1">{item}</li>)}
-  </ul>
-</section>
+<details class="entry-collapsible my-8 border-t border-rule pt-4" open={open}>
+  <summary class="entry-collapsible__summary ui-meta text-[11px] uppercase tracking-[0.14em] text-dim">
+    {label}
+  </summary>
+  <div class="entry-collapsible__body">
+    <ul class="mt-3 list-disc pl-5 text-[17px] text-ink">
+      {items.map((item) => <li class="mb-1">{item}</li>)}
+    </ul>
+  </div>
+</details>

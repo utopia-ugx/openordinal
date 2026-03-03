@@ -16,4 +16,83 @@ key_stat: "12.4%"
 draft: true
 ---
 
-Utilisez ce fichier comme base pour les nouvelles entrees francaises.
+Paragraphe d'ouverture ici. Cadrez la question et l'enjeu en un seul paragraphe.
+
+## Image de contexte (optionnel)
+
+<HeroVisual
+  lang="fr"
+  src="/images/template-entry-context.jpg"
+  alt="Decrivez ce que montre l'image et pourquoi elle apporte un contexte utile."
+  caption="N'est pas utilisee comme preuve statistique principale."
+  source="Institution ou photographe"
+  sourceUrl="https://example.org/source"
+  license="CC BY 4.0"
+/>
+
+## Resume de tete (optionnel)
+
+> 3 a 5 phrases. Resumer ce qui est etudie, le resultat cle, et la limite principale.
+
+## Corps de preuve
+
+Utilisez un de ces formats:
+
+- Snapshot: classement actuel ou carte d'etat actuel.
+- Trend: evolution dans le temps.
+- Comparison: comparaison entre lieux ou groupes.
+- Driver: test d'un mecanisme explicatif plausible.
+- Myth check: verification d'une affirmation precise.
+
+Ajoutez une ou plusieurs sections de preuve avec citations numerotees style Wikipedia,
+par exemple `<sup><a href="#ref-1">[1]</a></sup>`.
+
+## Chiffres cles (optionnel)
+
+<StatBlock label="Stat cle 1" value="0.0" note="Source et annee." />
+<StatBlock label="Stat cle 2" value="0.0" note="Source et annee." />
+<StatBlock label="Stat cle 3" value="0.0" note="Source et annee." />
+
+## Visualisation
+
+<ChartBlock title="Titre du graphique" subtitle="Source + annee + perimetre" note="Critere de selection ou limite.">
+  <svg xmlns="http://www.w3.org/2000/svg" width="860" height="420" viewBox="0 0 860 420" role="img" aria-label="Description du graphique">
+    <rect width="100%" height="100%" fill="var(--paper)" />
+  </svg>
+</ChartBlock>
+
+## Interpretation (optionnel)
+
+Utilisez un langage prudent: "les donnees suggerent", "une lecture est", "une lecture alternative est".
+Evitez les affirmations causales non soutenues.
+
+<LimitationsList
+  label="Limites"
+  items={[
+    "Limite de qualite ou de couverture des donnees.",
+    "Limite de la metrique.",
+    "Limite de perimetre ou de comparabilite."
+  ]}
+/>
+
+<details class="entry-collapsible my-8 border-t border-rule pt-4">
+  <summary class="entry-collapsible__summary ui-meta text-[11px] uppercase tracking-[0.14em] text-dim">Voir aussi</summary>
+  <div class="entry-collapsible__body">
+    <p>Ajouter des entrees liees lorsqu'elles sont disponibles.</p>
+  </div>
+</details>
+
+<details class="entry-collapsible my-8 border-t border-rule pt-4">
+  <summary class="entry-collapsible__summary ui-meta text-[11px] uppercase tracking-[0.14em] text-dim">Sources</summary>
+  <div class="entry-collapsible__body">
+    <h3>References</h3>
+    <ol>
+      <li id="ref-1">URL de la source principale.</li>
+      <li id="ref-2">URL de la source secondaire.</li>
+      <li id="ref-3">URL d'une source de contexte supplementaire.</li>
+    </ol>
+
+    <h3>Methode</h3>
+    <p>Les outils d'IA ont aide l'extraction, le nettoyage, et la structuration du brouillon. L'interpretation a ete revue par un humain.</p>
+  </div>
+</details>

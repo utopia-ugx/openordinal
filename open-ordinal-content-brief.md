@@ -1,15 +1,15 @@
-# Open Ordinal — Content Brief
+# Open Ordinal - Content Brief
 *Paste this entire document at the start of every new entry session in Claude Code.*
 
 ---
 
 ## What You Are
 
-You are building a single archive entry for **Open Ordinal** — a quiet, AI-assisted research archive of structured economic and social data analysis focused on Africa.
+You are building one archive entry for **Open Ordinal**, a quiet research archive of structured economic and social data analysis focused on Africa.
 
-Your job is to research, structure, write, and produce a complete, publish-ready entry based on the brief below. You will search the internet for data, find the best available sources, clean and interpret the data, generate a chart, and write the full entry — all to the standards defined in this document.
+Your job is to research, structure, write, and produce a complete publish-ready entry from the brief below. You may use AI tools for search, cleaning, drafting, and chart assembly, but interpretation must remain human-reviewed.
 
-Do not begin building until you have confirmed the ANGLE (either from the brief or proposed one yourself and received approval). Do not publish or finalise anything without flagging LIMITATIONS honestly.
+Do not begin drafting before confirming the ANGLE. Do not finalize without explicit LIMITATIONS.
 
 ---
 
@@ -19,14 +19,17 @@ Do not begin building until you have confirmed the ANGLE (either from the brief 
 TOPIC:
 [What is the subject of this entry?]
 
-ANGLE (optional — leave blank and Claude Code will propose one):
+ANGLE (optional - leave blank and Claude Code will propose one):
 [What specific question or framing should this entry take?]
 
-SOURCES (optional — leave blank and Claude Code will search):
+FORMAT (optional - choose one):
+[Snapshot | Trend | Comparison | Driver | Myth check]
+
+SOURCES (optional - leave blank and Claude Code will search):
 [Any specific datasets, reports, URLs, or institutions to draw from]
 
 SCOPE:
-[Countries / region / time period — always required]
+[Countries / region / time period - always required]
 
 NOTES (optional):
 [Tone guidance, what to avoid, specific data points to highlight, anything else]
@@ -36,184 +39,263 @@ NOTES (optional):
 
 ## Workflow
 
-Follow these steps in order. Do not skip steps.
+Follow these steps in order.
 
-**Step 1 — Confirm the angle**
-If ANGLE is blank, propose two or three possible angles based on the topic and scope. Wait for approval before proceeding. If ANGLE is provided, restate it in one sentence to confirm understanding.
+**Step 1 - Confirm the angle**
+If ANGLE is blank, propose two or three angle options. Wait for approval.
+If ANGLE is provided, restate it in one sentence.
 
-**Step 2 — Find the data**
-If SOURCES are provided, start there. Supplement with web search as needed.
-If SOURCES are blank, search for the best available dataset. Priority order:
+**Step 2 - Choose a format**
+Pick one format (or propose one) before writing:
+- Snapshot
+- Trend
+- Comparison
+- Driver
+- Myth check
+
+The format changes structure and heading choices. It does not change evidence standards.
+
+**Step 3 - Find data**
+If SOURCES are provided, start there and supplement as needed.
+If SOURCES are blank, prioritize:
 1. World Bank World Development Indicators
 2. African Development Bank Open Data
-3. UN Data / UNDP / UN Habitat
-4. IMF Data
-5. National statistical offices (GSS Ghana, KNBS Kenya, NBS Nigeria, etc.)
-6. Academic or NGO datasets (Afrobarometer, Mo Ibrahim Foundation, etc.)
+3. UN datasets and agencies
+4. IMF datasets
+5. National statistical offices
+6. Academic and NGO datasets
 
-Always prefer primary sources over aggregators. Always note the year the data was last updated.
+Always prefer primary sources over aggregators. Always record latest available update year.
 
-**Step 3 — Assess the data**
-Before writing, summarise what the data shows in 3–5 bullet points. Flag any gaps, inconsistencies, or quality concerns. Wait for a green light before writing.
+**Step 4 - Assess data before writing**
+Share:
+- 3 to 5 bullet points on what the data actually shows
+- Key data quality concerns
+- Any major interpretive risk
 
-**Step 4 — Build the entry**
-Write the full entry following the structure and standards below.
+Wait for green light before drafting full prose.
 
-**Step 5 - Save files**
-Save the entry as:
-- `/src/content/entries/[slug].mdx` - the English entry content
-- `/src/content/entries-fr/[slug].mdx` - the French entry content (required in the same update)
-- `/src/content/data/[slug].csv` - the canonical raw data file (required)
-- `/src/content/data/[slug].json` - optional companion machine-readable export
-- `/src/content/data/[slug]-chart.svg` - the chart
+**Step 5 - Build the entry**
+Use a structure that fits the selected format.
+Do not force one universal heading sequence.
+Keep all non-negotiable standards (below).
+Prioritize readability for non-specialist readers:
+- short sections with clear subheadings
+- one chart per section where possible
+- plain-language takeaway after each major evidence block
+
+**Step 6 - Save files**
+Save:
+- `/src/content/entries/[slug].mdx` - English entry
+- `/src/content/entries-fr/[slug].mdx` - French entry
+- `/src/content/data/[slug].csv` - canonical raw dataset (required)
+- `/src/content/data/[slug].json` - optional machine-readable companion
+- `/src/content/data/[slug]-chart.svg` - chart asset
+
+Use the filename as slug in both language folders.
+Default workflow is EN and FR in the same update.
+If an EN-first review is explicitly requested, complete EN first, then mirror FR before final publish.
 
 ---
 
-## Entry Structure
+## Non-Negotiable Standards
 
-Every entry follows this order. Do not reorder or skip sections.
+Every entry must include all items below, regardless of format.
 
-### 1. Frontmatter
+### 1) Frontmatter (schema-compatible only)
 ```yaml
 ---
 title: ""
-title_fr: ""         # English file may keep blank; French file should be filled
+title_fr: ""
 category: ""         # Economics | Demographics | Technology | Governance | Rankings
 date: ""             # YYYY-MM-DD
-scope: ""            # e.g. "Sub-Saharan Africa · 2010–2023"
-scope_fr: ""         # English file may keep blank; French file should be filled
-dataset: ""          # Primary dataset name
-source_org: ""       # e.g. World Bank
-entry_number: ""     # e.g. 038
-translated: false    # true once a French entry exists
-correction_of: ""    # optional: slug of corrected entry
-description: ""      # <=160 chars for meta description
-key_stat: ""         # optional highlight used on OG cards
-draft: true          # set false only when publish-ready
+scope: ""
+scope_fr: ""
+dataset: ""
+source_org: ""
+entry_number: ""
+translated: false
+correction_of: ""
+description: ""      # <=160 chars
+key_stat: ""         # optional OG highlight
+draft: true
 ---
 ```
 
-Use the filename as the slug in both folders: `src/content/entries/[slug].mdx` and `src/content/entries-fr/[slug].mdx`.
+Do not add unsupported frontmatter keys unless the schema is updated.
 
-### 2. Opening paragraph
-One paragraph. No section label. This is the only place in the entry where a point of view is permitted. Use it to frame the question, surface a tension in the data, or draw the reader toward what matters. It may carry analysis or a considered perspective — but every claim made here must be supported by data cited later in the entry. Do not use words like "shocking", "revealed", "explosive", or "must-see". Do not begin with "In this entry..." or "This analysis...".
+### 1.1) Slug and title versioning policy
 
-### 3. Lead summary (Wikipedia standard)
-A self-contained summary of the entire entry in 3–5 sentences. A reader who reads only this section should understand: what was studied, what the data shows, and what the key limitation is. Written in neutral, encyclopaedic register. No analysis, no framing — only what the data establishes. Set apart visually from the opening paragraph.
+- Use a yearless topic slug for the living page, e.g. `africas-most-expensive-cities`.
+- Put snapshot timing in scope/subtitle/body, not as a permanent part of the main topic slug.
+- If you publish explicit snapshot editions, use dated suffixes, e.g. `africas-most-expensive-cities-2025-mid`.
+- Never silently repurpose an old dated slug with new data.
+- If a slug strategy changes after publication, preserve old URLs with redirects.
+- Prefer yearless main titles for living pages; keep the snapshot date in metadata and evidence sections.
 
-### 4. Context
-Two to three paragraphs of background. Explain what the data environment looks like. What is already known? What does this entry add? Reference comparable data or prior trends where relevant. Every factual claim must carry an inline citation in the format `[Source, Year]`.
+### 2) Opening paragraph
+One paragraph, no heading label.
+It can frame tension or stakes, but every factual claim must be supported later.
 
-### 5. Key figures (stats block)
-Exactly three numbers. Each stat must:
-- Come directly from the dataset
-- Be expressed simply (percentage, count, or ratio)
-- Have a label of no more than 10 words
-- Carry its source inline: e.g. *3.1% — avg. annual growth, diversified economies (World Bank WDI, 2023)*
-- Be honest — do not round in a way that misleads
+### 3) Evidence body
+At least one substantial evidence section with inline citations.
+You can label sections differently by format.
+Keep paragraphs short (about 2 to 4 sentences) and scannable.
 
-### 6. Visualisation
-One chart. SVG format. Follow the chart standards below.
+### 4) Charts
+At least one SVG chart that matches chart standards below.
+Multiple charts are encouraged when each one answers a different question.
+Do not cluster all charts together if they map to different sections.
+After each chart, include a short plain-language takeaway.
 
-### 7. Interpretation
-Two to three paragraphs. This is the most important section.
-- Draw analysis from what the data shows — you may arrive at a considered perspective, but it must be grounded in the data
-- Acknowledge where the data is ambiguous or where reasonable people might read it differently
-- Connect the numbers to real conditions on the ground where possible
-- Every factual claim carries an inline citation
-- Do not infer causality from correlation unless the source explicitly supports it
-- Use language like: "the data suggests", "the trend indicates", "one reading of this is", "an alternative interpretation holds"
-- Do not use language like: "proves", "confirms", "definitively shows"
+### 5) Limitations block
+3 to 5 clear limitations, including:
+- one about data quality or coverage
+- one about metric limits
+- one about scope choice
 
-### 8. Limitations
-Minimum three, maximum five. Numbered. Honest. Include at minimum:
-- One limitation about the dataset quality or coverage
-- One limitation about what the chosen metric cannot measure
-- One limitation about the selection of countries or time period shown
+### 6) Sources block
+Must include:
+- Primary
+- Context
+- Method (one line on AI/tool usage)
 
-### 9. See also
-Two to three links to related entries in the archive. Format: *Entry title — one-sentence description of the connection.* Leave blank until the archive has enough entries to draw from.
+### 7) EN/FR parity
+Meaningful content updates must exist in English and French.
+EN-first drafting is allowed for review, but French must be updated before final publish.
 
-### 10. Sources
-Every source used. Format:
-- **Primary** — the main dataset
-- **Context** — any secondary sources referenced in the writing, with year
-- **Method** — one line describing AI and tool usage
+---
+
+## Optional Modules
+
+Use when useful, skip when not needed:
+- Lead summary
+- Context
+- Key figures
+- Interpretation
+- So what this means
+- See also
+- Method note in body (if unusually important)
+
+Headings are optional and flexible. Clarity matters more than template uniformity.
+
+---
+
+## Format Playbooks
+
+These are recommended patterns, not rigid rules.
+
+### Snapshot
+Best for current rankings or current-state mapping.
+Suggested flow:
+Opening -> (optional lead summary) -> key figures -> chart -> interpretation -> limitations -> sources
+
+### Trend
+Best for multi-year directional change.
+Suggested flow:
+Opening -> context on baseline -> trend evidence -> chart(s) -> interpretation of turning points -> limitations -> sources
+
+### Comparison
+Best for country, city, or group contrasts.
+Suggested flow:
+Opening -> comparison frame -> side-by-side evidence -> chart/table -> interpretation of divergence -> limitations -> sources
+
+### Driver
+Best for testing one plausible explanatory mechanism.
+Suggested flow:
+Opening -> mechanism definition -> evidence for and against -> chart -> cautious interpretation -> limitations -> sources
+
+### Myth check
+Best for validating or falsifying a common claim.
+Suggested flow:
+Claim statement -> evidence test -> result -> what remains uncertain -> limitations -> sources
 
 ---
 
 ## Writing Standards
 
-**Tone:** Encyclopaedic and calm throughout — except the opening paragraph, which may carry perspective where the data supports it.
+**Tone:** calm, precise, encyclopedic where possible.
 
-**Inline citations:** Every factual claim outside the opening paragraph must cite its source inline as `[Source, Year]`. Example: *"Nigeria's GDP per capita growth averaged 0.3% annually between 2010 and 2023 [World Bank WDI, 2023]."* Do not save all citations for the sources section at the bottom.
+**Inline citations:** use Wikipedia-style numbered references in superscript, linking to a numbered References list.
+Example inline marker: `<sup><a href="#ref-1">[1]</a></sup>`
+Example reference item: `<li id="ref-1">Source details...</li>`
 
-**Always use:**
+**Citation discipline:**
+- avoid over-citation and citation stacking
+- use one superscript for one sentence/claim where possible
+- when a sentence depends on different datasets, either split into two sentences or cite the strongest single source
+- ensure all consulted primary sources are listed in References even if not cited repeatedly in-line
+
+**Use careful language:**
 - "The data suggests..."
 - "The trend indicates..."
-- "One reading of this is..."
-- "An alternative interpretation holds..."
-- "Limitations include..."
+- "One reading is..."
+- "An alternative reading is..."
 
-**Never use:**
-- "Shocking" / "Revealed" / "Explosive" / "Dramatic"
-- "Proves" / "Confirms" / "Demonstrates definitively"
-- "Africa is..." as a generalisation (Africa is not a country)
-- Causal language unless causality is directly supported by the cited source
+**Avoid:**
+- sensational adjectives
+- unsupported causal claims
+- continent-wide generalizations that ignore variation
+- em dashes in prose (prefer commas, colons, or full stops)
 
-**On bias:** Data is not always black and white. Where the data points clearly in a direction, say so. Where reasonable interpretations differ, present both. The goal is not the appearance of neutrality — it is honesty about what the data does and does not support.
-
-**Length:** Each prose section should be substantive but not padded. Context: 200–300 words. Interpretation: 200–300 words. Opening: 50–80 words. Lead summary: 60–100 words.
+**Bias and uncertainty:**
+Where interpretations differ, present credible alternatives.
+Honesty about uncertainty is required.
 
 ---
 
 ## Chart Standards
 
-- Format: SVG, inline or file
-- Style: Monochrome bars by default. Use colour only to encode meaning (e.g. negative values in muted red `#8b2a2a`, positive in deep blue `#1a3a5c`)
-- Font: Geist Mono for labels and axes
-- No gridlines except subtle dashed horizontal rules
-- No legend unless strictly necessary — label directly
-- Always include: chart title (italic EB Garamond), subtitle (source + year + scope), and a chart note below explaining selection criteria or caveats
-- If a country or data point shows negative values, always place it below the baseline — never clip or hide it
+- Format: SVG
+- Style: monochrome by default; use color only when encoding meaning
+- Font: Geist Mono for axes and labels
+- Gridlines: minimal, subtle dashed guides only
+- Label directly where possible; avoid unnecessary legends
+- Include title, subtitle (source + year + scope), and chart note
+- Do not clip or hide negative values
+- Place charts near the section they support, not all in one block
 
 ---
 
-## What Makes a Good Entry
+## Readability Defaults
 
-A good entry:
-- Answers one clear question with one clear dataset
-- Is honest about what the data cannot tell us
-- Could be read by a researcher, a journalist, or a policymaker and trusted by all three
-- Cites every claim so the reader can verify independently
-- Adds something — a comparison, a trend, a framing — that is not already obvious
+- Write for an ordinary reader first, analyst second.
+- Use descriptive subheadings; avoid numbered section titles unless the brief specifically asks for numbering.
+- Keep the narrative path clear: question -> evidence -> takeaway -> limits.
+- Use plain language for interpretation; keep jargon minimal and defined once.
+- Keep non-core sections (Limitations, See also, Sources) collapsible in the entry layout.
 
-A bad entry:
-- Makes claims the data does not support
-- Cites sources only at the bottom, not inline where the claims are made
-- Covers too many countries or too many years without focus
-- Uses dramatic language to compensate for thin data
-- Ignores limitations to appear more authoritative
+---
+
+## Quality Checklist Before Finalizing
+
+- One clear question answered
+- Claims traceable to cited sources
+- Limitations are explicit and specific
+- Structure fits chosen format
+- Headings and section pacing support full read-through
+- Citations are not over-stacked and references are complete
+- Slug/title policy followed (yearless living page, dated editions when needed, redirects preserved)
+- Files saved in both EN and FR entry folders
+- Required data and chart files saved
 
 ---
 
 ## Corrections Policy
 
-Entries are dated snapshots. The data was accurate at time of publication.
-
-If an error is discovered after publication:
-- Do not silently edit the original entry
-- Publish a correction entry that links back to the original
-- Add a `correction_of` field to the new entry's frontmatter
+Entries are dated snapshots.
+If an error is found:
+- do not silently rewrite original entry
+- publish a correction entry linked to original
+- use `correction_of` in frontmatter
 
 ---
 
-## A Note on AI Use
+## Note on AI Use
 
-AI tools assisted with: data search, data cleaning, chart generation, and structural drafting.
-All interpretation is human-reviewed before publication.
-AI-generated language is treated as a first draft, not a conclusion.
-This is disclosed on the Method page of the archive.
+AI tools may assist with search, cleaning, charting, and drafting structure.
+All interpretation must be human-reviewed before publication.
+AI language is a draft input, not a final conclusion.
 
 ---
 
