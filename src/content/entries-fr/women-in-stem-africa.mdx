@@ -1,0 +1,321 @@
+---
+title: "Women in STEM in Africa: Where the Pipeline Leaks"
+title_fr: "Femmes en STEM en Afrique: ou le pipeline se resserre"
+slug: "women-in-stem-africa"
+category: "Technology"
+date: "2026-03-04"
+scope: "Sub-Saharan Africa, with supplementary North Africa references, using latest available indicators by stage (2018-2025)"
+scope_fr: "Afrique subsaharienne, avec signaux complementaires d'Afrique du Nord, selon les indicateurs les plus recents par etape (2018-2025)"
+dataset: "Indicateurs McKinsey 2025 sur la parite dans la tech africaine, UNESCO UIS, API Banque mondiale, et preuves mixtes AAS (2020, via OpenAfrica)"
+source_org: "McKinsey & Company; UNESCO UIS; World Bank; African Academy of Sciences (AAS)"
+entry_number: "003"
+translated: true
+correction_of: ""
+description: "Dans l'echantillon SDG5 d'universites africaines, les femmes sont 47% des diplomes STEM, mais 23-30% des emplois numerique-tech et moins de 12% du leadership."
+key_stat: "Dans les universites africaines SDG5, les femmes sont 47% des diplomes STEM, contre 23-30% des emplois tech et moins de 12% du leadership."
+draft: false
+---
+
+Aucune statistique unique ne capture le profil complet de genre en STEM en Afrique.
+
+La question centrale de cette entree est: ou la representation des femmes baisse-t-elle le plus entre diplome, emploi, leadership et financement?
+
+Dans l'echantillon d'universites africaines qui reportent au SDG5, utilise par McKinsey, les femmes representent 47% des diplomes STEM.<sup><a href="#ref-1">[1]</a></sup> Dans des donnees plus larges d'inscription tertiaire, les indicateurs Banque mondiale montrent que l'Afrique subsaharienne reste sous le niveau global femmes-hommes.<sup><a href="#ref-3">[3]</a></sup> Dans les emplois numerique-tech, les femmes representent 23%-30% de la main-d'oeuvre, occupent moins de 12% des postes de leadership et recoivent 1% du financement startup en 2024.<sup><a href="#ref-1">[1]</a></sup>
+
+<HeroVisual
+  src="/images/uct-chancellor-oppenheimer-library.jpg"
+  alt="Vue interieure de la bibliotheque Chancellor Oppenheimer a l'Universite du Cap."
+  caption="Bibliotheque Chancellor Oppenheimer a l'Universite du Cap, illustrant l'etape de l'enseignement superieur analysee dans cette entree."
+  source="Wikimedia Commons"
+  sourceUrl="https://commons.wikimedia.org/wiki/File:The_Hub,_Chancellor_Oppenheimer_Library,_University_of_Cape_Town.jpg"
+  license="CC0 1.0"
+  credit="Theresa Schoeman (2017)"
+  lang="fr"
+/>
+
+## Ce que chaque mesure veut dire
+
+- `Diplomees STEM` designe les diplomes tertiaires en STEM.
+- `Parite tertiaire` designe le ratio femmes-hommes d'inscription au tertiaire.
+- `Workforce tech` et `leadership tech` viennent d'un groupe numerique-tech plus etroit, pas de tous les emplois STEM.
+- Cette entree ne traite pas les valeurs numerique-tech comme des taux de conversion directs depuis tous les diplomes STEM.
+
+## Note de comparabilite
+
+La valeur `47%` vient d'universites qui participent au reporting SDG5, et non d'un comptage complet des universites africaines.<sup><a href="#ref-1">[1]</a></sup> Dans le cadre SDG5 2021 correspondant, l'echantillon africain compte 49 institutions sur 10 pays, avec une forte concentration nord-africaine (Egypte 23/49; Egypte+Algerie+Tunisie+Maroc 37/49). Les autres pays representes sont le Ghana, le Nigeria, l'Afrique du Sud, la Gambie, le Kenya et la Tanzanie.<sup><a href="#ref-4">[4]</a></sup>
+
+Comme cet echantillon SDG5 est concentre sur un nombre limite de pays et d'institutions, la valeur de 47% peut etre plus elevee qu'un niveau reel a l'echelle du continent. La comparaison Afrique-monde est donc traitee comme un signal de tendance, pas comme une estimation complete du continent.
+Concretement, ce signal decrit surtout une part elevee de diplomes STEM feminins parmi les universites africaines qui reportent au SDG5, et moins la situation des systemes subsahariens plus larges ou l'ecart d'inscription est le plus fort.
+
+Ces deux valeurs repondent a deux questions differentes. Le `47%` est la part des femmes parmi les diplomes STEM dans un ensemble d'institutions africaines volontaires qui reportent au SDG5.<sup><a href="#ref-4">[4]</a></sup> Le `0.79` est le ratio femmes-hommes sur l'ensemble des inscriptions tertiaires dans le systeme plus large d'Afrique subsaharienne.<sup><a href="#ref-3">[3]</a></sup> Les groupes mesures, les manieres de compter et les etapes etudiees sont differents, donc les valeurs peuvent diverger sans contradiction.
+
+## Comparaison STEM: stade du diplome
+
+UNESCO UIS situe les femmes a 35% des diplomes STEM au niveau mondial sur une fenetre recente.<sup><a href="#ref-2">[2]</a></sup> McKinsey rapporte 47% pour les institutions africaines dans son cadre lie au SDG5.<sup><a href="#ref-1">[1]</a></sup>
+
+<ChartBlock
+  title="Femmes Parmi les Diplomees STEM: Afrique vs Monde"
+  subtitle="McKinsey (Afrique, 2025) et UNESCO UIS (Monde, 2018-2023)"
+  note="Meme stade, groupe different: la barre Afrique vient d'institutions SDG5, pas de toutes les universites africaines."
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="860" height="300" viewBox="0 0 860 300" role="img" aria-label="Part des femmes parmi les diplomes STEM en Afrique versus monde" style="width:100%;height:auto;">
+    <rect width="100%" height="100%" fill="var(--paper)"/>
+
+    <line x1="220" y1="52" x2="220" y2="244" stroke="var(--rule)" stroke-width="1"/>
+    <line x1="332" y1="52" x2="332" y2="244" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+    <line x1="444" y1="52" x2="444" y2="244" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+    <line x1="556" y1="52" x2="556" y2="244" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+    <line x1="668" y1="52" x2="668" y2="244" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+
+    <text x="332" y="40" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">10</text>
+    <text x="444" y="40" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">20</text>
+    <text x="556" y="40" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">30</text>
+    <text x="668" y="40" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">40</text>
+
+    <text x="208" y="122" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Afrique (echantillon SDG5)</text>
+    <rect x="220" y="106" width="526" height="28" fill="#1a3a5c"/>
+    <text x="754" y="124" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">47%</text>
+
+    <text x="208" y="186" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Monde</text>
+    <rect x="220" y="170" width="392" height="28" fill="#3a6b50"/>
+    <text x="620" y="188" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">35%</text>
+
+    <line x1="220" y1="244" x2="780" y2="244" stroke="var(--rule)" stroke-width="1"/>
+  </svg>
+</ChartBlock>
+
+### Ce que cela signifie
+
+> Dans cet echantillon d'universites, l'Afrique depasse le niveau mondial au stade du diplome, donc la question principale devient ce qui se passe apres le diplome.
+
+## Comparaison STEM: inscription tertiaire
+
+Pour cette etape, le ratio femmes-hommes d'inscription tertiaire est utilise, ou 1.0 signifie une inscription egale. Avec les dernieres valeurs disponibles Banque mondiale (ASS 2021, Monde 2024), l'Afrique subsaharienne est a 0.79 et la valeur mondiale globale est a 1.12. Cela montre l'acces general au tertiaire, pas l'inscription dans les seules filieres STEM.<sup><a href="#ref-3">[3]</a></sup>
+
+<ChartBlock
+  title="Ratio Femmes/Hommes d'Inscription Tertiaire: ASS vs Monde"
+  subtitle="Banque mondiale, dernieres valeurs non nulles (ASS 2021, Monde 2024)"
+  note="Une valeur de 1.0 signifie une inscription egale femmes-hommes. Les ratios sont calcules a partir des taux bruts d'inscription tertiaire: ASS 2021 (femmes 8.2%, hommes 10.3%) et Monde 2024 (femmes 46.5%, hommes 40.9%)."
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" role="img" aria-label="Ratio femmes hommes d'inscription tertiaire en Afrique subsaharienne versus monde" style="width:100%;height:auto;">
+    <rect width="100%" height="100%" fill="var(--paper)"/>
+
+    <line x1="190" y1="46" x2="190" y2="282" stroke="var(--rule)" stroke-width="1"/>
+    <line x1="302" y1="46" x2="302" y2="282" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+    <line x1="414" y1="46" x2="414" y2="282" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+    <line x1="526" y1="46" x2="526" y2="282" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+    <line x1="638" y1="46" x2="638" y2="282" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+
+    <text x="190" y="34" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">0.0</text>
+    <text x="302" y="34" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">0.5</text>
+    <text x="414" y="34" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">1.0</text>
+    <text x="526" y="34" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">1.5</text>
+    <text x="638" y="34" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">2.0</text>
+
+    <line x1="414" y1="46" x2="414" y2="282" stroke="#8b2a2a" stroke-width="1" stroke-dasharray="3 4"/>
+    <text x="418" y="60" font-family="Geist Mono, monospace" font-size="10" fill="#8b2a2a">Parite = 1.0</text>
+
+    <text x="178" y="132" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Afrique subsaharienne</text>
+    <rect x="190" y="116" width="178" height="28" fill="#1a3a5c"/>
+    <text x="376" y="134" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">0.79</text>
+
+    <text x="178" y="206" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Monde</text>
+    <rect x="190" y="190" width="251" height="28" fill="#3a6b50"/>
+    <text x="449" y="208" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">1.12</text>
+
+    <line x1="190" y1="282" x2="670" y2="282" stroke="var(--rule)" stroke-width="1"/>
+  </svg>
+</ChartBlock>
+
+### Ce que cela signifie
+
+> En Afrique subsaharienne, les femmes s'inscrivent au tertiaire a un niveau plus bas que les hommes, alors que la valeur mondiale globale montre le schema inverse.
+
+Au stade d'inscription tertiaire, le ratio femmes-hommes de l'ASS (0.79) reste inferieur au ratio mondial (1.12). Cet ecart apparait avant les resultats d'emploi et de leadership et renvoie a l'acces tertiaire global, pas aux seules filieres STEM.<sup><a href="#ref-3">[3]</a></sup>
+
+## Groupe numerique-tech: emploi, leadership et financement
+
+La section suivante maintient les indicateurs tech separes du noyau STEM. Elle compare des etapes, mais ne trace pas un passage direct de tous les diplomes STEM vers l'emploi tech.
+
+<ChartBlock
+  title="Diplome STEM vs Resultats Numerique-Tech"
+  subtitle="McKinsey (2025) - emploi et leadership numerique-tech"
+  note="Ces barres viennent de groupes et de systemes de donnees differents. Elles montrent des ecarts entre etapes, pas une conversion directe STEM-vers-tech."
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="860" height="440" viewBox="0 0 860 440" role="img" aria-label="Representation des femmes dans un groupe numerique-tech africain" style="width:100%;height:auto;">
+    <rect width="100%" height="100%" fill="var(--paper)"/>
+
+    <line x1="120" y1="342" x2="760" y2="342" stroke="var(--rule)" stroke-width="1"/>
+    <line x1="120" y1="284" x2="760" y2="284" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+    <line x1="120" y1="226" x2="760" y2="226" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+    <line x1="120" y1="168" x2="760" y2="168" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+    <line x1="120" y1="110" x2="760" y2="110" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+    <line x1="120" y1="52" x2="760" y2="52" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+
+    <text x="108" y="346" text-anchor="end" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">0</text>
+    <text x="108" y="288" text-anchor="end" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">10</text>
+    <text x="108" y="230" text-anchor="end" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">20</text>
+    <text x="108" y="172" text-anchor="end" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">30</text>
+    <text x="108" y="114" text-anchor="end" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">40</text>
+    <text x="108" y="56" text-anchor="end" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">50</text>
+
+    <rect x="165" y="69" width="110" height="273" fill="#1a3a5c"/>
+    <rect x="385" y="188" width="110" height="154" fill="#3a6b50"/>
+    <rect x="605" y="272" width="110" height="70" fill="#6b4a1a"/>
+
+    <text x="220" y="61" text-anchor="middle" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">47%</text>
+    <text x="440" y="180" text-anchor="middle" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">23-30%</text>
+    <text x="660" y="264" text-anchor="middle" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">&lt;12%</text>
+
+    <text x="220" y="364" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--ink)">Femmes parmi diplomes STEM</text>
+    <text x="440" y="364" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--ink)">Femmes en roles numerique-tech</text>
+    <text x="660" y="364" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--ink)">Femmes en leadership numerique-tech</text>
+
+    <text x="220" y="382" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="var(--dim)">ensemble des filieres STEM</text>
+    <text x="440" y="382" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="var(--dim)">roles numerique-tech</text>
+    <text x="660" y="382" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="var(--dim)">leadership numerique-tech</text>
+  </svg>
+</ChartBlock>
+
+McKinsey rapporte les femmes a 23%-30% des emplois tech, moins de 12% des roles de leadership tech, et environ 10% des roles CEO de startups tech dans des echantillons centres Afrique. La dispersion entre pays reste large: Nigeria (20%) et Afrique du Sud (17%) affichent des parts plus elevees d'entreprises cotees avec femmes en C-suite tech, alors que Botswana, Malawi, Seychelles, Soudan et Ouganda sont rapportes a zero dans le meme cadre.<sup><a href="#ref-1">[1]</a></sup>
+
+La concentration du financement est encore plus nette: les startups fondees par des femmes ont capte 1% du financement tech africain en 2024, contre 94% pour les startups fondees par des hommes.<sup><a href="#ref-1">[1]</a></sup>
+
+Les sections suivantes utilisent ce graphique pour montrer ou la baisse apparait: entree dans l'emploi, progression de carriere, puis acces au financement et au controle.
+
+## Point de fuite 1: transition etudes-emploi
+
+L'ecart entre etapes est le plus net a l'entree: 47% au stade du diplome STEM, contre 23%-30% dans les emplois numerique-tech.<sup><a href="#ref-1">[1]</a></sup>
+
+Les preuves AAS aident a expliquer cette transition. Les obstacles rapportes incluent les responsabilites familiales, les contraintes travail-vie personnelle et les perceptions de moindre competitivite, tandis que role models, preparation et capacites personnelles apparaissent comme facteurs facilitateurs.<sup><a href="#ref-5">[5]</a></sup>
+
+Ensemble, ces signaux suggerent des freins sociaux et lies au milieu de travail, pas seulement la question de la formation STEM.
+
+## Point de fuite 2: progression en carriere
+
+La baisse suivante apparait dans la concentration du leadership. Les femmes sont sous 12% dans les roles de leadership, dans la meme couche numerique-tech que la mesure d'emploi. Les differences pays sont importantes: Nigeria et Afrique du Sud sont plus hauts (20% et 17% en C-suite), alors que plusieurs pays du meme cadre sont a zero.<sup><a href="#ref-1">[1]</a></sup>
+
+Cet ecart suggere que la progression ne depend pas uniquement du niveau de diplomes; les filtres de recrutement et de promotion varient entre marches.
+
+## Point de fuite 3: acces au financement et au controle
+
+Le resserrement le plus fort concerne l'acces au capital. Les startups fondees par des femmes ont capte 1% du financement tech africain en 2024 (environ 21 millions USD), contre 94% pour les startups fondees par des hommes.<sup><a href="#ref-1">[1]</a></sup> Meme avec une representation solide au stade du diplome, le controle de la creation et de la croissance des entreprises reste concentre. Cette statistique de financement est donc un indicateur de pouvoir et de controle, pas seulement un indicateur d'emploi.
+
+## Mecanismes derriere l'ecart
+
+Pour expliquer pourquoi la representation peut se reduire aux etapes ulterieures, une preuve complementaire issue de l'etude mixte AAS 2020, publiee sur OpenAfrica, est utilisee.<sup><a href="#ref-5">[5]</a></sup> Cette preuve sert a expliquer pourquoi l'ecart apparait, pas a fixer un niveau continental: 396 reponses completes, avec une distribution inegale des pays (Kenya 55%, Afrique du Sud 12%, Nigeria 8.2%, Ouganda 6.4%).<sup><a href="#ref-5">[5]</a></sup>
+
+<ChartBlock
+  title="Facteurs Rapportes Pour Le Choix STEM (Enquete AAS)"
+  subtitle="Etude AAS (n=396 completes), pourcentages du CSV OpenAfrica"
+  note="Preuve contextuelle sur les leviers, pas recensement de toutes les femmes en STEM."
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="860" height="400" viewBox="0 0 860 400" role="img" aria-label="Facteurs influencant le choix des femmes pour des parcours STEM dans l'enquete AAS 2020" style="width:100%;height:auto;">
+    <rect width="100%" height="100%" fill="var(--paper)"/>
+
+    <line x1="250" y1="44" x2="250" y2="346" stroke="var(--rule)" stroke-width="1"/>
+    <line x1="387" y1="44" x2="387" y2="346" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+    <line x1="524" y1="44" x2="524" y2="346" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+    <line x1="661" y1="44" x2="661" y2="346" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+    <line x1="730" y1="44" x2="730" y2="346" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+
+    <text x="250" y="34" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">0</text>
+    <text x="387" y="34" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">20</text>
+    <text x="524" y="34" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">40</text>
+    <text x="661" y="34" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">60</text>
+    <text x="730" y="34" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">70</text>
+
+    <text x="238" y="78" text-anchor="end" font-family="Geist Mono, monospace" font-size="11" fill="var(--ink)">Capacites personnelles</text>
+    <rect x="250" y="62" width="419" height="20" fill="#1a3a5c"/>
+    <text x="676" y="76" font-family="Geist Mono, monospace" font-size="11" fill="var(--ink)">61.1%</text>
+
+    <text x="238" y="116" text-anchor="end" font-family="Geist Mono, monospace" font-size="11" fill="var(--ink)">Parents</text>
+    <rect x="250" y="100" width="175" height="20" fill="#2f5b7f"/>
+    <text x="432" y="114" font-family="Geist Mono, monospace" font-size="11" fill="var(--ink)">25.5%</text>
+
+    <text x="238" y="154" text-anchor="end" font-family="Geist Mono, monospace" font-size="11" fill="var(--ink)">Preparation academique</text>
+    <rect x="250" y="138" width="175" height="20" fill="#2f5b7f"/>
+    <text x="432" y="152" font-family="Geist Mono, monospace" font-size="11" fill="var(--ink)">25.5%</text>
+
+    <text x="238" y="192" text-anchor="end" font-family="Geist Mono, monospace" font-size="11" fill="var(--ink)">Role models feminins</text>
+    <rect x="250" y="176" width="165" height="20" fill="#3a6b50"/>
+    <text x="422" y="190" font-family="Geist Mono, monospace" font-size="11" fill="var(--ink)">24.0%</text>
+
+    <text x="238" y="230" text-anchor="end" font-family="Geist Mono, monospace" font-size="11" fill="var(--ink)">Pairs ecole/college</text>
+    <rect x="250" y="214" width="90" height="20" fill="#6b4a1a"/>
+    <text x="347" y="228" font-family="Geist Mono, monospace" font-size="11" fill="var(--ink)">13.1%</text>
+
+    <text x="238" y="268" text-anchor="end" font-family="Geist Mono, monospace" font-size="11" fill="var(--ink)">Medias</text>
+    <rect x="250" y="252" width="31" height="20" fill="#8c7a3a"/>
+    <text x="288" y="266" font-family="Geist Mono, monospace" font-size="11" fill="var(--ink)">4.5%</text>
+
+    <text x="238" y="306" text-anchor="end" font-family="Geist Mono, monospace" font-size="11" fill="var(--ink)">Ambition/interet personnel</text>
+    <rect x="250" y="290" width="6" height="20" fill="#a48e46"/>
+    <text x="263" y="304" font-family="Geist Mono, monospace" font-size="11" fill="var(--ink)">0.8%</text>
+
+    <line x1="250" y1="346" x2="730" y2="346" stroke="var(--rule)" stroke-width="1"/>
+  </svg>
+</ChartBlock>
+
+Dans la meme couche AAS, les obstacles ressortent nettement: responsabilites familiales (56.8%), difficulte de concilier travail-vie personnelle (50.5%), perception que les femmes sont moins competitives (39.6%), et difficulte a obtenir un poste dans la meme zone geographique que le partenaire (37.6%).<sup><a href="#ref-5">[5]</a></sup>
+
+Le climat de travail suit la meme logique: 79.5% declarent que les femmes font face a des obstacles que les hommes ne rencontrent pas, 60.6% qu'il faut constamment prouver ses capacites, et 69.4% qu'il existe de fausses perceptions sur l'aptitude des femmes scientifiques.<sup><a href="#ref-5">[5]</a></sup>
+
+## Ce que les donnees soutiennent, et ce qu'elles ne soutiennent pas
+
+Ce que les donnees soutiennent:
+
+1. McKinsey rapporte 47% de femmes parmi les diplomes STEM dans un echantillon d'institutions africaines participantes au SDG5.<sup><a href="#ref-1">[1]</a></sup>
+2. UNESCO UIS rapporte 35% de femmes parmi les diplomes STEM au niveau mondial sur la fenetre recente.<sup><a href="#ref-2">[2]</a></sup>
+3. Les valeurs Banque mondiale montrent que l'Afrique subsaharienne est sous 1.0 sur le ratio femmes-hommes au tertiaire, alors que la valeur mondiale globale est au-dessus de 1.0.<sup><a href="#ref-3">[3]</a></sup>
+4. Les indicateurs numerique-tech montrent une representation feminine plus basse dans l'emploi, le leadership et le financement qu'au stade du diplome STEM.<sup><a href="#ref-1">[1]</a></sup>
+5. Les preuves mixtes AAS pointent plusieurs facteurs (famille, climat de travail, normes sociales, mentorat) coherents avec les ecarts observes entre etapes, sans pretendre a une prevalence continentale.<sup><a href="#ref-5">[5]</a></sup>
+
+Ce que ces donnees ne soutiennent pas, a elles seules:
+
+1. Une explication a cause unique pour tous les ecarts observes.
+2. Une affirmation que les resultats numerique-tech sont identiques aux resultats de tout le marche de l'emploi STEM.
+3. Une affirmation qu'une seule annee de financement fixe un niveau structurel permanent.
+4. Une affirmation que les pourcentages AAS sont un recensement de toute l'Afrique.
+5. Une affirmation que la valeur `47%` est une estimation de recensement pour tout le continent.
+
+Une lecture alternative credible est qu'une partie de l'ecart observe vient du fait que des groupes differents sont mesures, pas seulement de pertes reelles entre etapes.
+Une partie de la baisse apparente de 47% vers 23-30% vient d'un changement de groupe mesure (institutions SDG5 versus echantillons d'emploi plus larges), et pas seulement d'un decrochage apres le diplome.
+
+<LimitationsList
+  label="Limites"
+  items={[
+    "Le noyau STEM et les indicateurs numerique-tech viennent de sources et d'annees differentes, donc la comparaison est un signal de tendance, pas un panel completement aligne.",
+    "La valeur `47%` vient d'un echantillon d'universites SDG5; dans le cadre 2021 correspondant, 49 institutions africaines sont representees sur 10 pays, avec une forte concentration nord-africaine (Egypte 23/49; Egypte+Algerie+Tunisie+Maroc 37/49), donc le niveau continental peut etre surestime.",
+    "Le nombre `49 en Afrique` correspond au cadre SDG5 2021 utilise dans cette chaine de sources; les rounds SDG5 ulterieurs incluent davantage d'institutions africaines, donc la couverture varie dans le temps.",
+    "Les metriques d'emploi tech et de leadership tech sont plus etroites que l'ensemble des emplois STEM et sont traitees ici comme une couche de comparaison distincte.",
+    "Les indicateurs tertiaires Banque mondiale ont des dernieres annees non nulles differentes pour ASS et monde (2021 vs 2024), reflet d'un decalage de reporting.",
+    "Plusieurs indicateurs de leadership reposent sur des echantillons de societes cotees et de startups, informatifs mais non exhaustifs a l'echelle du marche.",
+    "Les preuves AAS 2020 sont mixtes et avec forte ponderation du Kenya, donc utilisees ici comme contexte explicatif plutot que comme mesure de prevalence continentale.",
+    "Tous les pays africains ne reportent pas de facon reguliere sur les indicateurs UNESCO et Banque mondiale education-science."
+  ]}
+/>
+
+<details class="entry-collapsible my-8 border-t border-rule pt-4">
+  <summary class="entry-collapsible__summary ui-meta text-[11px] uppercase tracking-[0.14em] text-dim">Voir aussi</summary>
+  <div class="entry-collapsible__body">
+    <p>Les entrees liees seront ajoutees a mesure de publication.</p>
+  </div>
+</details>
+
+<details class="entry-collapsible my-8 border-t border-rule pt-4">
+  <summary class="entry-collapsible__summary ui-meta text-[11px] uppercase tracking-[0.14em] text-dim">Sources</summary>
+  <div class="entry-collapsible__body">
+    <h3>References</h3>
+    <ol class="list-decimal pl-5 space-y-2">
+      <li id="ref-1">McKinsey &amp; Company. <em>Closing the Loop: The Quest for Gender Parity in African Tech.</em> Aout 2025. https://www.mckinsey.com/featured-insights/diversity-and-inclusion/closing-the-loop-the-quest-for-gender-parity-in-african-tech</li>
+      <li id="ref-2">UNESCO Institute for Statistics. <em>The gender gap in STEM education has not changed over 10 years and women remain underrepresented in this field.</em> 25 avril 2024. https://world-education-blog.org/2024/04/25/the-gender-gap-in-stem-education-has-not-changed-over-10-years-and-women-remain-underrepresented-in-this-field/</li>
+      <li id="ref-3">API Banque mondiale, indicateurs <em>SE.TER.ENRR.FE</em>, <em>SE.TER.ENRR.MA</em> et <em>SE.ENR.TERT.FM.ZS</em> pour agregats SSF et WLD (recupere le 4 mars 2026). https://api.worldbank.org/v2/country/SSF/indicator/SE.TER.ENRR.FE?format=json</li>
+      <li id="ref-4">Times Higher Education. <em>Impact Rankings 2021: gender equality (SDG 5)</em> et JSON sous-jacent du tableau (recupere le 4 mars 2026). https://www.timeshighereducation.com/rankings/impact/gender-equality/2021 et https://www.timeshighereducation.com/sites/default/files/the_data_rankings/sdg5_rankings_2021_0_en_0c5640e54c6eb43a2e162bea65a62920.json</li>
+      <li id="ref-5">African Academy of Sciences (AAS). <em>Women in Science, Technology, Engineering and Mathematics in Africa</em> (rapport PDF et CSV de support), 2020. OpenAfrica. https://open.africa/dataset/women-in-science-technology-engineering-and-mathematics-in-africa</li>
+    </ol>
+
+    <h3>Methode</h3>
+    <p>Les outils d'IA ont aide la recherche de sources, l'assemblage du tableau de donnees et le brouillon des graphiques. L'interpretation, le cadrage et la formulation finale ont ete revus par un humain.</p>
+  </div>
+</details>

@@ -1,0 +1,24 @@
+group,indicator,region_or_country,period,value,unit,lower_bound,upper_bound,notes,source
+stem_core,Women share among STEM graduates,Africa,2025,47,percent,47,47,Reported as highest regional share globally,McKinsey 2025
+stem_core,Women share among STEM graduates,Global,2018-2023,35,percent,35,35,UIS global benchmark,UNESCO UIS 2024
+stem_core,Female-to-male tertiary enrollment ratio,Sub-Saharan Africa,2021,0.7941700220,ratio,0.7941700220,0.7941700220,Latest non-null value in API series,World Bank API 2026
+stem_core,Female-to-male tertiary enrollment ratio,World,2024,1.1221499443,ratio,1.1221499443,1.1221499443,Latest non-null value in API series,World Bank API 2026
+stem_core,Women tertiary enrollment gross rate,Sub-Saharan Africa,2021,8.2018699646,percent,8.2018699646,8.2018699646,Latest non-null value in API series,World Bank API 2026
+stem_core,Men tertiary enrollment gross rate,Sub-Saharan Africa,2021,10.3275403976,percent,10.3275403976,10.3275403976,Latest non-null value in API series,World Bank API 2026
+stem_core,Women tertiary enrollment gross rate,World,2024,46.5416793823,percent,46.5416793823,46.5416793823,Latest non-null value in API series,World Bank API 2026
+stem_core,Men tertiary enrollment gross rate,World,2024,40.8566093445,percent,40.8566093445,40.8566093445,Latest non-null value in API series,World Bank API 2026
+tech_subset,Women share in tech workforce roles,Sub-Saharan Africa,2025,26.5,percent,23,30,McKinsey reports a range of 23 to 30 percent,McKinsey 2025
+tech_subset,Women share in tech leadership roles,Africa,2025,12,percent,,12,Reported as under 12 percent,McKinsey 2025
+tech_subset,Women share in tech startup CEO roles,Africa,2025,10,percent,,10,Reported as about 10 percent,McKinsey 2025
+tech_subset,Women-led startups share of total tech funding,Africa,2024,1,percent,1,1,USD 21 million,McKinsey 2025
+tech_subset,Mixed-gender startups share of total tech funding,Africa,2024,5.5,percent,5.5,5.5,USD 123 million,McKinsey 2025
+tech_subset,Men-led startups share of total tech funding,Africa,2024,94,percent,94,94,USD 2.1 billion,McKinsey 2025
+tech_subset,Companies with women in C-suite tech roles,South Africa,2024,17,percent,17,17,20 of 116 listed companies with C-suite tech roles,McKinsey 2025
+tech_subset,Companies with women in C-suite tech roles,Nigeria,2024,20,percent,20,20,15 of 75 listed companies with C-suite tech roles,McKinsey 2025
+tech_subset,Countries with no women in C-suite tech roles,Botswana,2024,0,percent,0,0,Listed-company sample,McKinsey 2025
+tech_subset,Countries with no women in C-suite tech roles,Malawi,2024,0,percent,0,0,Listed-company sample,McKinsey 2025
+tech_subset,Countries with no women in C-suite tech roles,Seychelles,2024,0,percent,0,0,Listed-company sample,McKinsey 2025
+tech_subset,Countries with no women in C-suite tech roles,Sudan,2024,0,percent,0,0,Listed-company sample,McKinsey 2025
+tech_subset,Countries with no women in C-suite tech roles,Uganda,2024,0,percent,0,0,Listed-company sample,McKinsey 2025
+school_context,Gender gap in STEM score at 10th percentile (female minus male),Selected African countries,2019,-2.53,points,-2.53,-2.53,Quantile regression estimate from six-country sample,Frontiers 2025
+school_context,Gender gap in STEM score at 25th percentile (female minus male),Selected African countries,2019,-1.92,points,-1.92,-1.92,Quantile regression estimate from six-country sample,Frontiers 2025
