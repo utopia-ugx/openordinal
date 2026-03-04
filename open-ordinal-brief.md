@@ -394,5 +394,29 @@ This appears quietly on the About page and in the site footer. It does not appea
 
 ---
 
+## Publication Voice
+
+Open Ordinal writes like a careful researcher speaking to a smart friend: direct, calm, and clear. It avoids drama, avoids false certainty, and names uncertainty without hiding the signal. It says what the data shows, states what it cannot show, and lets the reader verify the claim path.
+
+---
+
+## Persona: Ama
+
+Every entry is written for Ama.
+
+- She is educated, curious, and invested in African outcomes.
+- She is not a specialist in every dataset, but she is numerate and checks sources.
+- She reads quickly and decides early whether a piece is trustworthy.
+- She notices overstatement, missing caveats, and weak sourcing.
+- She values clear takeaways, explicit limits, and evidence she can reuse.
+
+Write so Ama can:
+- understand the claim in one pass,
+- trace each key fact to a source,
+- see where uncertainty starts,
+- and leave with a useful, defensible interpretation.
+
+---
+
 *Open Ordinal · openordinal.org · structured analysis of African data*
 *A project of Utopia UGX Group Ltd*
