@@ -25,12 +25,12 @@ const categories = ["All", "Economics", "Demographics", "Technology", "Governanc
 
   <section class="archive-shell">
     <h1 class="text-[46px] leading-tight text-ink">Archive</h1>
-    <p class="mt-2 max-w-2xl text-[20px] text-dim">Toutes les entrees. Filtre par categorie. Pagination de 20 entrees.</p>
+    <p class="mt-2 max-w-2xl text-[20px] text-dim">Toutes les entrees. Filtre par categorie.</p>
 
     {
       entries.length > 0 ? (
         <>
-          <div class="no-print mt-8 border-y border-rule py-4">
+          <div class="no-print mt-8 border-b border-rule pb-4">
             <p class="ui-meta text-[10px] uppercase tracking-[0.14em] text-dim">Recherche archive</p>
             <div id="archive-pagefind" class="mt-3"></div>
             <p id="archive-pagefind-hint" class="ui-meta mt-2 hidden text-[10px] text-dim">
@@ -38,7 +38,7 @@ const categories = ["All", "Economics", "Demographics", "Technology", "Governanc
             </p>
           </div>
 
-          <div class="no-print mt-8 grid gap-3 border-y border-rule py-3 md:grid-cols-[180px,1fr]">
+          <div class="no-print mt-6 grid gap-3 py-3 md:grid-cols-[180px,1fr]">
             <label class="ui-meta flex flex-col gap-1 text-[10px] uppercase tracking-[0.14em] text-dim">
               Categorie
               <select id="category-filter" class="border border-rule bg-paper px-2 py-2 text-[12px] text-ink">
@@ -62,7 +62,7 @@ const categories = ["All", "Economics", "Demographics", "Technology", "Governanc
             }
           </ul>
 
-          <div class="no-print mt-6 flex items-center justify-between border-t border-rule pt-4">
+          <div class="no-print mt-6 flex items-center justify-between pt-2">
             <button
               id="archive-prev"
               class="ui-meta border border-rule px-3 py-2 text-[10px] uppercase tracking-[0.15em] text-dim disabled:opacity-40"

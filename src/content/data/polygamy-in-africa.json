@@ -1,0 +1,183 @@
+{
+  "metadata": {
+    "slug": "polygamy-in-africa",
+    "description": "Combined comparison table for Pew prevalence, WPR legal status, and OWID sex-ratio context.",
+    "sources": {
+      "pew_chart_image": "https://www.pewresearch.org/wp-content/uploads/sites/20/2020/12/ft_2020.12.07_polygamy_02a.png",
+      "wpr_page": "https://worldpopulationreview.com/country-rankings/countries-where-polygamy-is-legal",
+      "owid_csv": "https://ourworldindata.org/grapher/sex-ratio-by-age.csv"
+    },
+    "notes": [
+      "Pew country percentages are transcribed from chart labels in the 2020 short-read figure.",
+      "OWID values use latest available year in the downloaded series.",
+      "WPR values reflect the legal-status labels shown on the page at access time."
+    ]
+  },
+  "rows": [
+    {
+      "country": "Burkina Faso",
+      "subregion_cluster": "West Africa",
+      "pew_polygamous_household_share_pct": 36,
+      "wpr_legal_status_2026": "Legal",
+      "legal_duality_flag": "no",
+      "owid_latest_year": 2023,
+      "owid_sex_ratio_age20": 102.25,
+      "owid_sex_ratio_age30": 99.4,
+      "owid_sex_ratio_age40": 97.81
+    },
+    {
+      "country": "Mali",
+      "subregion_cluster": "West Africa",
+      "pew_polygamous_household_share_pct": 34,
+      "wpr_legal_status_2026": "Legal",
+      "legal_duality_flag": "no",
+      "owid_latest_year": 2023,
+      "owid_sex_ratio_age20": 102.77,
+      "owid_sex_ratio_age30": 102.77,
+      "owid_sex_ratio_age40": 103.5
+    },
+    {
+      "country": "Gambia",
+      "subregion_cluster": "West Africa",
+      "pew_polygamous_household_share_pct": 30,
+      "wpr_legal_status_2026": "Legal",
+      "legal_duality_flag": "no",
+      "owid_latest_year": 2023,
+      "owid_sex_ratio_age20": 101.49,
+      "owid_sex_ratio_age30": 99.55,
+      "owid_sex_ratio_age40": 98.53
+    },
+    {
+      "country": "Niger",
+      "subregion_cluster": "West Africa",
+      "pew_polygamous_household_share_pct": 29,
+      "wpr_legal_status_2026": "Permitted by customary law, not legally recognized",
+      "legal_duality_flag": "yes",
+      "owid_latest_year": 2023,
+      "owid_sex_ratio_age20": 103.92,
+      "owid_sex_ratio_age30": 104.32,
+      "owid_sex_ratio_age40": 105.29
+    },
+    {
+      "country": "Nigeria",
+      "subregion_cluster": "West Africa",
+      "pew_polygamous_household_share_pct": 28,
+      "wpr_legal_status_2026": "Permitted by customary law, not legally recognized",
+      "legal_duality_flag": "yes",
+      "owid_latest_year": 2023,
+      "owid_sex_ratio_age20": 103.81,
+      "owid_sex_ratio_age30": 103.32,
+      "owid_sex_ratio_age40": 102.43
+    },
+    {
+      "country": "Guinea",
+      "subregion_cluster": "West Africa",
+      "pew_polygamous_household_share_pct": 26,
+      "wpr_legal_status_2026": "Legal (with restrictions)",
+      "legal_duality_flag": "no",
+      "owid_latest_year": 2023,
+      "owid_sex_ratio_age20": 102.36,
+      "owid_sex_ratio_age30": 99.9,
+      "owid_sex_ratio_age40": 90.46
+    },
+    {
+      "country": "Guinea-Bissau",
+      "subregion_cluster": "West Africa",
+      "pew_polygamous_household_share_pct": 23,
+      "wpr_legal_status_2026": "Illegal but socially accepted",
+      "legal_duality_flag": "no",
+      "owid_latest_year": 2023,
+      "owid_sex_ratio_age20": 101.2,
+      "owid_sex_ratio_age30": 99.69,
+      "owid_sex_ratio_age40": 98.27
+    },
+    {
+      "country": "Senegal",
+      "subregion_cluster": "West Africa",
+      "pew_polygamous_household_share_pct": 23,
+      "wpr_legal_status_2026": "Legal",
+      "legal_duality_flag": "no",
+      "owid_latest_year": 2023,
+      "owid_sex_ratio_age20": 103.39,
+      "owid_sex_ratio_age30": 98.84,
+      "owid_sex_ratio_age40": 99.53
+    },
+    {
+      "country": "Togo",
+      "subregion_cluster": "West Africa",
+      "pew_polygamous_household_share_pct": 17,
+      "wpr_legal_status_2026": "Legal for Muslims only",
+      "legal_duality_flag": "no",
+      "owid_latest_year": 2023,
+      "owid_sex_ratio_age20": 102.56,
+      "owid_sex_ratio_age30": 102.8,
+      "owid_sex_ratio_age40": 102.46
+    },
+    {
+      "country": "Chad",
+      "subregion_cluster": "Central Africa",
+      "pew_polygamous_household_share_pct": 15,
+      "wpr_legal_status_2026": "Legal",
+      "legal_duality_flag": "no",
+      "owid_latest_year": 2023,
+      "owid_sex_ratio_age20": 101.99,
+      "owid_sex_ratio_age30": 100.3,
+      "owid_sex_ratio_age40": 98.06
+    },
+    {
+      "country": "Cameroon",
+      "subregion_cluster": "Central Africa",
+      "pew_polygamous_household_share_pct": 13,
+      "wpr_legal_status_2026": "Legal",
+      "legal_duality_flag": "no",
+      "owid_latest_year": 2023,
+      "owid_sex_ratio_age20": 100.18,
+      "owid_sex_ratio_age30": 99.22,
+      "owid_sex_ratio_age40": 98.73
+    },
+    {
+      "country": "Ivory Coast",
+      "subregion_cluster": "West Africa",
+      "pew_polygamous_household_share_pct": 12,
+      "wpr_legal_status_2026": "",
+      "legal_duality_flag": "no",
+      "owid_latest_year": 2023,
+      "owid_sex_ratio_age20": 109.09,
+      "owid_sex_ratio_age30": 95.82,
+      "owid_sex_ratio_age40": 102.09
+    },
+    {
+      "country": "Benin",
+      "subregion_cluster": "West Africa",
+      "pew_polygamous_household_share_pct": 10,
+      "wpr_legal_status_2026": "Illegal but socially accepted",
+      "legal_duality_flag": "no",
+      "owid_latest_year": 2023,
+      "owid_sex_ratio_age20": 103.11,
+      "owid_sex_ratio_age30": 101.78,
+      "owid_sex_ratio_age40": 98.39
+    },
+    {
+      "country": "Central African Republic",
+      "subregion_cluster": "Central Africa",
+      "pew_polygamous_household_share_pct": 8,
+      "wpr_legal_status_2026": "Legal",
+      "legal_duality_flag": "no",
+      "owid_latest_year": 2023,
+      "owid_sex_ratio_age20": 93.83,
+      "owid_sex_ratio_age30": 80.89,
+      "owid_sex_ratio_age40": 72.05
+    },
+    {
+      "country": "DR Congo",
+      "subregion_cluster": "Central Africa",
+      "pew_polygamous_household_share_pct": 2,
+      "wpr_legal_status_2026": "Illegal but socially accepted",
+      "legal_duality_flag": "no",
+      "owid_latest_year": 2023,
+      "owid_sex_ratio_age20": 99.37,
+      "owid_sex_ratio_age30": 98.35,
+      "owid_sex_ratio_age40": 97.61
+    }
+  ]
+}

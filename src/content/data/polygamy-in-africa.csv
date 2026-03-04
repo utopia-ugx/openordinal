@@ -1,0 +1,16 @@
+country,subregion_cluster,pew_polygamous_household_share_pct,wpr_legal_status_2026,legal_duality_flag,owid_latest_year,owid_sex_ratio_age20,owid_sex_ratio_age30,owid_sex_ratio_age40
+Burkina Faso,West Africa,36,Legal,no,2023,102.25,99.4,97.81
+Mali,West Africa,34,Legal,no,2023,102.77,102.77,103.5
+Gambia,West Africa,30,Legal,no,2023,101.49,99.55,98.53
+Niger,West Africa,29,"Permitted by customary law, not legally recognized",yes,2023,103.92,104.32,105.29
+Nigeria,West Africa,28,"Permitted by customary law, not legally recognized",yes,2023,103.81,103.32,102.43
+Guinea,West Africa,26,Legal (with restrictions),no,2023,102.36,99.9,90.46
+Guinea-Bissau,West Africa,23,Illegal but socially accepted,no,2023,101.2,99.69,98.27
+Senegal,West Africa,23,Legal,no,2023,103.39,98.84,99.53
+Togo,West Africa,17,Legal for Muslims only,no,2023,102.56,102.8,102.46
+Chad,Central Africa,15,Legal,no,2023,101.99,100.3,98.06
+Cameroon,Central Africa,13,Legal,no,2023,100.18,99.22,98.73
+Ivory Coast,West Africa,12,,no,2023,109.09,95.82,102.09
+Benin,West Africa,10,Illegal but socially accepted,no,2023,103.11,101.78,98.39
+Central African Republic,Central Africa,8,Legal,no,2023,93.83,80.89,72.05
+DR Congo,Central Africa,2,Illegal but socially accepted,no,2023,99.37,98.35,97.61

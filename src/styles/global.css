@@ -105,7 +105,15 @@ summary,
 .entry-prose h3 {
   font-weight: 500;
   line-height: 1.2;
+}
+
+.entry-prose h1 {
   margin: 1.5rem 0 0.75rem;
+}
+
+.entry-prose h2,
+.entry-prose h3 {
+  margin: 1.7rem 0 0.75rem;
 }
 
 .entry-prose p,
@@ -281,6 +289,58 @@ summary,
   display: block;
   width: 100%;
   height: auto;
+}
+
+.entry-chart__inner svg .chart-tooltip-target {
+  cursor: pointer;
+  transition: filter 140ms ease, opacity 140ms ease;
+}
+
+.entry-chart__inner svg .chart-tooltip-target:hover,
+.entry-chart__inner svg .chart-tooltip-target.is-active {
+  filter: brightness(1.1);
+}
+
+.entry-chart__inner svg .chart-tooltip-target:focus-visible {
+  outline: none;
+  stroke: var(--ink);
+  stroke-width: 1.5;
+}
+
+.entry-chart-tooltip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 20;
+  max-width: min(300px, calc(100% - 1rem));
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--rule);
+  background: color-mix(in srgb, var(--paper) 94%, #ffffff 6%);
+  color: var(--ink);
+  box-shadow: 0 10px 26px color-mix(in srgb, var(--ink) 16%, transparent);
+  pointer-events: none;
+}
+
+.entry-chart-tooltip[hidden] {
+  display: none;
+}
+
+.entry-chart-tooltip__title {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Geist Mono", monospace;
+  font-size: 11px;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.entry-chart-tooltip__body {
+  margin: 0.25rem 0 0;
+  color: color-mix(in srgb, var(--ink) 82%, var(--paper));
+  font-family: "Geist Mono", monospace;
+  font-size: 11px;
+  line-height: 1.35;
 }
 
 .entry-hero {

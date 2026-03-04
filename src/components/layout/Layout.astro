@@ -91,5 +91,350 @@ const fullTitle = title.includes("Open Ordinal") ? title : `${title} - Open Ordi
     </main>
     <Footer lang={lang} />
     {import.meta.env.DEV && <DevThemeToggle />}
+    <script is:inline>
+      (() => {
+        const langCode = (document.documentElement.lang || "en").toLowerCase();
+        const copy = langCode.startsWith("fr")
+          ? {
+              prevalence: "Prevalence Pew",
+              subregion: "Sous-region",
+              legal: "Statut juridique",
+              sexRatio: "Ratio hommes-femmes a 30 ans",
+              duality: "Dualite juridique",
+              value: "Valeur",
+              yes: "oui",
+              no: "non"
+            }
+          : {
+              prevalence: "Pew prevalence",
+              subregion: "Subregion",
+              legal: "Legal status",
+              sexRatio: "Sex ratio at age 30",
+              duality: "Legal duality",
+              value: "Value",
+              yes: "yes",
+              no: "no"
+            };
+
+        const parseNumber = (value) => {
+          const parsed = Number.parseFloat(value ?? "");
+          return Number.isFinite(parsed) ? parsed : null;
+        };
+
+        const clamp = (value, min, max) => Math.max(min, Math.min(value, max));
+        const cleanText = (value) => (value || "").replace(/\s+/g, " ").trim();
+
+        const getSvgWidth = (svg) => {
+          const viewBoxParts = (svg.getAttribute("viewBox") || "")
+            .split(/\s+/)
+            .map((part) => Number.parseFloat(part));
+          if (viewBoxParts.length === 4 && Number.isFinite(viewBoxParts[2])) {
+            return viewBoxParts[2];
+          }
+          const attrWidth = parseNumber(svg.getAttribute("width"));
+          if (attrWidth) {
+            return attrWidth;
+          }
+          return svg.getBoundingClientRect().width || 1000;
+        };
+
+        const discoverBarTargets = (svg) => {
+          const svgWidth = getSvgWidth(svg);
+          const texts = Array.from(svg.querySelectorAll("text")).map((node) => ({
+            node,
+            text: cleanText(node.textContent),
+            x: parseNumber(node.getAttribute("x")),
+            y: parseNumber(node.getAttribute("y")),
+            anchor: (node.getAttribute("text-anchor") || "start").toLowerCase()
+          }));
+
+          return Array.from(svg.querySelectorAll("rect"))
+            .map((rect) => {
+              const x = parseNumber(rect.getAttribute("x"));
+              const y = parseNumber(rect.getAttribute("y"));
+              const width = parseNumber(rect.getAttribute("width"));
+              const height = parseNumber(rect.getAttribute("height"));
+              if (x === null || y === null || width === null || height === null) {
+                return null;
+              }
+              if (height < 16 || height > 40) {
+                return null;
+              }
+              if (width <= 8 || width >= svgWidth * 0.92) {
+                return null;
+              }
+              const fill = (rect.getAttribute("fill") || "").toLowerCase();
+              if (!fill || fill.includes("var(--paper)") || fill.includes("transparent")) {
+                return null;
+              }
+
+              const centerY = y + height / 2;
+              const rowTexts = texts.filter(
+                (item) => item.text && item.y !== null && Math.abs(item.y - centerY) <= 8
+              );
+              if (!rowTexts.length) {
+                return null;
+              }
+
+              const label = rowTexts
+                .filter(
+                  (item) =>
+                    item.x !== null &&
+                    item.x <= x + 2 &&
+                    (item.anchor === "end" || item.x < x - 6)
+                )
+                .sort((a, b) => (b.x ?? 0) - (a.x ?? 0))[0];
+
+              if (!label) {
+                return null;
+              }
+
+              const value =
+                rowTexts
+                  .filter((item) => item !== label && item.x !== null && item.x >= x + width - 4)
+                  .sort((a, b) => (a.x ?? 0) - (b.x ?? 0))[0] ||
+                rowTexts
+                  .filter((item) => item !== label && item.x !== null)
+                  .sort(
+                    (a, b) =>
+                      Math.abs((a.x ?? 0) - (x + width)) - Math.abs((b.x ?? 0) - (x + width))
+                  )[0];
+
+              const labelText = cleanText(label.text);
+              const valueText = cleanText(value?.text || "");
+              if (!labelText) {
+                return null;
+              }
+
+              rect.dataset.chartLabel = labelText;
+              if (valueText) {
+                rect.dataset.chartValue = valueText;
+              }
+              return rect;
+            })
+            .filter(Boolean);
+        };
+
+        const buildMapTooltip = (target) => {
+          const country = cleanText(target.dataset.country);
+          if (!country) {
+            return null;
+          }
+          const parts = [];
+          const prevalence = cleanText(target.dataset.prevalence);
+          const subregion = cleanText(target.dataset.subregion);
+          const legal = cleanText(target.dataset.legal);
+          const sexRatio = cleanText(target.dataset.sexRatio30);
+          const year = cleanText(target.dataset.year);
+          const duality = cleanText(target.dataset.duality).toLowerCase();
+
+          if (prevalence) {
+            parts.push(`${copy.prevalence}: ${prevalence}%`);
+          }
+          if (subregion) {
+            parts.push(`${copy.subregion}: ${subregion}`);
+          }
+          if (legal) {
+            parts.push(`${copy.legal}: ${legal}`);
+          }
+          if (sexRatio) {
+            const yearChunk = year ? ` (${year})` : "";
+            parts.push(`${copy.sexRatio}${yearChunk}: ${sexRatio}`);
+          }
+          if (duality === "yes" || duality === "no") {
+            parts.push(`${copy.duality}: ${duality === "yes" ? copy.yes : copy.no}`);
+          }
+
+          return {
+            title: country,
+            body: parts.join(" | ")
+          };
+        };
+
+        const buildBarTooltip = (target) => {
+          const explicitTitle = cleanText(target.dataset.tooltipTitle);
+          const explicitBody = cleanText(target.dataset.tooltipBody);
+          const label = cleanText(target.dataset.chartLabel);
+          const value = cleanText(target.dataset.chartValue);
+
+          if (explicitTitle || explicitBody) {
+            return {
+              title: explicitTitle || label || copy.value,
+              body: explicitBody || (value ? `${copy.value}: ${value}` : "")
+            };
+          }
+
+          if (!label) {
+            return null;
+          }
+          return {
+            title: label,
+            body: value ? `${copy.value}: ${value}` : ""
+          };
+        };
+
+        const setupChartTooltips = (figure) => {
+          const svg = figure.querySelector("svg");
+          if (!svg) {
+            return;
+          }
+
+          const mapTargets = Array.from(svg.querySelectorAll(".map-country[data-country]"));
+          const barTargets = discoverBarTargets(svg);
+          const targets = [...new Set([...mapTargets, ...barTargets])];
+          if (!targets.length) {
+            return;
+          }
+
+          if (window.getComputedStyle(figure).position === "static") {
+            figure.style.position = "relative";
+          }
+
+          const tooltip = document.createElement("div");
+          tooltip.className = "entry-chart-tooltip";
+          tooltip.hidden = true;
+
+          const titleNode = document.createElement("p");
+          titleNode.className = "entry-chart-tooltip__title";
+          const bodyNode = document.createElement("p");
+          bodyNode.className = "entry-chart-tooltip__body";
+
+          tooltip.append(titleNode, bodyNode);
+          figure.append(tooltip);
+
+          let activeTarget = null;
+          let pinnedTarget = null;
+
+          const clearActive = () => {
+            if (activeTarget) {
+              activeTarget.classList.remove("is-active");
+              activeTarget = null;
+            }
+          };
+
+          const hideTooltip = () => {
+            tooltip.hidden = true;
+            clearActive();
+          };
+
+          const positionTooltip = (clientX, clientY) => {
+            const bounds = figure.getBoundingClientRect();
+            const tipBounds = tooltip.getBoundingClientRect();
+            const inset = 8;
+            const offset = 12;
+            const left = clamp(clientX - bounds.left + offset, inset, bounds.width - tipBounds.width - inset);
+            const top = clamp(clientY - bounds.top + offset, inset, bounds.height - tipBounds.height - inset);
+            tooltip.style.left = `${left}px`;
+            tooltip.style.top = `${top}px`;
+          };
+
+          const getTooltipPayload = (target) =>
+            target.classList.contains("map-country") ? buildMapTooltip(target) : buildBarTooltip(target);
+
+          const showTooltip = (target, sourceEvent) => {
+            const payload = getTooltipPayload(target);
+            if (!payload) {
+              return;
+            }
+            titleNode.textContent = payload.title;
+            bodyNode.textContent = payload.body;
+            bodyNode.hidden = !payload.body;
+            tooltip.hidden = false;
+
+            if (activeTarget && activeTarget !== target) {
+              activeTarget.classList.remove("is-active");
+            }
+            activeTarget = target;
+            activeTarget.classList.add("is-active");
+
+            if (sourceEvent && Number.isFinite(sourceEvent.clientX) && Number.isFinite(sourceEvent.clientY)) {
+              positionTooltip(sourceEvent.clientX, sourceEvent.clientY);
+              return;
+            }
+
+            const box = target.getBoundingClientRect();
+            positionTooltip(box.left + box.width / 2, box.top + box.height / 2);
+          };
+
+          const onPointerLeave = () => {
+            if (pinnedTarget) {
+              return;
+            }
+            hideTooltip();
+          };
+
+          targets.forEach((target) => {
+            target.classList.add("chart-tooltip-target");
+            if (!target.hasAttribute("tabindex")) {
+              target.setAttribute("tabindex", "0");
+            }
+
+            const payload = getTooltipPayload(target);
+            if (payload && !target.hasAttribute("aria-label")) {
+              target.setAttribute("aria-label", payload.body ? `${payload.title}. ${payload.body}` : payload.title);
+            }
+
+            target.addEventListener("pointerenter", (event) => {
+              if (pinnedTarget) {
+                return;
+              }
+              showTooltip(target, event);
+            });
+
+            target.addEventListener("pointermove", (event) => {
+              if (pinnedTarget || tooltip.hidden) {
+                return;
+              }
+              positionTooltip(event.clientX, event.clientY);
+            });
+
+            target.addEventListener("pointerleave", onPointerLeave);
+
+            target.addEventListener("focus", () => {
+              showTooltip(target);
+            });
+
+            target.addEventListener("blur", () => {
+              if (pinnedTarget) {
+                return;
+              }
+              hideTooltip();
+            });
+
+            target.addEventListener("click", (event) => {
+              if (pinnedTarget === target) {
+                pinnedTarget = null;
+                hideTooltip();
+                return;
+              }
+              pinnedTarget = target;
+              showTooltip(target, event);
+              event.preventDefault();
+            });
+          });
+
+          document.addEventListener("pointerdown", (event) => {
+            if (!pinnedTarget) {
+              return;
+            }
+            if (figure.contains(event.target)) {
+              return;
+            }
+            pinnedTarget = null;
+            hideTooltip();
+          });
+
+          figure.addEventListener("keydown", (event) => {
+            if (event.key !== "Escape") {
+              return;
+            }
+            pinnedTarget = null;
+            hideTooltip();
+          });
+        };
+
+        document.querySelectorAll(".entry-chart").forEach(setupChartTooltips);
+      })();
+    </script>
   </body>
 </html>

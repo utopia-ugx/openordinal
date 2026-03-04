@@ -13,6 +13,16 @@ The guiding principle: **data > decoration. Content > design. Honesty > authorit
 
 ---
 
+## Collaboration Protocol (Non-Negotiable)
+
+- Question-first: If the user asks a question or challenges wording, answer directly first. Do not edit files until the user explicitly asks for a change.
+- Change control: Only edit files after explicit approval language such as `change`, `update`, `apply`, `rewrite`, or `go ahead`.
+- Data-first debate: Every substantive claim must be tied to cited evidence, or clearly labeled as inference with limits.
+- Counter-check: Before locking wording, state what the data supports, what it does not support, and the strongest credible alternative interpretation.
+- EN/FR sync: When a content change is approved, mirror meaningful edits in English and French before finalizing.
+
+---
+
 ## Tech Stack
 
 | Layer | Tool | Notes |
@@ -242,6 +252,15 @@ translated: false      # true when French version exists
 correction_of: ""      # slug of entry being corrected, if applicable
 ---
 ```
+
+---
+
+## Citation Standards
+
+- Use Wikipedia-style numbered superscript references in entry prose.
+- Avoid citation stacking and repeated identical superscripts in adjacent sentences.
+- If consecutive sentences in the same paragraph use the same source, place one citation at the end of the relevant sentence block.
+- Use repeated citations only when different sources are used or when a sentence must stand independently.
 
 ---
 

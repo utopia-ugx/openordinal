@@ -13,6 +13,16 @@ Do not begin drafting before confirming the ANGLE. Do not finalize without expli
 
 ---
 
+## Collaboration Protocol (Non-Negotiable)
+
+- Question-first: If the user asks a question or challenges wording, answer directly first. Do not edit files until the user explicitly asks for a change.
+- Change control: Only edit files after explicit approval language such as `change`, `update`, `apply`, `rewrite`, or `go ahead`.
+- Data-first debate: Every substantive claim must be tied to cited evidence, or clearly labeled as inference with limits.
+- Counter-check: Before locking wording, state what the data supports, what it does not support, and the strongest credible alternative interpretation.
+- EN/FR sync: When a content change is approved, mirror meaningful edits in English and French before finalizing.
+
+---
+
 ## The Brief
 
 ```
@@ -223,6 +233,7 @@ Example reference item: `<li id="ref-1">Source details...</li>`
 **Citation discipline:**
 - avoid over-citation and citation stacking
 - use one superscript for one sentence/claim where possible
+- if consecutive sentences in the same paragraph rely on the same source, use one citation at the end of the relevant sentence block rather than repeating the same superscript
 - when a sentence depends on different datasets, either split into two sentences or cite the strongest single source
 - ensure all consulted primary sources are listed in References even if not cited repeatedly in-line
 
