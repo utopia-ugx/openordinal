@@ -123,6 +123,15 @@ summary,
   margin: 0.8rem 0;
 }
 
+.entry-prose p,
+.entry-prose li,
+.entry-prose td,
+.entry-prose blockquote,
+.entry-prose a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 .entry-prose table {
   width: 100%;
   border-collapse: collapse;
