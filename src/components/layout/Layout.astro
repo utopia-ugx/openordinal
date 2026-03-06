@@ -108,7 +108,7 @@ const cookieConsentCopy =
     <main class="pt-12">
       <slot />
     </main>
-    <Footer lang={lang} showCookieSettings={showCookieUi} />
+    <Footer lang={lang} showCookieSettings={canLoadPosthog} />
     {
       showCookieUi && (
         <div

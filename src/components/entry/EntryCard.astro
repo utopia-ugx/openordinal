@@ -9,7 +9,7 @@ const dateFmt = new Intl.DateTimeFormat(lang === "fr" ? "fr-FR" : "en-GB", {
 }).format(entry.data.date);
 ---
 
-<article class="border-b border-rule py-4">
+<article class="border-b border-rule py-6 md:py-8">
   <a href={href} class="block hover:no-underline">
     <div class="ui-meta flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] uppercase tracking-[0.16em] text-dim">
       <span>{entry.data.entry_number}</span>
