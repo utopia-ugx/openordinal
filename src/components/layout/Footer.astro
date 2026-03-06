@@ -1,5 +1,10 @@
 ---
-const { lang = "en" } = Astro.props;
+interface Props {
+  lang?: "en" | "fr";
+  showCookieSettings?: boolean;
+}
+
+const { lang = "en", showCookieSettings = false } = Astro.props as Props;
 const prefix = lang === "fr" ? "/fr" : "";
 const copy =
   lang === "fr"
@@ -9,7 +14,8 @@ const copy =
         copyright: "(c) 2026 Open Ordinal. Contenu CC BY 4.0. Code MIT.",
         privacy: "Confidentialite",
         terms: "Conditions",
-        licenses: "Licences"
+        licenses: "Licences",
+        cookies: "Cookies"
       }
     : {
         attribution: "Open Ordinal is a project of Utopia UGX Group Ltd.",
@@ -17,7 +23,8 @@ const copy =
         copyright: "(c) 2026 Open Ordinal. Content CC BY 4.0. Code MIT.",
         privacy: "Privacy",
         terms: "Terms",
-        licenses: "Licenses"
+        licenses: "Licenses",
+        cookies: "Cookies"
       };
 ---
 
@@ -35,6 +42,13 @@ const copy =
           <a href={`${prefix}/legal/privacy`}>{copy.privacy}</a>
           <a href={`${prefix}/legal/terms`}>{copy.terms}</a>
           <a href={`${prefix}/legal/licenses`}>{copy.licenses}</a>
+          {
+            showCookieSettings && (
+              <button type="button" data-cookie-settings class="hover:text-ink">
+                {copy.cookies}
+              </button>
+            )
+          }
         </div>
       </div>
     </div>
