@@ -36,6 +36,15 @@ npm install
 npm run dev
 ```
 
+## Environment variables
+
+PostHog web analytics is enabled only in production and only when a key is set.
+
+```bash
+PUBLIC_POSTHOG_KEY=phc_your_project_key
+PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
+```
+
 Build for production:
 
 ```bash

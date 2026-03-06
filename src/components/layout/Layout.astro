@@ -46,6 +46,8 @@ const ldJson =
   } as Record<string, unknown>);
 
 const fullTitle = title.includes("Open Ordinal") ? title : `${title} - Open Ordinal`;
+const posthogKey = import.meta.env.PUBLIC_POSTHOG_KEY;
+const posthogHost = import.meta.env.PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com";
 ---
 
 <!doctype html>
@@ -79,6 +81,85 @@ const fullTitle = title.includes("Open Ordinal") ? title : `${title} - Open Ordi
 
     {import.meta.env.PROD && (
       <script defer data-domain="openordinal.org" src="https://plausible.io/js/script.js"></script>
+    )}
+    {import.meta.env.PROD && posthogKey && (
+      <script is:inline define:vars={{ posthogKey, posthogHost }}>
+        (() => {
+          if (window.posthog?.__SV) {
+            return;
+          }
+
+          !(function (t, e) {
+            let o;
+            let p;
+            let r;
+            if (e.__SV) {
+              return;
+            }
+            window.posthog = e;
+            e._i = [];
+            e.init = function (i, s, a) {
+              function g(target, key) {
+                const parts = key.split(".");
+                if (parts.length === 2) {
+                  target = target[parts[0]];
+                  key = parts[1];
+                }
+                target[key] = function () {
+                  target.push([key].concat(Array.prototype.slice.call(arguments, 0)));
+                };
+              }
+
+              p = t.createElement("script");
+              p.type = "text/javascript";
+              p.crossOrigin = "anonymous";
+              p.async = true;
+              p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js";
+              r = t.getElementsByTagName("script")[0];
+              r.parentNode.insertBefore(p, r);
+
+              const posthogRef = a ? (e[a] = []) : e;
+              if (!a) {
+                a = "posthog";
+              }
+
+              posthogRef.people = posthogRef.people || [];
+              posthogRef.toString = function (stub) {
+                let base = "posthog";
+                if (a !== "posthog") {
+                  base += "." + a;
+                }
+                if (!stub) {
+                  base += " (stub)";
+                }
+                return base;
+              };
+              posthogRef.people.toString = function () {
+                return posthogRef.toString(1) + ".people (stub)";
+              };
+
+              const methods =
+                "init capture register register_once register_for_session unregister unregister_for_session reset people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove_property get_property get_distinct_id identify alias screen capture pageview reset_groups group set_config set_person_properties opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing start_batch_senders stop_batch_senders".split(
+                  " "
+                );
+
+              for (o = 0; o < methods.length; o++) {
+                g(posthogRef, methods[o]);
+              }
+              e._i.push([i, s, a]);
+            };
+            e.__SV = 1;
+          })(document, window.posthog || []);
+
+          window.posthog.init(posthogKey, {
+            api_host: posthogHost,
+            autocapture: true,
+            capture_pageview: true,
+            capture_pageleave: true,
+            person_profiles: "identified_only"
+          });
+        })();
+      </script>
     )}
 
     <slot name="head" />
