@@ -1,10 +1,65 @@
 ---
 import Layout from "../../components/layout/Layout.astro";
+import { getCollection } from "astro:content";
+
+const entriesFr = (await getCollection("entries-fr"))
+  .filter((entry) => !entry.data.draft)
+  .sort((a, b) => {
+    const aNum = Number.parseInt(a.data.entry_number, 10);
+    const bNum = Number.parseInt(b.data.entry_number, 10);
+    if (Number.isFinite(aNum) && Number.isFinite(bNum) && aNum !== bNum) {
+      return aNum - bNum;
+    }
+    return a.data.date.getTime() - b.data.date.getTime();
+  });
 
 const dataFiles = Object.keys(import.meta.glob("/src/content/data/*.{csv,json}"))
   .map((path) => path.split("/").pop())
-  .filter((name): name is string => Boolean(name && name !== ".gitkeep"))
-  .sort((a, b) => a.localeCompare(b));
+  .filter((name): name is string => Boolean(name));
+
+const toFormatLabel = (csvCount: number, jsonCount: number): string => {
+  const parts: string[] = [];
+  if (csvCount > 0) {
+    parts.push("CSV");
+  }
+  if (jsonCount > 0) {
+    parts.push("JSON");
+  }
+
+  const total = csvCount + jsonCount;
+  const base = (csvCount > 0 ? 1 : 0) + (jsonCount > 0 ? 1 : 0);
+  const subsets = total - base;
+
+  if (subsets > 0) {
+    return `${parts.join(", ")} + ${subsets} sous-ensembles`;
+  }
+
+  return parts.join(", ");
+};
+
+const dataRows = entriesFr
+  .map((entry) => {
+    const files = dataFiles.filter(
+      (file) =>
+        file === `${entry.slug}.csv` ||
+        file === `${entry.slug}.json` ||
+        file.startsWith(`${entry.slug}-`)
+    );
+
+    const csvCount = files.filter((file) => file.endsWith(".csv")).length;
+    const jsonCount = files.filter((file) => file.endsWith(".json")).length;
+
+    if (csvCount + jsonCount === 0) {
+      return null;
+    }
+
+    return {
+      slug: entry.slug,
+      title: entry.data.title_fr || entry.data.title,
+      formats: toFormatLabel(csvCount, jsonCount)
+    };
+  })
+  .filter((row): row is { slug: string; title: string; formats: string } => Boolean(row));
 ---
 
 <Layout
@@ -13,20 +68,40 @@ const dataFiles = Object.keys(import.meta.glob("/src/content/data/*.{csv,json}")
   lang="fr"
   canonical="https://openordinal.org/fr/data"
 >
-  <section class="archive-shell">
+  <section class="archive-shell entry-prose">
     <h1 class="text-[46px] leading-tight text-ink">Donnees</h1>
 
-    {
-      dataFiles.length > 0 ? (
-        <ul class="mt-8 space-y-3 border-t border-rule pt-4">
-          {dataFiles.map((file) => <li class="ui-meta text-[13px] text-ink">{file}</li>)}
-        </ul>
-      ) : (
-        <p class="mt-6 max-w-2xl text-[20px] text-dim">
-          Telechargements de donnees bientot disponibles. Les fichiers de donnees brutes sont stockes dans le depot du projet.
-          <a href="https://github.com/openordinal/open-ordinal" target="_blank" rel="noreferrer"> Depot GitHub</a>.
-        </p>
-      )
-    }
+    <p class="mt-6 max-w-4xl">
+      Les jeux de donnees structures presents sur cette page sont derives de sources publiques. L'attribution des sources et les conditions d'origine sont documentees dans chaque entree.
+    </p>
+    <p class="max-w-4xl">
+      Les utilisateurs doivent consulter les licences des sources initiales avant redistribution. Les versions structurees sont publiees sous CC BY 4.0, tandis que les licences des sources amont restent applicables.
+    </p>
+
+    <p class="ui-meta mt-8 text-[12px] text-dim">
+      Dossier de donnees ouvert:
+      <a href="https://github.com/openordinal/open-ordinal/tree/main/src/content/data" target="_blank" rel="noreferrer">Voir sur GitHub ↗</a>
+    </p>
+
+    <div class="mt-4 overflow-x-auto">
+      <table>
+        <thead>
+          <tr>
+            <th>Entree</th>
+            <th>Formats</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            dataRows.map((row) => (
+              <tr>
+                <td>{row.title}</td>
+                <td>{row.formats}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
   </section>
 </Layout>
