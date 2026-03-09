@@ -63,22 +63,29 @@ const description =
 
 const canonical = `https://openordinal.org/fr/entries/${slug}`;
 const ogImage = `https://openordinal.org/og/${slug}.png`;
+const organizationId = "https://openordinal.org/#organization";
 
 const structuredData = {
-  "@context": "https://schema.org",
   "@type": "Article",
+  "@id": `${canonical}#article`,
   headline: title,
+  description,
+  image: [ogImage],
   datePublished: entry.data.date.toISOString(),
+  dateModified: entry.data.date.toISOString(),
   inLanguage: isFallback ? "en" : "fr",
+  articleSection: entry.data.category,
+  isAccessibleForFree: true,
   author: {
-    "@type": "Organization",
-    name: "Open Ordinal"
+    "@id": organizationId
   },
   publisher: {
-    "@type": "Organization",
-    name: "Open Ordinal"
+    "@id": organizationId
   },
-  mainEntityOfPage: canonical
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": canonical
+  }
 };
 ---
 

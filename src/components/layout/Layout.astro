@@ -11,7 +11,8 @@ interface Props {
   type?: "website" | "article";
   canonical?: string;
   ogImage?: string;
-  structuredData?: Record<string, unknown>;
+  robots?: string;
+  structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
 const {
@@ -20,12 +21,14 @@ const {
   lang = "en",
   type = "website",
   canonical,
+  robots,
   ogImage,
   structuredData
 } = Astro.props;
 
 const pathname = Astro.url.pathname;
 const site = Astro.site ?? new URL("https://openordinal.org");
+const siteOrigin = site.origin;
 const canonicalUrl = canonical ?? new URL(pathname, site).toString();
 
 const enPath = pathname.startsWith("/fr")
@@ -35,17 +38,49 @@ const frPath = pathname.startsWith("/fr") ? pathname : pathname === "/" ? "/fr" 
 
 const enUrl = new URL(enPath, site).toString();
 const frUrl = new URL(frPath, site).toString();
+const xDefaultUrl = enUrl;
+const organizationId = `${siteOrigin}/#organization`;
+const websiteId = `${siteOrigin}/#website`;
+const logoUrl = new URL("/open-ordinal-logo-512.png", site).toString();
 
-const ldJson =
-  structuredData ??
-  ({
-    "@context": "https://schema.org",
-    "@type": "WebSite",
+const structuredNodes = [
+  {
+    "@type": "Organization",
+    "@id": organizationId,
     name: "Open Ordinal",
-    url: "https://openordinal.org"
-  } as Record<string, unknown>);
+    url: siteOrigin,
+    logo: {
+      "@type": "ImageObject",
+      url: logoUrl
+    }
+  },
+  {
+    "@type": "WebSite",
+    "@id": websiteId,
+    name: "Open Ordinal",
+    url: siteOrigin,
+    publisher: {
+      "@id": organizationId
+    },
+    inLanguage: ["en", "fr"]
+  },
+  ...(
+    structuredData
+      ? (Array.isArray(structuredData) ? structuredData : [structuredData]).map((node) => {
+          const { ["@context"]: _context, ...rest } = node;
+          return rest;
+        })
+      : []
+  )
+];
+
+const ldJson = {
+  "@context": "https://schema.org",
+  "@graph": structuredNodes
+};
 
 const fullTitle = title.includes("Open Ordinal") ? title : `${title} - Open Ordinal`;
+const twitterCard = ogImage ? "summary_large_image" : "summary";
 const posthogKey = import.meta.env.PUBLIC_POSTHOG_KEY;
 const posthogHost = import.meta.env.PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com";
 const hasPosthogConfig = Boolean(posthogKey);
@@ -83,18 +118,27 @@ const cookieConsentCopy =
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    {robots && <meta name="robots" content={robots} />}
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={type} />
+    <meta property="og:site_name" content="Open Ordinal" />
     <meta property="og:url" content={canonicalUrl} />
     {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImage && <meta property="og:image:alt" content={title} />}
+
+    <meta name="twitter:card" content={twitterCard} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
 
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" hreflang="en" href={enUrl} />
     <link rel="alternate" hreflang="fr" href={frUrl} />
+    <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
 
-    <script type="application/ld+json" set:html={JSON.stringify(ldJson)}></script>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(ldJson)}></script>
 
     <slot name="head" />
   </head>

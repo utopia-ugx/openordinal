@@ -29,22 +29,29 @@ const relatedEntries = getRelatedEntries(entry, allEntries, { limit: 3 });
 const description = entry.data.description || `${entry.data.category} analysis for ${entry.data.scope}.`;
 const canonical = `https://openordinal.org/entries/${entry.slug}`;
 const ogImage = `https://openordinal.org/og/${entry.slug}.png`;
+const organizationId = "https://openordinal.org/#organization";
 
 const structuredData = {
-  "@context": "https://schema.org",
   "@type": "Article",
+  "@id": `${canonical}#article`,
   headline: entry.data.title,
+  description,
+  image: [ogImage],
   datePublished: entry.data.date.toISOString(),
+  dateModified: entry.data.date.toISOString(),
   inLanguage: "en",
+  articleSection: entry.data.category,
+  isAccessibleForFree: true,
   author: {
-    "@type": "Organization",
-    name: "Open Ordinal"
+    "@id": organizationId
   },
   publisher: {
-    "@type": "Organization",
-    name: "Open Ordinal"
+    "@id": organizationId
   },
-  mainEntityOfPage: canonical
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": canonical
+  }
 };
 ---
 
