@@ -18,25 +18,36 @@ on:
 jobs:
   create-drafts:
     runs-on: ubuntu-latest
+    env:
+      BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+      BUTTONDOWN_SITE_URL: https://openordinal.org
     steps:
-      - name: Skip when Buttondown API key is missing
-        if: ${{ secrets.BUTTONDOWN_API_KEY == '' }}
-        run: echo "BUTTONDOWN_API_KEY is not set; skipping Buttondown draft creation."
+      - name: Check Buttondown API key
+        id: api_key
+        shell: bash
+        run: |
+          if [[ -z "${BUTTONDOWN_API_KEY}" ]]; then
+            echo "has_key=false" >> "$GITHUB_OUTPUT"
+            echo "BUTTONDOWN_API_KEY is not set; skipping Buttondown draft creation."
+            exit 0
+          fi
+
+          echo "has_key=true" >> "$GITHUB_OUTPUT"
 
       - name: Checkout
-        if: ${{ secrets.BUTTONDOWN_API_KEY != '' }}
+        if: ${{ steps.api_key.outputs.has_key == 'true' }}
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Setup Node.js
-        if: ${{ secrets.BUTTONDOWN_API_KEY != '' }}
+        if: ${{ steps.api_key.outputs.has_key == 'true' }}
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
       - name: Find newly added entry files
-        if: ${{ secrets.BUTTONDOWN_API_KEY != '' && github.event_name == 'push' }}
+        if: ${{ steps.api_key.outputs.has_key == 'true' && github.event_name == 'push' }}
         id: changes
         shell: bash
         run: |
@@ -63,7 +74,7 @@ jobs:
           } >> "$GITHUB_OUTPUT"
 
       - name: Use manually selected entry file
-        if: ${{ secrets.BUTTONDOWN_API_KEY != '' && github.event_name == 'workflow_dispatch' }}
+        if: ${{ steps.api_key.outputs.has_key == 'true' && github.event_name == 'workflow_dispatch' }}
         id: manual
         shell: bash
         run: |
@@ -92,10 +103,7 @@ jobs:
           } >> "$GITHUB_OUTPUT"
 
       - name: Create Buttondown drafts
-        if: ${{ secrets.BUTTONDOWN_API_KEY != '' && (steps.changes.outputs.has_files == 'true' || steps.manual.outputs.has_files == 'true') }}
-        env:
-          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
-          BUTTONDOWN_SITE_URL: https://openordinal.org
+        if: ${{ steps.api_key.outputs.has_key == 'true' && (steps.changes.outputs.has_files == 'true' || steps.manual.outputs.has_files == 'true') }}
         shell: bash
         run: |
           files="${{ steps.changes.outputs.files }}"
