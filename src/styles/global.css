@@ -108,8 +108,17 @@ summary,
 
 .archive-filter-row {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0.45rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.archive-filter-row::-webkit-scrollbar {
+  display: none;
 }
 
 .archive-filter-chip {
@@ -535,14 +544,6 @@ summary,
 @media (max-width: 768px) {
   .archive-shell {
     padding: 64px 20px;
-  }
-
-  .archive-filter-row {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scrollbar-width: thin;
-    padding-bottom: 0.3rem;
   }
 
   .entry-prose table {

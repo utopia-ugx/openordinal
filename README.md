@@ -74,7 +74,7 @@ Frontmatter (summary):
 ```yaml
 title: ""
 title_fr: ""
-category: "" # Economics | Demographics | Technology | Governance | Rankings
+category: "" # Economics | Demographics | Technology | Governance | Health | Education
 date: "" # YYYY-MM-DD
 scope: ""
 scope_fr: ""
@@ -87,6 +87,19 @@ description: "" # max 160 chars
 key_stat: "" # optional highlight for OG card
 draft: false
 ```
+
+Category taxonomy:
+
+- `Economics`: Money, resources, and markets across African economies. Use for GDP, inflation, trade, debt, remittances, currency, investment, cost of living, and labour markets. Do not use for health spending or education budgets when the piece is mainly about sector outcomes.
+- `Demographics`: Population structure and change. Use for births, fertility, mortality, migration, urbanisation, age structure, and household composition. Do not use for economic consequences of demographic change when the main claim is about markets or incomes.
+- `Technology`: Digital and technical infrastructure and adoption. Use for internet access, mobile money, digital gaps, STEM participation, and tech sector growth. Do not use for technology regulation or state control of tech systems.
+- `Governance`: How states and institutions function. Use for corruption, elections, rule of law, regulatory quality, public service delivery, and press freedom. Do not use for economic policy outcomes when the main claim is macroeconomic or market-facing.
+- `Health`: Physical wellbeing and health system conditions. Use for disease burden, life expectancy, maternal and child mortality, nutrition, healthcare access, and system capacity. Do not use for health spending when the entry is mainly about fiscal burden or macro allocation.
+- `Education`: Learning and human capital development. Use for enrollment, attainment, literacy, learning outcomes, teacher capacity, and school-to-work pipelines. Do not use for STEM careers when the entry is mainly about technology participation or the tech sector.
+
+Classification rule:
+
+- Classify by the primary claim of the entry, not just the dataset being used.
 
 ## Deployment
 

@@ -8,7 +8,8 @@ const entrySchema = z.object({
     "Demographics",
     "Technology",
     "Governance",
-    "Rankings"
+    "Health",
+    "Education"
   ]),
   date: z.coerce.date(),
   scope: z.string(),

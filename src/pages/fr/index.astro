@@ -11,7 +11,7 @@ const source = entries.length > 0 ? entries : fallbackEntries;
 const sorted = source.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 const latest = sorted.slice(0, 5);
 
-const categories = ["Economics", "Demographics", "Technology", "Governance", "Rankings"];
+const categories = ["Economics", "Demographics", "Technology", "Governance", "Health", "Education"];
 const counts = categories.map((category) => ({
   category,
   count: sorted.filter((entry) => entry.data.category === category).length
