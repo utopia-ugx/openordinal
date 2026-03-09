@@ -190,10 +190,15 @@ const categories = [
   const prevButton = document.getElementById("archive-prev");
   const nextButton = document.getElementById("archive-next");
   const pageText = document.getElementById("archive-page");
+  const categoryValues = new Set(
+    categoryButtons.map((button) => button.dataset.categoryValue).filter((value): value is string => Boolean(value))
+  );
 
   let page = 1;
-  let activeCategory =
-    categoryButtons.find((button) => button.hasAttribute("data-active"))?.dataset.categoryValue || "All";
+  let activeCategory = (() => {
+    const requestedCategory = new URLSearchParams(window.location.search).get("category") || "";
+    return categoryValues.has(requestedCategory) ? requestedCategory : "All";
+  })();
 
   const syncCategoryButtons = () => {
     categoryButtons.forEach((button) => {
