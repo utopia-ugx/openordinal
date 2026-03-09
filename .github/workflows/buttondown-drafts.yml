@@ -8,6 +8,12 @@ on:
       - "src/content/entries/**/*.mdx"
       - ".github/workflows/buttondown-drafts.yml"
       - "scripts/create-buttondown-draft.mjs"
+  workflow_dispatch:
+    inputs:
+      entry_path:
+        description: "Existing English entry file to turn into a Buttondown draft"
+        required: true
+        type: string
 
 jobs:
   create-drafts:
@@ -30,7 +36,7 @@ jobs:
           node-version: 22
 
       - name: Find newly added entry files
-        if: ${{ secrets.BUTTONDOWN_API_KEY != '' }}
+        if: ${{ secrets.BUTTONDOWN_API_KEY != '' && github.event_name == 'push' }}
         id: changes
         shell: bash
         run: |
@@ -56,13 +62,47 @@ jobs:
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
+      - name: Use manually selected entry file
+        if: ${{ secrets.BUTTONDOWN_API_KEY != '' && github.event_name == 'workflow_dispatch' }}
+        id: manual
+        shell: bash
+        run: |
+          file="${{ inputs.entry_path }}"
+
+          if [[ ! -f "$file" ]]; then
+            echo "File not found: $file" >&2
+            exit 1
+          fi
+
+          if [[ ! "$file" =~ ^src/content/entries/.*\.mdx$ ]]; then
+            echo "Only English entry files under src/content/entries/ are allowed." >&2
+            exit 1
+          fi
+
+          if [[ "$file" =~ /template\.mdx$ ]]; then
+            echo "Template files are not allowed." >&2
+            exit 1
+          fi
+
+          {
+            echo "has_files=true"
+            echo "files<<EOF"
+            printf '%s\n' "$file"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
       - name: Create Buttondown drafts
-        if: ${{ secrets.BUTTONDOWN_API_KEY != '' && steps.changes.outputs.has_files == 'true' }}
+        if: ${{ secrets.BUTTONDOWN_API_KEY != '' && (steps.changes.outputs.has_files == 'true' || steps.manual.outputs.has_files == 'true') }}
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
           BUTTONDOWN_SITE_URL: https://openordinal.org
         shell: bash
         run: |
+          files="${{ steps.changes.outputs.files }}"
+          if [[ -z "$files" ]]; then
+            files="${{ steps.manual.outputs.files }}"
+          fi
+
           while IFS= read -r file; do
             node scripts/create-buttondown-draft.mjs "$file"
-          done <<< "${{ steps.changes.outputs.files }}"
+          done <<< "$files"
