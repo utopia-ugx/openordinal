@@ -96,10 +96,6 @@ const cookieConsentCopy =
 
     <script type="application/ld+json" set:html={JSON.stringify(ldJson)}></script>
 
-    {import.meta.env.PROD && (
-      <script defer data-domain="openordinal.org" src="https://plausible.io/js/script.js"></script>
-    )}
-
     <slot name="head" />
   </head>
 
