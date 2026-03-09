@@ -14,7 +14,8 @@ const latest = sorted.slice(0, 5);
 const categories = ["Economics", "Demographics", "Technology", "Governance", "Health", "Education"];
 const counts = categories.map((category) => ({
   category,
-  count: sorted.filter((entry) => entry.data.category === category).length
+  count: sorted.filter((entry) => entry.data.category === category).length,
+  href: `/fr/archive?category=${encodeURIComponent(category)}`
 }));
 
 const latestEntry = sorted[0];
@@ -72,10 +73,14 @@ const latestEntry = sorted[0];
     <div class="mt-6 border-t border-rule">
       {
         counts.map((item) => (
-          <div class="flex items-center justify-between border-b border-rule py-4">
+          <a
+            href={item.href}
+            class="flex items-center justify-between border-b border-rule py-4 hover:no-underline focus-visible:no-underline"
+            aria-label={`Parcourir les entrees ${item.category}`}
+          >
             <span class="text-[24px] text-ink">{item.category}</span>
             <span class="ui-meta text-[12px] text-dim">{item.count}</span>
-          </div>
+          </a>
         ))
       }
     </div>
