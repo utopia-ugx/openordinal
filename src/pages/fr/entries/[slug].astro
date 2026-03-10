@@ -5,6 +5,8 @@ import EntryHeader from "../../../components/entry/EntryHeader.astro";
 import HeroVisual from "../../../components/entry/HeroVisual.astro";
 import StatBlock from "../../../components/entry/StatBlock.astro";
 import ChartBlock from "../../../components/entry/ChartBlock.astro";
+import ScrollStory from "../../../components/entry/ScrollStory.astro";
+import BarChart from "../../../components/entry/charts/BarChart.astro";
 import LimitationsList from "../../../components/entry/LimitationsList.astro";
 import SourcesList from "../../../components/entry/SourcesList.astro";
 import SeeAlso from "../../../components/entry/SeeAlso.astro";
@@ -104,7 +106,17 @@ const structuredData = {
     <EntryHeader entry={entry} lang="fr" />
 
     <div class="mt-8">
-      <Content components={{ HeroVisual, StatBlock, ChartBlock, LimitationsList, SourcesList }} />
+      <Content
+        components={{
+          HeroVisual,
+          StatBlock,
+          ChartBlock,
+          ScrollStory,
+          BarChart,
+          LimitationsList,
+          SourcesList
+        }}
+      />
     </div>
 
     <SeeAlso items={relatedEntries} lang="fr" />

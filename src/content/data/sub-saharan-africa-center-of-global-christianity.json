@@ -1,0 +1,237 @@
+{
+  "topic": "Sub-Saharan Africa as the demographic center of global Christianity",
+  "scope": "Global Christianity by region, with sub-Saharan Africa in focus, using historical framing to 2020, 2010-2020 regional change, 2025 switching estimates, and Pew practice surveys",
+  "historical_framing": {
+    "1910_share_of_world_christians": [
+      {
+        "region": "Europe",
+        "share_percent": 66.3
+      },
+      {
+        "region": "Americas",
+        "share_percent": 27.1
+      },
+      {
+        "region": "Asia-Pacific",
+        "share_percent": 4.5
+      },
+      {
+        "region": "Sub-Saharan Africa",
+        "share_percent": 1.4
+      },
+      {
+        "region": "Middle East-North Africa",
+        "share_percent": 0.7
+      }
+    ],
+    "2010_share_of_world_christians": [
+      {
+        "region": "Asia-Pacific",
+        "share_percent": 11.8
+      },
+      {
+        "region": "Europe",
+        "share_percent": 25.8
+      },
+      {
+        "region": "Latin America-Caribbean",
+        "share_percent": 24.7
+      },
+      {
+        "region": "Middle East-North Africa",
+        "share_percent": 0.5
+      },
+      {
+        "region": "North America",
+        "share_percent": 12.4
+      },
+      {
+        "region": "Sub-Saharan Africa",
+        "share_percent": 24.8
+      }
+    ],
+    "notes": "The 1910 distribution comes from Pew's older five-region historical table, where the Americas are combined. The modern 2010 and 2020 tables split North America from Latin America-Caribbean."
+  },
+  "regional_share_2020": [
+    {
+      "region": "Sub-Saharan Africa",
+      "share_percent": 30.7
+    },
+    {
+      "region": "Latin America-Caribbean",
+      "share_percent": 24.1
+    },
+    {
+      "region": "Europe",
+      "share_percent": 22.3
+    },
+    {
+      "region": "Asia-Pacific",
+      "share_percent": 11.8
+    },
+    {
+      "region": "North America",
+      "share_percent": 10.5
+    },
+    {
+      "region": "Middle East-North Africa",
+      "share_percent": 0.6
+    }
+  ],
+  "regional_change_2010_2020": [
+    {
+      "region": "Sub-Saharan Africa",
+      "change_percent": 31.2
+    },
+    {
+      "region": "Latin America-Caribbean",
+      "change_percent": 3.1
+    },
+    {
+      "region": "Europe",
+      "change_percent": -8.8
+    },
+    {
+      "region": "Asia-Pacific",
+      "change_percent": 6.1
+    },
+    {
+      "region": "North America",
+      "change_percent": -10.8
+    },
+    {
+      "region": "Middle East-North Africa",
+      "change_percent": 9.5
+    }
+  ],
+  "retention_comparison": [
+    {
+      "country": "Nigeria",
+      "still_christian_percent": 98,
+      "defected_to_no_religion_percent": 1
+    },
+    {
+      "country": "Ghana",
+      "still_christian_percent": 97,
+      "defected_to_no_religion_percent": 2
+    },
+    {
+      "country": "Kenya",
+      "still_christian_percent": 96,
+      "defected_to_no_religion_percent": 1
+    },
+    {
+      "country": "South Africa",
+      "still_christian_percent": 81,
+      "defected_to_no_religion_percent": 8
+    },
+    {
+      "country": "United States",
+      "still_christian_percent": 73,
+      "defected_to_no_religion_percent": 23
+    },
+    {
+      "country": "Canada",
+      "still_christian_percent": 61,
+      "defected_to_no_religion_percent": 36
+    },
+    {
+      "country": "Germany",
+      "still_christian_percent": 61,
+      "defected_to_no_religion_percent": 37
+    },
+    {
+      "country": "Spain",
+      "still_christian_percent": 59,
+      "defected_to_no_religion_percent": 40
+    },
+    {
+      "country": "United Kingdom",
+      "still_christian_percent": 58,
+      "defected_to_no_religion_percent": 38
+    },
+    {
+      "country": "Netherlands",
+      "still_christian_percent": 53,
+      "defected_to_no_religion_percent": null
+    }
+  ],
+  "weekly_attendance_among_christians": [
+    {
+      "country": "Nigeria",
+      "weekly_or_more_percent": 88
+    },
+    {
+      "country": "Zambia",
+      "weekly_or_more_percent": 85
+    },
+    {
+      "country": "Chad",
+      "weekly_or_more_percent": 83
+    },
+    {
+      "country": "Tanzania",
+      "weekly_or_more_percent": 83
+    },
+    {
+      "country": "Ghana",
+      "weekly_or_more_percent": 83
+    },
+    {
+      "country": "Liberia",
+      "weekly_or_more_percent": 82
+    },
+    {
+      "country": "Uganda",
+      "weekly_or_more_percent": 81
+    },
+    {
+      "country": "Mozambique",
+      "weekly_or_more_percent": 81
+    },
+    {
+      "country": "Kenya",
+      "weekly_or_more_percent": 80
+    },
+    {
+      "country": "Ethiopia",
+      "weekly_or_more_percent": 75
+    },
+    {
+      "country": "Rwanda",
+      "weekly_or_more_percent": 75
+    },
+    {
+      "country": "D.R. Congo",
+      "weekly_or_more_percent": 72
+    },
+    {
+      "country": "Cameroon",
+      "weekly_or_more_percent": 70
+    },
+    {
+      "country": "Guinea-Bissau",
+      "weekly_or_more_percent": 66
+    },
+    {
+      "country": "Botswana",
+      "weekly_or_more_percent": 62
+    },
+    {
+      "country": "South Africa",
+      "weekly_or_more_percent": 60
+    }
+  ],
+  "practice_summary": {
+    "weekly_attendance_median_percent": 81,
+    "all_african_countries_surveyed_weekly_attendance_floor_percent": 60,
+    "all_sub_saharan_countries_surveyed_religion_very_important_floor_percent": 75
+  },
+  "corroborating_context": {
+    "source": "Gordon-Conwell Status of Global Christianity 2025",
+    "geography": "Africa",
+    "period": "2020-2025",
+    "annual_growth_rate_percent": 2.59,
+    "note": "Continent-level context only. Not a substitute for Pew's sub-Saharan Africa regional estimate."
+  }
+}

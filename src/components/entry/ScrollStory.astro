@@ -1,0 +1,237 @@
+---
+interface ScrollStep {
+  id: string;
+  num: string;
+  heading: string;
+  headingAccent?: string;
+  body: string[];
+  callout?: string;
+  chartLabel: string;
+}
+
+interface Props {
+  steps: ScrollStep[];
+  id?: string;
+}
+
+const { steps = [], id = `scroll-story-${Math.random().toString(36).slice(2, 10)}` }: Props = Astro.props;
+const chartLabel = steps[0]?.chartLabel ?? "";
+
+const chartSlots = Object.fromEntries(
+  await Promise.all(
+    steps.map(async (step) => [
+      step.id,
+      Astro.slots.has(step.id) ? await Astro.slots.render(step.id) : ""
+    ])
+  )
+);
+
+const headingParts = new Map(
+  steps.map((step) => {
+    if (!step.headingAccent || !step.heading.includes(step.headingAccent)) {
+      return [step.id, { before: step.heading, accent: "", after: "" }];
+    }
+
+    const [before, ...rest] = step.heading.split(step.headingAccent);
+    return [
+      step.id,
+      {
+        before,
+        accent: step.headingAccent,
+        after: rest.join(step.headingAccent)
+      }
+    ];
+  })
+);
+---
+
+<section class="scroll-story scroll-story--desktop" id={id} data-scroll-story>
+  <div class="scroll-story__panel">
+    <div class="scroll-story__panel-inner">
+      <p class="scroll-story__label ui-meta" data-scroll-story-label>{chartLabel}</p>
+      <div class="scroll-story__visual">
+        {
+          steps.map((step, index) => (
+            <div
+              id={`${id}-${step.id}`}
+              class:list={["scroll-story__chart-slot", index === 0 && "is-active"]}
+              data-scroll-chart-slot
+              data-animated={index === 0 ? "true" : "false"}
+              set:html={chartSlots[step.id]}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-story__steps">
+    {
+      steps.map((step, index) => {
+        const parts = headingParts.get(step.id) ?? {
+          before: step.heading,
+          accent: "",
+          after: ""
+        };
+
+        return (
+          <section
+            class:list={["scroll-story__step", index === 0 && "is-active"]}
+            data-chart={`${id}-${step.id}`}
+            data-label={step.chartLabel}
+          >
+            <div class="scroll-story__step-inner">
+              <p class="scroll-story__step-num ui-meta">{step.num}</p>
+              <h2 class="scroll-story__step-heading">
+                {parts.before}
+                {parts.accent && <em class="scroll-story__step-accent">{parts.accent}</em>}
+                {parts.after}
+              </h2>
+              {step.body.map((paragraph) => <p set:html={paragraph} />)}
+              {step.callout && <p class="scroll-story__callout ui-meta" set:html={step.callout} />}
+            </div>
+          </section>
+        );
+      })
+    }
+  </div>
+</section>
+
+<section class="scroll-story-mobile" aria-label="Scroll story mobile layout">
+  {
+    steps.map((step) => {
+      const parts = headingParts.get(step.id) ?? {
+        before: step.heading,
+        accent: "",
+        after: ""
+      };
+
+      return (
+        <section class="scroll-story-mobile__step">
+          <div class="scroll-story-mobile__step-inner">
+            <p class="scroll-story__step-num ui-meta">{step.num}</p>
+            <h2 class="scroll-story__step-heading">
+              {parts.before}
+              {parts.accent && <em class="scroll-story__step-accent">{parts.accent}</em>}
+              {parts.after}
+            </h2>
+            {chartSlots[step.id] && (
+              <div class="scroll-story-mobile__chart">
+                <div class="scroll-story-mobile__chart-scroller">
+                  <div class="scroll-story-mobile__chart-inner" set:html={chartSlots[step.id]} />
+                </div>
+              </div>
+            )}
+            {step.body.map((paragraph) => <p set:html={paragraph} />)}
+            {step.callout && <p class="scroll-story__callout ui-meta" set:html={step.callout} />}
+          </div>
+        </section>
+      );
+    })
+  }
+</section>
+
+<script is:inline define:vars={{ instanceId: id }}>
+  (() => {
+    const root = document.getElementById(instanceId);
+    if (!root || root.dataset.initialized === "true") return;
+
+    root.dataset.initialized = "true";
+
+    const steps = Array.from(root.querySelectorAll(".scroll-story__step"));
+    const markers = steps
+      .map((step) => ({
+        step,
+        marker: step.querySelector(".scroll-story__step-inner")
+      }))
+      .filter((item) => item.marker);
+    const chartLabel = root.querySelector("[data-scroll-story-label]");
+    const chartSlots = Array.from(root.querySelectorAll("[data-scroll-chart-slot]"));
+    const panel = root.querySelector(".scroll-story__panel");
+
+    let activeStepId = "";
+    let ticking = false;
+
+    const animateSlot = (slot) => {
+      if (!slot || slot.dataset.animated === "true") return;
+      slot.dataset.animated = "true";
+      slot.classList.add("is-animated");
+    };
+
+    const activateStep = (stepEl) => {
+      if (!stepEl) return;
+
+      const chartId = stepEl.dataset.chart || "";
+      if (chartId === activeStepId) return;
+      activeStepId = chartId;
+
+      steps.forEach((step) => step.classList.remove("is-active"));
+      stepEl.classList.add("is-active");
+
+      chartSlots.forEach((slot) => slot.classList.remove("is-active"));
+
+      const target = chartId ? root.querySelector(`#${chartId}`) : null;
+      if (target) {
+        target.classList.add("is-active");
+        animateSlot(target);
+      }
+
+      if (chartLabel) {
+        chartLabel.textContent = stepEl.dataset.label || "";
+      }
+    };
+
+    const firstStep = steps[0];
+    const firstSlot = root.querySelector(".scroll-story__chart-slot.is-active") || chartSlots[0];
+
+    if (firstSlot) {
+      firstSlot.classList.add("is-animated");
+    }
+
+    if (firstStep) {
+      activateStep(firstStep);
+    }
+
+    const isMobile = () => window.matchMedia("(max-width: 960px)").matches;
+    const getAnchorY = () => {
+      if (!isMobile()) {
+        return window.innerHeight * 0.56;
+      }
+
+      const panelBottom = panel?.getBoundingClientRect().bottom ?? window.innerHeight * 0.44;
+      return Math.max(96, panelBottom - 18);
+    };
+
+    const syncActiveStep = () => {
+      if (markers.length === 0) return;
+
+      const anchorY = getAnchorY();
+      let candidate = markers[0].step;
+
+      for (const item of markers) {
+        const top = item.marker.getBoundingClientRect().top;
+        if (top <= anchorY) {
+          candidate = item.step;
+        } else {
+          break;
+        }
+      }
+
+      activateStep(candidate);
+    };
+
+    const queueSync = () => {
+      if (ticking) return;
+      ticking = true;
+
+      window.requestAnimationFrame(() => {
+        ticking = false;
+        syncActiveStep();
+      });
+    };
+
+    syncActiveStep();
+    window.addEventListener("scroll", queueSync, { passive: true });
+    window.addEventListener("resize", queueSync, { passive: true });
+  })();
+</script>

@@ -460,6 +460,361 @@ summary,
   line-height: 1.35;
 }
 
+.scroll-story__dek {
+  margin: 1.5rem 0 0;
+  color: var(--dim);
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.65;
+}
+
+.scroll-story__scope {
+  margin-top: 0.85rem;
+  color: var(--dim);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.scroll-story {
+  width: min(1120px, calc(100vw - 2rem));
+  margin: 3rem 0;
+  margin-left: 50%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  transform: translateX(-50%);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+}
+
+.scroll-story__panel {
+  position: sticky;
+  top: var(--header-offset);
+  display: flex;
+  height: calc(100vh - var(--header-offset));
+  overflow: hidden;
+  border-right: 1px solid var(--rule);
+  background: var(--paper);
+  padding: 2rem 2.25rem;
+}
+
+.scroll-story__panel-inner {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin-block: auto;
+}
+
+.scroll-story__label {
+  margin: 0 0 1.75rem;
+  min-height: 2rem;
+  color: var(--dim);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  transition: opacity 180ms ease;
+}
+
+.scroll-story__visual {
+  position: relative;
+  height: clamp(22rem, 54vh, 30rem);
+}
+
+.scroll-story__chart-slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+}
+
+.scroll-story__chart-slot > * {
+  width: 100%;
+}
+
+.scroll-story__chart-slot.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.scroll-story__steps {
+  padding: 0 3rem;
+}
+
+.scroll-story__step {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  padding: 4rem 0;
+  opacity: 0.25;
+  transition: opacity 0.35s ease;
+}
+
+.scroll-story__step.is-active {
+  opacity: 1;
+}
+
+.scroll-story__step-inner {
+  max-width: 27.5rem;
+}
+
+.scroll-story__step-num {
+  margin: 0 0 1.25rem;
+  color: var(--dim);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.entry-prose .scroll-story__step-heading {
+  margin: 0 0 1.15rem;
+  color: var(--ink);
+  font-size: clamp(1.45rem, 2.3vw, 1.95rem);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.scroll-story__step-accent {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.entry-prose .scroll-story__step p {
+  margin: 0 0 1rem;
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.entry-prose .scroll-story__step p:last-of-type {
+  margin-bottom: 0;
+}
+
+.scroll-story__callout {
+  margin-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 0.9rem;
+  color: var(--dim);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.scroll-bar-chart {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.scroll-bar-chart__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+}
+
+.scroll-bar-chart__title {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+.scroll-bar-chart__source,
+.scroll-bar-chart__note {
+  margin: 0;
+  color: var(--dim);
+  font-family: "Geist Mono", monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+.scroll-bar-chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.scroll-bar-chart__label,
+.scroll-bar-chart__axis-text,
+.scroll-bar-chart__divider-label,
+.scroll-bar-chart__value {
+  fill: var(--dim);
+  font-family: "Geist Mono", monospace;
+}
+
+.scroll-bar-chart__label {
+  font-size: 9.5px;
+}
+
+.scroll-bar-chart__axis-text,
+.scroll-bar-chart__divider-label {
+  font-size: 8.5px;
+  letter-spacing: 0.04em;
+}
+
+.scroll-bar-chart__divider {
+  stroke: var(--rule);
+  stroke-dasharray: 3 3;
+  stroke-width: 0.5;
+}
+
+.scroll-bar-chart__axis,
+.scroll-bar-chart__zero-line {
+  stroke: var(--rule);
+  stroke-width: 0.75;
+}
+
+.scroll-bar-chart__value {
+  font-size: 10px;
+}
+
+.scroll-bar-chart__value--accent {
+  fill: var(--ink);
+}
+
+.scroll-bar-chart__value--default,
+.scroll-bar-chart__value--muted {
+  fill: var(--dim);
+}
+
+.scroll-bar-chart__value--negative {
+  fill: var(--negative);
+}
+
+.bar-acc {
+  fill: var(--accent);
+}
+
+.bar-neg {
+  fill: var(--negative);
+}
+
+.bar-rule {
+  fill: var(--rule);
+}
+
+.bar-dim {
+  fill: color-mix(in srgb, var(--dim) 42%, transparent);
+}
+
+.bar-anim {
+  transform: scaleX(0);
+  transform-box: fill-box;
+  transform-origin: left center;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bar-anim[data-dir="left"] {
+  transform-origin: right center;
+}
+
+.scroll-story__chart-slot.is-animated .bar-anim {
+  transform: scaleX(1);
+}
+
+.scroll-story-mobile {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .scroll-story--desktop {
+    display: none;
+  }
+
+  .scroll-story-mobile {
+    display: block;
+    width: 100%;
+    max-width: 700px;
+    margin: 2.5rem auto;
+  }
+
+  .scroll-story-mobile__step {
+    padding: 2.25rem 0 2.6rem;
+  }
+
+  .scroll-story-mobile__step + .scroll-story-mobile__step {
+    border-top: 1px solid var(--rule);
+  }
+
+  .scroll-story-mobile__step-inner {
+    width: 100%;
+  }
+
+  .scroll-story-mobile__chart {
+    width: 100%;
+    margin: 1.05rem 0 1.5rem;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    padding: 0.75rem;
+  }
+
+  .scroll-story-mobile__chart-scroller {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .scroll-story-mobile__chart-inner {
+    min-width: 640px;
+  }
+
+  .scroll-story-mobile__chart-inner .scroll-bar-chart {
+    gap: 0.7rem;
+  }
+
+  .scroll-story-mobile__chart-inner .scroll-bar-chart__meta {
+    gap: 0.16rem;
+  }
+
+  .scroll-story-mobile__chart-inner .scroll-bar-chart__title {
+    font-size: 0.92rem;
+    line-height: 1.25;
+  }
+
+  .scroll-story-mobile__chart-inner .scroll-bar-chart__source,
+  .scroll-story-mobile__chart-inner .scroll-bar-chart__note {
+    font-size: 8px;
+    line-height: 1.45;
+  }
+
+  .scroll-story-mobile__chart-inner .scroll-bar-chart__note {
+    border-top: 1px solid var(--rule);
+    padding-top: 0.6rem;
+  }
+
+  .scroll-story-mobile__chart-inner .bar-anim {
+    transform: scaleX(1);
+  }
+
+  .scroll-story-mobile .scroll-story__step-num {
+    margin-bottom: 0.8rem;
+  }
+
+  .scroll-story-mobile .scroll-story__step-heading {
+    font-size: 1.45rem;
+  }
+
+  .scroll-story-mobile p {
+    font-size: 16px;
+  }
+
+  .scroll-story-mobile .scroll-story__dek {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 961px) {
+  .scroll-story-mobile {
+    display: none;
+  }
+}
+
 .entry-hero {
   width: min(940px, calc(100vw - 2rem));
   margin-left: 50%;

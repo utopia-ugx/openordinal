@@ -1,0 +1,63 @@
+section,indicator,region_or_country,period,value,unit,notes,source
+historical_share,Share of world's Christians,Sub-Saharan Africa,1910,1.4,percent,Historical estimate used for long-arc framing,Pew 2011
+historical_share,Share of world's Christians,Europe,1910,66.3,percent,Historical estimate used for long-arc framing,Pew 2011
+historical_share,Share of world's Christians,Americas,1910,27.1,percent,Historical estimate using Pew's older five-region grouping,Pew 2011
+historical_share,Share of world's Christians,Asia-Pacific,1910,4.5,percent,Historical estimate used for long-arc framing,Pew 2011
+historical_share,Share of world's Christians,Middle East-North Africa,1910,0.7,percent,Historical estimate used for long-arc framing,Pew 2011
+historical_share,Share of world's Christians,Sub-Saharan Africa,2010,24.8,percent,Revised 2010 regional estimate,Pew 2025
+historical_share,Share of world's Christians,Europe,2010,25.8,percent,Revised 2010 regional estimate,Pew 2025
+historical_share,Share of world's Christians,Latin America-Caribbean,2010,24.7,percent,Revised 2010 regional estimate,Pew 2025
+historical_share,Share of world's Christians,Asia-Pacific,2010,11.8,percent,Revised 2010 regional estimate,Pew 2025
+historical_share,Share of world's Christians,North America,2010,12.4,percent,Revised 2010 regional estimate,Pew 2025
+historical_share,Share of world's Christians,Middle East-North Africa,2010,0.5,percent,Revised 2010 regional estimate,Pew 2025
+current_share,Share of world's Christians,Sub-Saharan Africa,2020,30.7,percent,Latest regional estimate,Pew 2025
+current_share,Share of world's Christians,Latin America-Caribbean,2020,24.1,percent,Latest regional estimate,Pew 2025
+current_share,Share of world's Christians,Europe,2020,22.3,percent,Latest regional estimate,Pew 2025
+current_share,Share of world's Christians,Asia-Pacific,2020,11.8,percent,Latest regional estimate,Pew 2025
+current_share,Share of world's Christians,North America,2020,10.5,percent,Latest regional estimate,Pew 2025
+current_share,Share of world's Christians,Middle East-North Africa,2020,0.6,percent,Latest regional estimate,Pew 2025
+regional_change,Christian population change,Sub-Saharan Africa,2010-2020,31.2,percent,Regional Christian count change,Pew 2025
+regional_change,Christian population change,Latin America-Caribbean,2010-2020,3.1,percent,Regional Christian count change,Pew 2025
+regional_change,Christian population change,Europe,2010-2020,-8.8,percent,Regional Christian count change,Pew 2025
+regional_change,Christian population change,Asia-Pacific,2010-2020,6.1,percent,Regional Christian count change,Pew 2025
+regional_change,Christian population change,North America,2010-2020,-10.8,percent,Regional Christian count change,Pew 2025
+regional_change,Christian population change,Middle East-North Africa,2010-2020,9.5,percent,Regional Christian count change,Pew 2025
+retention,Adults raised Christian still Christian,Nigeria,2025,98,percent,Religious retention,Pew 2025 switching
+retention,Adults raised Christian still Christian,Ghana,2025,97,percent,Religious retention,Pew 2025 switching
+retention,Adults raised Christian still Christian,Kenya,2025,96,percent,Religious retention,Pew 2025 switching
+retention,Adults raised Christian still Christian,South Africa,2025,81,percent,Religious retention,Pew 2025 switching
+retention,Adults raised Christian still Christian,United States,2025,73,percent,Religious retention,Pew 2025 switching
+retention,Adults raised Christian still Christian,Canada,2025,61,percent,Religious retention,Pew 2025 switching
+retention,Adults raised Christian still Christian,Germany,2025,61,percent,Religious retention,Pew 2025 switching
+retention,Adults raised Christian still Christian,Spain,2025,59,percent,Religious retention,Pew 2025 switching
+retention,Adults raised Christian still Christian,United Kingdom,2025,58,percent,Religious retention,Pew 2025 switching
+retention,Adults raised Christian still Christian,Netherlands,2025,53,percent,Religious retention,Pew 2025 switching
+disaffiliation,Adults raised Christian now unaffiliated,Nigeria,2025,1,percent,Defected to no religion,Pew 2025 switching
+disaffiliation,Adults raised Christian now unaffiliated,Ghana,2025,2,percent,Defected to no religion,Pew 2025 switching
+disaffiliation,Adults raised Christian now unaffiliated,Kenya,2025,1,percent,Defected to no religion,Pew 2025 switching
+disaffiliation,Adults raised Christian now unaffiliated,South Africa,2025,8,percent,Defected to no religion,Pew 2025 switching
+disaffiliation,Adults raised Christian now unaffiliated,United States,2025,23,percent,Defected to no religion,Pew 2025 switching
+disaffiliation,Adults raised Christian now unaffiliated,Canada,2025,36,percent,Defected to no religion,Pew 2025 switching
+disaffiliation,Adults raised Christian now unaffiliated,Germany,2025,37,percent,Defected to no religion,Pew 2025 switching
+disaffiliation,Adults raised Christian now unaffiliated,Spain,2025,40,percent,Defected to no religion,Pew 2025 switching
+disaffiliation,Adults raised Christian now unaffiliated,United Kingdom,2025,38,percent,Defected to no religion,Pew 2025 switching
+practice,Christians attending weekly or more,Nigeria,2010,88,percent,Weekly attendance or more,Pew chapter 2
+practice,Christians attending weekly or more,Zambia,2010,85,percent,Weekly attendance or more,Pew chapter 2
+practice,Christians attending weekly or more,Chad,2010,83,percent,Weekly attendance or more,Pew chapter 2
+practice,Christians attending weekly or more,Tanzania,2010,83,percent,Weekly attendance or more,Pew chapter 2
+practice,Christians attending weekly or more,Ghana,2010,83,percent,Weekly attendance or more,Pew chapter 2
+practice,Christians attending weekly or more,Liberia,2010,82,percent,Weekly attendance or more,Pew chapter 2
+practice,Christians attending weekly or more,Uganda,2010,81,percent,Weekly attendance or more,Pew chapter 2
+practice,Christians attending weekly or more,Mozambique,2010,81,percent,Weekly attendance or more,Pew chapter 2
+practice,Christians attending weekly or more,Kenya,2010,80,percent,Weekly attendance or more,Pew chapter 2
+practice,Christians attending weekly or more,Ethiopia,2010,75,percent,Weekly attendance or more,Pew chapter 2
+practice,Christians attending weekly or more,Rwanda,2010,75,percent,Weekly attendance or more,Pew chapter 2
+practice,Christians attending weekly or more,D.R. Congo,2010,72,percent,Weekly attendance or more,Pew chapter 2
+practice,Christians attending weekly or more,Cameroon,2010,70,percent,Weekly attendance or more,Pew chapter 2
+practice,Christians attending weekly or more,Guinea-Bissau,2010,66,percent,Weekly attendance or more,Pew chapter 2
+practice,Christians attending weekly or more,Botswana,2010,62,percent,Weekly attendance or more,Pew chapter 2
+practice,Christians attending weekly or more,South Africa,2010,60,percent,Weekly attendance or more,Pew chapter 2
+practice_summary,Christians attending weekly or more,16-country median,2010,81,percent,Median across surveyed countries,Pew chapter 2
+commitment_floor,Christians attending weekly or more,African countries surveyed,2018,60,percent,Short read reports more than 60 percent in every African country surveyed,Pew 2018 short read
+commitment_floor,Christians saying religion is very important,Sub-Saharan African countries surveyed,2018,75,percent,Short read reports more than 75 percent in every SSA country surveyed,Pew 2018 short read
+context,Annual Christian growth rate,Africa,2020-2025,2.59,percent per year,Continent-level corroborating context,Gordon-Conwell 2025
