@@ -91,25 +91,9 @@ const ldJson = {
 
 const fullTitle = title.includes("Open Ordinal") ? title : `${title} - Open Ordinal`;
 const twitterCard = ogImage ? "summary_large_image" : "summary";
-const posthogKey = import.meta.env.PUBLIC_POSTHOG_KEY;
-const posthogHost = import.meta.env.PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com";
-const hasPosthogConfig = Boolean(posthogKey);
-const canLoadPosthog = import.meta.env.PROD && hasPosthogConfig;
-const showCookieUi = import.meta.env.DEV || canLoadPosthog;
-const cookieConsentCopy =
-  lang === "fr"
-    ? {
-        title: "Cookies d'analyse",
-        body: "Open Ordinal utilise des cookies PostHog pour les analyses de trafic.",
-        accept: "Accepter",
-        reject: "Refuser"
-      }
-    : {
-        title: "Analytics Cookies",
-        body: "Open Ordinal uses PostHog cookies for traffic analytics.",
-        accept: "Accept",
-        reject: "Reject"
-      };
+const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
+const umamiScriptUrl = import.meta.env.PUBLIC_UMAMI_SCRIPT_URL || "https://umami.utopiaops.dev/script.js";
+const canLoadUmami = import.meta.env.PROD && Boolean(umamiWebsiteId);
 ---
 
 <!doctype html>
@@ -152,6 +136,16 @@ const cookieConsentCopy =
     ))}
 
     <script is:inline type="application/ld+json" set:html={JSON.stringify(ldJson)}></script>
+    {
+      canLoadUmami && (
+        <script
+          is:inline
+          defer
+          src={umamiScriptUrl}
+          data-website-id={umamiWebsiteId}
+        ></script>
+      )
+    }
 
     <slot name="head" />
   </head>
@@ -161,169 +155,7 @@ const cookieConsentCopy =
     <main class="pt-12">
       <slot />
     </main>
-    <Footer lang={lang} showCookieSettings={canLoadPosthog} />
-    {
-      showCookieUi && (
-        <div
-          id="oo-cookie-banner"
-          class="fixed bottom-4 left-1/2 z-[80] hidden w-[calc(100%-2rem)] max-w-[34rem] -translate-x-1/2 border border-rule bg-paper p-4 text-ink shadow-[0_12px_32px_rgba(0,0,0,0.12)]"
-          role="dialog"
-          aria-live="polite"
-          aria-label={cookieConsentCopy.title}
-        >
-          <div class="flex flex-col gap-4 sm:flex-row sm:items-end">
-            <div class="min-w-0 flex-1">
-              <p class="ui-meta text-[11px] uppercase tracking-[0.14em] text-dim">{cookieConsentCopy.title}</p>
-              <p class="mt-2 text-[15px] leading-relaxed">{cookieConsentCopy.body}</p>
-            </div>
-            <div class="flex shrink-0 gap-2 sm:ml-auto sm:self-end">
-              <button
-                id="oo-cookie-accept"
-                type="button"
-                class="ui-meta border border-ink bg-ink px-3 py-2 text-[11px] uppercase tracking-[0.14em] text-paper"
-              >
-                {cookieConsentCopy.accept}
-              </button>
-              <button
-                id="oo-cookie-reject"
-                type="button"
-                class="ui-meta border border-rule px-3 py-2 text-[11px] uppercase tracking-[0.14em] text-ink"
-              >
-                {cookieConsentCopy.reject}
-              </button>
-            </div>
-          </div>
-        </div>
-      )
-    }
-    {
-      showCookieUi && (
-        <script is:inline define:vars={{ posthogKey, posthogHost, canLoadPosthog }}>
-          (() => {
-            const consentKey = "oo_cookie_consent_v1";
-            let posthogLoaded = false;
-            const banner = document.getElementById("oo-cookie-banner");
-            const acceptBtn = document.getElementById("oo-cookie-accept");
-            const rejectBtn = document.getElementById("oo-cookie-reject");
-            const settingsButtons = document.querySelectorAll("[data-cookie-settings]");
-
-            const hideBanner = () => banner?.classList.add("hidden");
-            const showBanner = () => banner?.classList.remove("hidden");
-
-            const initPosthog = () => {
-              if (!canLoadPosthog) {
-                return;
-              }
-              if (posthogLoaded || window.posthog?.__SV) {
-                posthogLoaded = true;
-                return;
-              }
-
-              !(function (t, e) {
-                let o;
-                let p;
-                let r;
-                if (e.__SV) {
-                  return;
-                }
-                window.posthog = e;
-                e._i = [];
-                e.init = function (i, s, a) {
-                  function g(target, key) {
-                    const parts = key.split(".");
-                    if (parts.length === 2) {
-                      target = target[parts[0]];
-                      key = parts[1];
-                    }
-                    target[key] = function () {
-                      target.push([key].concat(Array.prototype.slice.call(arguments, 0)));
-                    };
-                  }
-
-                  p = t.createElement("script");
-                  p.type = "text/javascript";
-                  p.crossOrigin = "anonymous";
-                  p.async = true;
-                  p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js";
-                  r = t.getElementsByTagName("script")[0];
-                  r.parentNode.insertBefore(p, r);
-
-                  const posthogRef = a ? (e[a] = []) : e;
-                  if (!a) {
-                    a = "posthog";
-                  }
-
-                  posthogRef.people = posthogRef.people || [];
-                  posthogRef.toString = function (stub) {
-                    let base = "posthog";
-                    if (a !== "posthog") {
-                      base += "." + a;
-                    }
-                    if (!stub) {
-                      base += " (stub)";
-                    }
-                    return base;
-                  };
-                  posthogRef.people.toString = function () {
-                    return posthogRef.toString(1) + ".people (stub)";
-                  };
-
-                  const methods =
-                    "init capture register register_once register_for_session unregister unregister_for_session reset people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove_property get_property get_distinct_id identify alias screen capture pageview reset_groups group set_config set_person_properties opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing start_batch_senders stop_batch_senders".split(
-                      " "
-                    );
-
-                  for (o = 0; o < methods.length; o++) {
-                    g(posthogRef, methods[o]);
-                  }
-                  e._i.push([i, s, a]);
-                };
-                e.__SV = 1;
-              })(document, window.posthog || []);
-
-              window.posthog.init(posthogKey, {
-                api_host: posthogHost,
-                autocapture: true,
-                capture_pageview: true,
-                capture_pageleave: true,
-                person_profiles: "identified_only",
-                disable_session_recording: true
-              });
-              posthogLoaded = true;
-            };
-
-            const storedConsent = localStorage.getItem(consentKey);
-            if (storedConsent === "accepted") {
-              hideBanner();
-              initPosthog();
-            } else if (storedConsent === "rejected") {
-              hideBanner();
-              window.posthog?.opt_out_capturing?.();
-            } else {
-              showBanner();
-            }
-
-            acceptBtn?.addEventListener("click", () => {
-              localStorage.setItem(consentKey, "accepted");
-              hideBanner();
-              initPosthog();
-            });
-
-            rejectBtn?.addEventListener("click", () => {
-              localStorage.setItem(consentKey, "rejected");
-              hideBanner();
-              window.posthog?.opt_out_capturing?.();
-            });
-
-            settingsButtons.forEach((button) => {
-              button.addEventListener("click", () => {
-                showBanner();
-              });
-            });
-          })();
-        </script>
-      )
-    }
+    <Footer lang={lang} />
     {import.meta.env.DEV && <DevThemeToggle />}
     <script is:inline>
       (() => {

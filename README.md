@@ -38,20 +38,19 @@ npm run dev
 
 ## Environment variables
 
-PostHog web analytics is enabled only in production and only when a key is set.
+Self-hosted Umami analytics is enabled only in production and only when a website ID is set.
 
 ```bash
-PUBLIC_POSTHOG_KEY=phc_your_project_key
-PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
+PUBLIC_UMAMI_WEBSITE_ID=53173b92-1369-4f59-939c-d9cb71bbad18
+PUBLIC_UMAMI_SCRIPT_URL=https://umami.utopiaops.dev/script.js
 ```
 
-## Analytics and consent
+## Analytics
 
-- PostHog initializes only in production builds and only when `PUBLIC_POSTHOG_KEY` is provided.
-- A cookie consent banner controls whether PostHog loads.
-- The consent banner appears in production when PostHog is configured, and is also shown in dev for UI testing.
-- In dev mode, consent UI is visible but PostHog tracking is not initialized.
-- Consent choice is stored in local storage as `oo_cookie_consent_v1`.
+- A self-hosted Umami tracker initializes only in production builds and only when `PUBLIC_UMAMI_WEBSITE_ID` is provided.
+- The tracker loads via a single deferred script tag in the shared layout.
+- The production site does not use analytics cookies or session recording.
+- `PUBLIC_UMAMI_SCRIPT_URL` defaults to `https://umami.utopiaops.dev/script.js`.
 
 Build for production:
 

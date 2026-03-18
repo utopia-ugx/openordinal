@@ -33,7 +33,7 @@ The guiding principle: **data > decoration. Content > design. Honesty > authorit
 | i18n | Astro i18n | English default, French under `/fr/` |
 | Charts | Observable Plot / SVG | Code-driven, not drag-and-drop |
 | Search | Pagefind | Runs at build time, zero server cost |
-| Analytics | Plausible | One script tag in layout |
+| Analytics | Umami self-hosted | One script tag in layout |
 | Newsletter | Buttondown | RSS-to-email, embedded subscribe form |
 | Hosting | Cloudflare Pages | Better Africa CDN, generous free tier |
 | Version control | GitHub | Public repo, source of truth |
@@ -363,9 +363,9 @@ Typographic. The letter "O" set in EB Garamond, `--ink` on `--paper`. SVG format
 
 ## Analytics & Newsletter
 
-**Plausible:**
+**Umami:**
 - One script tag in `Layout.astro`
-- Domain: openordinal.org
+- Host: `umami.utopiaops.dev`
 - No cookies, no GDPR banner needed
 
 **Buttondown:**
