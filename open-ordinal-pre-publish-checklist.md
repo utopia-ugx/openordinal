@@ -43,7 +43,7 @@ Run this before every entry goes live. Every box must be checked.
 - [ ] Git push to `main` triggers Cloudflare Pages deploy.
 - [ ] Confirm entry is live at openordinal.org.
 - [ ] Post to LinkedIn (if distribution is scheduled for this entry).
-- [ ] Confirm Buttondown/RSS flow if newsletter delivery is expected.
+- [ ] Confirm newsletter delivery flow in Listmonk if distribution is expected.
 
 ---
 

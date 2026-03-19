@@ -38,11 +38,13 @@ npm run dev
 
 ## Environment variables
 
-Self-hosted Umami analytics is enabled only in production and only when a website ID is set.
+Self-hosted Umami analytics is enabled only in production and only when a website ID is set. Newsletter signup defaults to the production Listmonk instance, but both the endpoint and public list UUID can be overridden.
 
 ```bash
 PUBLIC_UMAMI_WEBSITE_ID=53173b92-1369-4f59-939c-d9cb71bbad18
 PUBLIC_UMAMI_SCRIPT_URL=https://umami.utopiaops.dev/script.js
+PUBLIC_LISTMONK_BASE_URL=https://newsletter.openordinal.org
+PUBLIC_LISTMONK_LIST_UUID=3f806e6f-e1a7-4689-982b-ef913881db98
 ```
 
 ## Analytics
@@ -51,6 +53,12 @@ PUBLIC_UMAMI_SCRIPT_URL=https://umami.utopiaops.dev/script.js
 - The tracker loads via a single deferred script tag in the shared layout.
 - The production site does not use analytics cookies or session recording.
 - `PUBLIC_UMAMI_SCRIPT_URL` defaults to `https://umami.utopiaops.dev/script.js`.
+
+## Newsletter
+
+- Public newsletter signup is handled by a self-hosted Listmonk instance at `https://newsletter.openordinal.org`.
+- Delivery uses Amazon SES with double opt-in enabled on the public list.
+- The homepage subscribe form posts to Listmonk's public subscription API and uses the configured public list UUID.
 
 Build for production:
 
@@ -107,17 +115,15 @@ Primary target is Cloudflare Pages.
 - Build command: `npm run build`
 - Output directory: `dist`
 
-## Buttondown draft automation
+## Draft Email Automation TODO
 
-The repo includes a GitHub Actions workflow that creates Buttondown draft emails for newly added English entries on pushes to `main`.
+Draft campaign creation has not been migrated yet.
 
-- Required GitHub Actions secret: `BUTTONDOWN_API_KEY`
-- Workflow file: `.github/workflows/buttondown-drafts.yml`
-- Draft generator: `scripts/create-buttondown-draft.mjs`
-- Scope: new files under `src/content/entries/` only
-- Safety checks: skips `draft: true` entries and skips subjects that already exist in Buttondown
+TODO:
 
-This is a Free-plan workaround for Buttondown when built-in RSS-to-email is unavailable.
+- Replace the legacy draft-email workflow with Listmonk campaign draft creation for newly added English entries on pushes to `main`.
+- Use Listmonk API credentials, the production newsletter list, and the production SMTP messenger.
+- Preserve the current safety checks: skip `draft: true` entries and avoid duplicate campaign subjects.
 
 ## Bilingual update policy
 

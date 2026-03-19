@@ -34,7 +34,7 @@ The guiding principle: **data > decoration. Content > design. Honesty > authorit
 | Charts | Observable Plot / SVG | Code-driven, not drag-and-drop |
 | Search | Pagefind | Runs at build time, zero server cost |
 | Analytics | Umami self-hosted | One script tag in layout |
-| Newsletter | Buttondown | RSS-to-email, embedded subscribe form |
+| Newsletter | Listmonk self-hosted + Amazon SES | Embedded subscribe form, double opt-in delivery |
 | Hosting | Cloudflare Pages | Better Africa CDN, generous free tier |
 | Version control | GitHub | Public repo, source of truth |
 
@@ -368,12 +368,12 @@ Typographic. The letter "O" set in EB Garamond, `--ink` on `--paper`. SVG format
 - Host: `umami.utopiaops.dev`
 - No cookies, no GDPR banner needed
 
-**Buttondown:**
-- Embedded subscribe form on homepage (Section 4) and footer
-- English and French subscriber lists
-- RSS-to-email: every new entry auto-sends to subscribers
-- Form label: *"New entries by email. No commentary. No frequency."*
-- French: *"Nouvelles entrées par email. Sans commentaire. Sans fréquence."*
+**Listmonk + Amazon SES:**
+- Embedded subscribe form on homepage posts to `https://newsletter.openordinal.org/api/public/subscription`
+- One public newsletter list with double opt-in enabled
+- Public subscriber actions live on `newsletter.openordinal.org`
+- Form label: *"Get new entries by email."*
+- French: *"Recevez de nouvelles entrées par email."*
 
 ---
 
