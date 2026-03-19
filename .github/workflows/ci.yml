@@ -7,6 +7,9 @@ on:
 jobs:
   verify:
     runs-on: ubuntu-latest
+    env:
+      PUBLIC_LISTMONK_BASE_URL: https://newsletter.openordinal.org
+      PUBLIC_LISTMONK_LIST_UUID: 3f806e6f-e1a7-4689-982b-ef913881db98
     steps:
       - name: Checkout
         uses: actions/checkout@v4
