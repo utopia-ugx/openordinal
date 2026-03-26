@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 860 520" role="img" aria-label="Graphique sur l&apos;ecart mobile en Afrique subsaharienne avec pile GSMA, contexte ITU et comparaison Ghana-Nigeria">
+  <rect width="100%" height="100%" fill="var(--paper)" />
+
+  <text x="60" y="44" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">Pile mobile AAS fin 2023</text>
+  <line x1="60" y1="64" x2="760" y2="64" stroke="var(--rule)" stroke-width="1" />
+
+  <rect x="60" y="84" width="189" height="38" fill="#1f5c3f" />
+  <rect x="249" y="84" width="420" height="38" fill="#c17f4a" />
+  <rect x="669" y="84" width="91" height="38" fill="#8b2a2a" />
+
+  <text x="154.5" y="108" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="#f7f6f2">27% en ligne</text>
+  <text x="459" y="108" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="#0f0f0f">60% ecart d'usage</text>
+  <text x="714.5" y="108" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="#f7f6f2">13% ecart de couverture</text>
+
+  <text x="60" y="146" font-family="Geist Mono, monospace" font-size="11" fill="var(--ink)">GSMA estime aussi que 710 millions de personnes en AAS vivent dans la couverture mobile haut debit sans utiliser l'internet mobile.</text>
+
+  <line x1="60" y1="182" x2="760" y2="182" stroke="var(--rule)" stroke-width="1" />
+  <text x="60" y="214" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">Contexte ITU Afrique entiere (2024)</text>
+
+  <text x="60" y="259" font-family="Geist Mono, monospace" font-size="10" fill="var(--ink)">Usage internet Afrique entiere</text>
+  <rect x="220" y="248" width="240" height="16" fill="color-mix(in srgb, var(--dim) 18%, transparent)" />
+  <rect x="220" y="248" width="91.2" height="16" fill="#1a3a5c" />
+  <text x="319.2" y="260" font-family="Geist Mono, monospace" font-size="10" fill="var(--ink)">38%</text>
+<text x="60" y="297" font-family="Geist Mono, monospace" font-size="10" fill="var(--ink)">Urbain</text>
+  <rect x="220" y="286" width="240" height="16" fill="color-mix(in srgb, var(--dim) 18%, transparent)" />
+  <rect x="220" y="286" width="136.8" height="16" fill="#1a3a5c" />
+  <text x="364.8" y="298" font-family="Geist Mono, monospace" font-size="10" fill="var(--ink)">57%</text>
+<text x="60" y="335" font-family="Geist Mono, monospace" font-size="10" fill="var(--ink)">Rural</text>
+  <rect x="220" y="324" width="240" height="16" fill="color-mix(in srgb, var(--dim) 18%, transparent)" />
+  <rect x="220" y="324" width="55.2" height="16" fill="#1a3a5c" />
+  <text x="283.2" y="336" font-family="Geist Mono, monospace" font-size="10" fill="var(--ink)">23%</text>
+<text x="60" y="373" font-family="Geist Mono, monospace" font-size="10" fill="var(--ink)">Hommes</text>
+  <rect x="220" y="362" width="240" height="16" fill="color-mix(in srgb, var(--dim) 18%, transparent)" />
+  <rect x="220" y="362" width="103.2" height="16" fill="#1a3a5c" />
+  <text x="331.2" y="374" font-family="Geist Mono, monospace" font-size="10" fill="var(--ink)">43%</text>
+<text x="60" y="411" font-family="Geist Mono, monospace" font-size="10" fill="var(--ink)">Femmes</text>
+  <rect x="220" y="400" width="240" height="16" fill="color-mix(in srgb, var(--dim) 18%, transparent)" />
+  <rect x="220" y="400" width="74.4" height="16" fill="#1a3a5c" />
+  <text x="302.4" y="412" font-family="Geist Mono, monospace" font-size="10" fill="var(--ink)">31%</text>
+
+  <line x1="500" y1="214" x2="500" y2="452" stroke="var(--rule)" stroke-width="1" />
+  <text x="530" y="214" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">Nigeria et Ghana</text>
+  <text x="530" y="232" font-family="Geist Mono, monospace" font-size="10" fill="var(--ink)">Prix du 1GB presque identiques, taux d'usage 2023 tres differents.</text>
+
+  <line x1="560" y1="450" x2="780" y2="450" stroke="var(--rule)" stroke-width="1" />
+  <line x1="560" y1="270" x2="560" y2="450" stroke="var(--rule)" stroke-width="1" />
+  <line x1="560" y1="306" x2="780" y2="306" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6" />
+  <line x1="560" y1="342" x2="780" y2="342" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6" />
+  <line x1="560" y1="378" x2="780" y2="378" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6" />
+  <line x1="560" y1="414" x2="780" y2="414" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6" />
+
+  <text x="548" y="454" text-anchor="end" font-family="Geist Mono, monospace" font-size="10" fill="var(--dim)">0%</text>
+  <text x="548" y="418" text-anchor="end" font-family="Geist Mono, monospace" font-size="10" fill="var(--dim)">20%</text>
+  <text x="548" y="382" text-anchor="end" font-family="Geist Mono, monospace" font-size="10" fill="var(--dim)">40%</text>
+  <text x="548" y="346" text-anchor="end" font-family="Geist Mono, monospace" font-size="10" fill="var(--dim)">60%</text>
+  <text x="548" y="310" text-anchor="end" font-family="Geist Mono, monospace" font-size="10" fill="var(--dim)">80%</text>
+
+  <rect x="602" y="324.18" width="52" height="125.82000000000001" fill="#c17f4a" />
+  <rect x="692" y="379.44" width="52" height="70.56" fill="#1a3a5c" />
+
+  <text x="628" y="470" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="var(--ink)">Ghana</text>
+  <text x="718" y="470" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="var(--ink)">Nigeria</text>
+  <text x="628" y="319.18" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--ink)">69.9%</text>
+  <text x="718" y="374.44" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--ink)">39.2%</text>
+
+  <rect x="576" y="488" width="104" height="20" fill="rgba(193,127,74,0.12)" rx="2" />
+  <rect x="666" y="488" width="104" height="20" fill="rgba(26,58,92,0.12)" rx="2" />
+  <text x="628" y="502" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="var(--ink)">$0.4 / 1GB</text>
+  <text x="718" y="502" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="var(--ink)">$0.39 / 1GB</text>
+</svg>

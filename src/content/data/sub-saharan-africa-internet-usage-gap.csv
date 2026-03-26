@@ -1,0 +1,49 @@
+iso3,name,name_fr,frame,subregion,subregion_fr,internet_use_pct_2023,price_1gb_usd_2023,population_2023,population_millions_2023,latitude,longitude,map_x,map_y,internet_use_rank_2023,price_rank_1gb_2023
+DZA,Algeria,Algerie,north_africa,north,Afrique du Nord,76.9081,0.73,46164219,46.164,36.7397,3.05097,-1.3082,4.1451,6,12
+AGO,Angola,Angola,sub_saharan_africa,southern,Afrique australe,44.7581,1.01,36749906,36.75,-8.81155,13.242,0.568,-0.9411,21,16
+BEN,Benin,Benin,sub_saharan_africa,west,Afrique de l'Ouest,32.2083,2.37,14111034,14.111,6.4779,2.6323,-1.3459,1.8178,35,36
+BWA,Botswana,Botswana,sub_saharan_africa,southern,Afrique australe,81.36,1.99,2480244,2.48,-24.6544,25.9201,1.3547,-2.1845,4,34
+BFA,Burkina Faso,Burkina Faso,sub_saharan_africa,west,Afrique de l'Ouest,17.0226,3.27,23025776,23.026,12.3605,-1.53395,-1.8573,2.1479,45,41
+BDI,Burundi,Burundi,sub_saharan_africa,east,Afrique de l'Est,11.0784,1.1,13689450,13.689,-3.3784,29.3639,2.1173,0.1828,48,17
+CPV,Cabo Verde,Cap-Vert,sub_saharan_africa,west,Afrique de l'Ouest,73.539,3.24,522331,0.522,14.9218,-23.5087,-4.6564,2.6277,8,40
+CMR,Cameroon,Cameroun,sub_saharan_africa,central,Afrique centrale,41.9088,1.63,28372687,28.373,3.8721,11.5174,-0.0355,1.32,22,29
+TCD,Chad,Tchad,sub_saharan_africa,central,Afrique centrale,13.1832,4.09,19319064,19.319,12.1048,15.0445,0.7064,2.5332,47,43
+COM,Comoros,Comores,sub_saharan_africa,east,Afrique de l'Est,35.6678,2.18,850387,0.85,-11.6986,43.2418,3.8691,-0.9015,29,35
+CIV,Cote d'Ivoire,Cote d'Ivoire,sub_saharan_africa,west,Afrique de l'Ouest,40.6528,1.18,31165654,31.166,5.332,-4.0305,-2.3379,1.5639,23,20
+COD,Democratic Republic of the Congo,Republique democratique du Congo,sub_saharan_africa,central,Afrique centrale,30.548,0.52,105789731,105.79,-4.325,15.3222,1.3355,0.2429,36,4
+DJI,Djibouti,Djibouti,sub_saharan_africa,east,Afrique de l'Est,65.0248,1.26,1152944,1.153,11.5806,43.1425,3.7135,2.0821,13,22
+EGY,Egypt,Egypte,north_africa,north,Afrique du Nord,72.6899,0.65,114535772,114.536,30.0982,31.2461,2.117,3.937,9,8
+GNQ,Equatorial Guinea,Guinee equatoriale,sub_saharan_africa,central,Afrique centrale,60.3661,1.59,1847549,1.848,3.7523,8.7741,-0.3296,0.8131,17,28
+SWZ,Eswatini,Eswatini,sub_saharan_africa,southern,Afrique australe,57.62,1.26,1230506,1.231,-26.5225,31.4659,2.3225,-2.7343,18,23
+GAB,Gabon,Gabon,sub_saharan_africa,central,Afrique centrale,71.9256,4.09,2484789,2.485,0.38832,9.45162,-0.1554,0.5306,11,44
+GMB,Gambia,Gambie,sub_saharan_africa,west,Afrique de l'Ouest,45.9137,3.56,2697845,2.698,13.4495,-16.5885,-3.5711,2.297,20,42
+GHA,Ghana,Ghana,sub_saharan_africa,west,Afrique de l'Ouest,69.9445,0.4,33787914,33.788,5.57045,-0.20795,-1.7904,1.6045,12,3
+GIN,Guinea,Guinee,sub_saharan_africa,west,Afrique de l'Ouest,26.5014,1.51,14405468,14.405,9.51667,-13.7,-3.014,1.9179,38,27
+GNB,Guinea-Bissau,Guinee-Bissau,sub_saharan_africa,west,Afrique de l'Ouest,32.4661,2.72,2153339,2.153,11.8037,-15.1804,-3.5162,2.1189,34,39
+KEN,Kenya,Kenya,sub_saharan_africa,east,Afrique de l'Est,35,0.59,55339003,55.339,-1.27975,36.8126,3.1141,0.6809,31,6
+LSO,Lesotho,Lesotho,sub_saharan_africa,southern,Afrique australe,47.991,1.96,2311472,2.311,-29.5208,27.7167,1.9117,-3.1152,19,33
+LBR,Liberia,Liberia,sub_saharan_africa,west,Afrique de l'Ouest,23.4979,2.5,5493031,5.493,6.30039,-10.7957,-2.8114,1.4183,39,38
+LBY,Libya,Libye,north_africa,north,Afrique du Nord,88.4989,0.82,7305659,7.306,32.8578,13.1072,0.6267,4.0037,2,14
+MDG,Madagascar,Madagascar,sub_saharan_africa,east,Afrique de l'Est,20.3671,1.12,31195932,31.196,-20.4667,45.7167,4.2345,-1.8315,42,19
+MWI,Malawi,Malawi,sub_saharan_africa,southern,Afrique australe,17.9881,0.38,21104482,21.104,-13.9899,33.7703,2.6747,-1.058,44,1
+MLI,Mali,Mali,sub_saharan_africa,west,Afrique de l'Ouest,35.0921,4.56,23769127,23.769,13.5667,-7.50034,-2.0827,2.786,30,45
+MRT,Mauritania,Mauritanie,sub_saharan_africa,west,Afrique de l'Ouest,37.3809,1.32,5022441,5.022,18.2367,-15.9824,-2.9387,3.1515,27,25
+MUS,Mauritius,Maurice,sub_saharan_africa,southern,Afrique australe,79.5,0.67,1248647,1.249,-20.1605,57.4977,5.5919,-1.93,5,9
+MAR,Morocco,Maroc,north_africa,north,Afrique du Nord,91,0.63,37712505,37.713,33.9905,-6.8704,-2.7007,4.3571,1,7
+MOZ,Mozambique,Mozambique,sub_saharan_africa,southern,Afrique australe,19.8434,0.78,33635160,33.635,-25.9664,32.5713,2.8306,-1.5663,43,13
+NAM,Namibia,Namibie,sub_saharan_africa,southern,Afrique australe,64.4061,1.2,2963095,2.963,-22.5648,17.0931,0.5268,-2.1775,14,21
+NER,Niger,Niger,sub_saharan_africa,west,Afrique de l'Ouest,23.1879,1.63,26159867,26.16,13.514,2.1073,-0.4573,2.7953,40,30
+NGA,Nigeria,Nigeria,sub_saharan_africa,west,Afrique de l'Ouest,39.2136,0.39,227882945,227.883,9.05804,7.48906,-0.6204,1.8117,24,2
+COG,Republic of the Congo,Republique du Congo,sub_saharan_africa,central,Afrique centrale,38.3791,0.68,6182885,6.183,-4.2767,15.2662,0.2752,0.4985,26,11
+RWA,Rwanda,Rwanda,sub_saharan_africa,east,Afrique de l'Est,34.2005,0.55,13954471,13.954,-1.95325,30.0587,2.124,0.3558,32,5
+STP,Sao Tome and Principe,Sao Tome-et-Principe,sub_saharan_africa,central,Afrique centrale,61.4607,2.41,230871,0.231,0.20618,6.6071,-0.7773,0.6891,15,37
+SEN,Senegal,Senegal,sub_saharan_africa,west,Afrique de l'Ouest,60.6122,1.63,18077573,18.078,14.7247,-17.4734,-3.4571,2.4116,16,31
+SYC,Seychelles,Seychelles,sub_saharan_africa,east,Afrique de l'Est,87.4009,5.43,119773,0.12,-4.6309,55.4466,5.334,0.0227,3,46
+SLE,Sierra Leone,Sierra Leone,sub_saharan_africa,west,Afrique de l'Ouest,20.635,0.67,8460512,8.461,8.4821,-13.2134,-3.1187,1.6816,41,10
+ZAF,South Africa,Afrique du Sud,sub_saharan_africa,southern,Afrique australe,75.6592,1.81,63212384,63.212,-25.746,28.1871,1.5255,-3.0432,7,32
+TZA,Tanzania,Tanzanie,sub_saharan_africa,east,Afrique de l'Est,29.0638,0.84,66617606,66.618,-6.17486,35.7382,2.7395,-0.1845,37,15
+TGO,Togo,Togo,sub_saharan_africa,west,Afrique de l'Ouest,37.0223,1.45,9304337,9.304,6.1228,1.2255,-1.5156,1.6764,28,26
+TUN,Tunisia,Tunisie,north_africa,north,Afrique du Nord,72.3542,1.28,12200431,12.2,36.7899,10.21,-0.4364,4.8949,10,24
+UGA,Uganda,Ouganda,sub_saharan_africa,east,Afrique de l'Est,15.2524,1.11,48656601,48.657,0.314269,32.5729,2.4322,0.7649,46,18
+ZMB,Zambia,Zambie,sub_saharan_africa,southern,Afrique australe,33,8.01,20723965,20.724,-15.3982,28.2937,1.8541,-1.0876,33,47
+ZWE,Zimbabwe,Zimbabwe,sub_saharan_africa,southern,Afrique australe,38.4266,43.75,16340822,16.341,-17.8312,31.0672,2.1153,-1.7847,25,48

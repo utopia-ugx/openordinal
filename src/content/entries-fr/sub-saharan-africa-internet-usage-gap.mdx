@@ -1,0 +1,152 @@
+---
+title: "Why Sub-Saharan Africa's internet gap is now a usage gap"
+title_fr: "Pourquoi l'ecart internet de l'Afrique subsaharienne est desormais un ecart d'usage"
+slug: "sub-saharan-africa-internet-usage-gap"
+category: "Technology"
+date: "2026-03-20"
+scope: "Sub-Saharan Africa primary frame, using GSMA end-2023 mobile coverage and adoption plus a 48-country 2023 Africa matched panel of internet use and 1GB prices"
+scope_fr: "Cadre principal Afrique subsaharienne, avec la couverture et l'adoption mobile GSMA fin 2023 plus un panneau africain apparie de 48 pays sur l'usage internet et le prix de 1GB en 2023"
+dataset: "GSMA SOMIC 2024 and SSA 2024 Year in Review, World Bank / ITU internet-use indicator IT.NET.USER.ZS (2023), World Bank population indicator SP.POP.TOTL (2023), and cable.co.uk 2023 mobile data pricing study"
+source_org: "GSMA; World Bank; ITU; cable.co.uk"
+entry_number: "008"
+translated: true
+correction_of: ""
+description: "Fin 2023, la GSMA place l'ASS a 87% de couverture, mais seulement 27% d'adoption de l'internet mobile."
+key_stat: "Fin 2023 en ASS: 87% de couverture, 27% d'adoption mobile, 60% d'ecart d'usage et 710 millions couverts sans usage."
+draft: true
+---
+
+import InternetUsageGapStory from "../../components/entry/InternetUsageGapStory.astro";
+import storyData from "../data/sub-saharan-africa-internet-usage-gap.json";
+import storyStackSvg from "../data/sub-saharan-africa-internet-usage-gap-stack-fr.svg?raw";
+import storyContextSvg from "../data/sub-saharan-africa-internet-usage-gap-context-fr.svg?raw";
+import storyGhanaNigeriaSvg from "../data/sub-saharan-africa-internet-usage-gap-ghana-nigeria-fr.svg?raw";
+import { storyStepsFr } from "../../utils/internetUsageGapStory";
+
+<p>En Afrique subsaharienne, 87% de la population vit a portee d'un signal mobile haut debit. Seulement 27% utilisent effectivement l'internet mobile.<sup><a href="#ref-1">[1]</a></sup><sup><a href="#ref-2">[2]</a></sup> L'ecart, 60% de la population, environ 710 millions de personnes, se situe a l'interieur de la couverture, pas en dehors.<sup><a href="#ref-2">[2]</a></sup></p>
+<p>L'histoire de l'acces a internet dans la region tournait autour de l'absence de tours de transmission. Ce n'est plus le recit principal. Le plus grand bloc de personnes sans internet ne se trouve pas au-dela du signal. Il est a l'interieur, et toujours pas connecte.<sup><a href="#ref-1">[1]</a></sup><sup><a href="#ref-2">[2]</a></sup> Sur les donnees examinees ici, le prix fait partie de la reponse, mais il est loin d'en etre la totalite.<sup><a href="#ref-3">[3]</a></sup><sup><a href="#ref-4">[4]</a></sup></p>
+
+<HeroVisual
+  src="/images/brikama-nyambai-road.jpg"
+  alt="Scene de rue sur Nyambai Road a Brikama, en Gambie, avec commerce et vente de telephones visibles."
+  caption="Nyambai Road a Brikama, en Gambie. Contexte utile pour l'acces mobile et le commerce au quotidien, sans valeur de preuve statistique."
+  source="Wikimedia Commons"
+  sourceUrl="https://commons.wikimedia.org/wiki/File:Brikama_Nyambai_Road.jpg"
+  license="CC BY-SA 4.0"
+  credit="Kreuzberger, own work (2019)"
+/>
+
+## Ce que cette entree examine
+
+- Si la majeure partie de l'Afrique subsaharienne a deja du signal, ou l'usage internet reste-t-il faible, et ou ne l'est-il pas?
+- Jusqu'ou le prix des donnees mobiles peut-il expliquer l'ecart?
+- Quels autres obstacles restent dans le tableau une fois que la couverture n'est plus la contrainte principale?
+
+<StatBlock
+  label="Couverture mobile haut debit ASS"
+  value="87%"
+  note="Estimation GSMA fin 2023 pour l'Afrique subsaharienne [1]."
+/>
+
+<StatBlock
+  label="Ecart d'usage ASS"
+  value="60%"
+  note="Population couverte mais non utilisatrice de l'internet mobile, GSMA fin 2023 [1]."
+/>
+
+<StatBlock
+  label="Couverts, sans usage"
+  value="710M"
+  note="GSMA Sub-Saharan Africa 2024 Year in Review [2]."
+/>
+
+<InternetUsageGapStory
+  steps={storyStepsFr}
+  countries={storyData.countries}
+  mapGeometry={storyData.map_geometry}
+  lang="fr"
+  entryNumber="008"
+/>
+
+## Ou se situe reellement l'ecart
+
+Le graphique ci-dessous n'explique pas l'ecart. Il montre ou il est. Dans le cadre GSMA pour l'Afrique subsaharienne, la population se divise en trois blocs: ceux qui utilisent l'internet mobile (27%), ceux qui sont couverts mais ne l'utilisent pas (60%), et ceux qui sont hors couverture (13%).<sup><a href="#ref-1">[1]</a></sup><sup><a href="#ref-2">[2]</a></sup>
+
+<ChartBlock
+  title="La premiere rupture se situe entre couverture et usage"
+  subtitle="Pile GSMA Afrique subsaharienne fin 2023"
+  note="Ces trois parts proviennent du meme systeme GSMA pour l'ASS et totalisent 100% de la population."
+>
+  <div set:html={storyStackSvg}></div>
+</ChartBlock>
+
+Le plus grand bloc n'est pas celui hors couverture. C'est celui qui est couvert mais n'utilise pas. Ce qui empeche la plupart des gens d'etre en ligne, ce n'est pas principalement l'absence de signal.
+
+Pour un regard plus precis, cette entree utilise un panneau de 48 pays: les pays africains disposant a la fois d'un chiffre 2023 d'usage internet et d'un prix 2023 pour 1GB de donnees mobiles.<sup><a href="#ref-3">[3]</a></sup><sup><a href="#ref-4">[4]</a></sup> Six pays en sortent parce qu'une valeur ou l'autre manque.<sup><a href="#ref-3">[3]</a></sup><sup><a href="#ref-4">[4]</a></sup> Meme dans ce cadre reduit, la separation regionale est nette. L'Afrique du Nord affiche 80.3% d'usage internet en moyenne et 0.82 USD par 1GB. La moyenne subsaharienne est de 42.5% et 2.89 USD.<sup><a href="#ref-3">[3]</a></sup><sup><a href="#ref-4">[4]</a></sup>
+
+## Le prix fait partie de la reponse. Il est loin d'en etre la totalite.
+
+Le prix compte. Les pays les plus chers du panneau se retrouvent generalement dans la partie basse de la distribution d'usage, et le prix moyen plus bas de l'Afrique du Nord explique en partie pourquoi cette region se separe aussi nettement.<sup><a href="#ref-4">[4]</a></sup>
+
+Mais c'est le bas de l'echelle des prix ou l'explication par le seul prix se brise. Le Malawi a le 1GB le moins cher a 0.38 USD, et seulement 18.0% de la population utilise internet. Le Nigeria suit a 0.39 USD, avec 39.2%. Le Ghana est a 0.40 USD, avec 69.9%.<sup><a href="#ref-3">[3]</a></sup><sup><a href="#ref-4">[4]</a></sup>
+
+Le Nigeria et le Ghana sont la version la plus nette de ce constat. Des prix de 1GB presque identiques. Un ecart de 30.7 points en usage internet. Le panneau ne dit pas quel autre obstacle pese le plus. Il dit que lorsque le prix est presque constant, le reste de l'ecart doit venir d'ailleurs.<sup><a href="#ref-3">[3]</a></sup><sup><a href="#ref-4">[4]</a></sup>
+
+<ChartBlock
+  title="Prix presque identique, usage tres different"
+  subtitle="Taux d'usage Banque mondiale / ITU et prix cable du 1GB, 2023"
+  note="C'est le contraste le plus propre du panneau pour neutraliser le prix, mais il reste descriptif et non causal."
+>
+  <div set:html={storyGhanaNigeriaSvg}></div>
+</ChartBlock>
+
+## Ce qui reste dans le tableau
+
+Le panneau est bon pour ecarter les recits simples. Il est moins bon pour nommer une seule cause. Pour cela, les sources plus larges aident, a condition de rester dans leur propre cadre.
+
+Les chiffres ITU pour l'Afrique entiere en 2024 ne se branchent pas directement sur les chiffres GSMA. Ce qu'ils montrent, c'est ou les obstacles restants risquent de se concentrer: dans les ecarts urbain-rural, les ecarts de genre, et le niveau general d'usage internet lui-meme.<sup><a href="#ref-5">[5]</a></sup>
+
+<ChartBlock
+  title="Les obstacles plus larges se regroupent encore dans des lignes familieres"
+  subtitle="Contexte ITU Afrique entiere sur l'usage internet, 2024"
+  note="Ces mesures contextuelles Afrique entiere ne sont pas le denominateur de l'ecart d'usage GSMA en ASS."
+>
+  <div set:html={storyContextSvg}></div>
+</ChartBlock>
+
+Le cout des terminaux pointe dans la meme direction. En Afrique subsaharienne, un telephone d'entree de gamme compatible internet coute 99% du revenu mensuel moyen du cinquieme le plus pauvre de la population.<sup><a href="#ref-1">[1]</a></sup> Le panier ITU pour 2GB de haut debit mobile en Afrique reste a 4.2% du RNB par habitant, plus du double de la cible de 2% de la Broadband Commission.<sup><a href="#ref-6">[6]</a></sup> Meme la ou le signal existe, le cout d'acces et de maintien en ligne peut rester hors de portee.
+
+<p>C'est la que les donnees menent. En Afrique subsaharienne, l'infrastructure n'est plus le principal obstacle pour la majorite des gens. L'ecart restant se situe entre couverture et usage. Le prix fait partie du tableau, mais il n'explique pas assez a lui seul. Le cout du terminal, le revenu, l'acces rural, le genre, la litteratie, la langue et la pertinence restent tous dans le cadre, et correspondent mieux aux donnees qu'un recit a variable unique.<sup><a href="#ref-1">[1]</a></sup><sup><a href="#ref-5">[5]</a></sup><sup><a href="#ref-6">[6]</a></sup></p>
+<p>Ce que cette entree ne pretend pas, c'est qu'un seul de ces obstacles domine, ni que leur hierarchie est la meme d'un pays a l'autre. Le Nigeria et le Ghana montrent combien le tableau peut differer a des prix quasi identiques. Les donnees resserrent la question. Elles ne la tranchent pas.</p>
+
+<LimitationsList
+  open={true}
+  items={[
+    "Le paradoxe central est entierement GSMA: 87% de couverture, 27% d'adoption de l'internet mobile et 60% d'ecart d'usage viennent du meme systeme de mesure ASS. Les chiffres ITU sur l'usage internet ne sont montres que comme contexte distinct.",
+    "Le panneau de pays est un sous-ensemble apparie de 48 pays construit a partir de l'intersection entre les valeurs 2023 de la Banque mondiale / ITU sur l'usage internet et les valeurs cable 2023 sur le prix de 1GB. Il exclut la Republique centrafricaine, l'Ethiopie, la Somalie, le Soudan du Sud, le Soudan et l'Erythree.",
+    "La carte du scrollytelling utilise des polygones admin-0 Natural Earth projetes avec des ancrages par centroides. Maurice et les Seychelles reviennent a de minuscules reperes projetes car ils sont absents de l'echelle Natural Earth 1:50m.",
+    "cable.co.uk fournit un niveau de prix absolu en USD. C'est utile pour comparer les pays, mais ce n'est pas une mesure d'accessibilite ajustee au revenu et cela ne doit pas etre confondu avec les seuils GSMA ou ITU.",
+    "Le panneau de pays est descriptif et transversal. Il peut eliminer certains recits trop simples, mais il ne peut pas identifier un obstacle causal unique derriere le non-usage."
+  ]}
+/>
+
+<details class="entry-collapsible my-8 border-t border-rule pt-4" open>
+  <summary class="entry-collapsible__summary ui-meta text-[11px] uppercase tracking-[0.14em] text-dim">Sources</summary>
+  <div class="entry-collapsible__body">
+    <h3>Principales</h3>
+    <ol class="list-decimal pl-5 space-y-2">
+      <li id="ref-1">GSMA. <em>The State of Mobile Internet Connectivity Report 2024</em>. 2024. https://www.gsma.com/somic/wp-content/uploads/2025/08/State_of_Mobile_Internet_Connectivity_2024.pdf</li>
+      <li id="ref-2">GSMA. <em>Sub-Saharan Africa 2024 Year in Review</em>. Decembre 2024. https://www.gsma.com/about-us/regions/sub-saharan-africa/wp-content/uploads/2025/01/GSMA-Sub-Saharan-Africa-2024-Year-In-Review.pdf</li>
+      <li id="ref-3">World Bank. <em>Individuals using the Internet (% of population)</em>, indicateur <code>IT.NET.USER.ZS</code>, valeurs pays 2023 via API. https://api.worldbank.org/v2/country/all/indicator/IT.NET.USER.ZS?format=json&amp;per_page=20000</li>
+      <li id="ref-4">cable.co.uk / BestBroadbandDeals.co.uk. <em>The Cost of 1GB of Mobile Data in 237 Countries</em>. Tableau 2023 et resumes regionaux. https://bestbroadbanddeals.co.uk/mobiles/worldwide-data-pricing/</li>
+    </ol>
+
+    <h3>Contexte</h3>
+    <ol class="list-decimal pl-5 space-y-2" start="5">
+      <li id="ref-5">ITU. <em>Facts and Figures 2024: New data show global urban-rural and gender digital divides</em>. 10 novembre 2024. https://www.itu.int/itu-d/reports/statistics/2024/11/10/ff24-internet-use/</li>
+      <li id="ref-6">ITU. <em>ICT Development Dashboard 2024</em>. Contexte regional africain sur l'abordabilite et l'usage. https://www.itu.int/dms_pub/itu-d/opb/ind/D-IND-ICT_MDD-2024-4-PDF-E.pdf</li>
+      <li id="ref-7">World Bank. <em>Population, total</em>, indicateur <code>SP.POP.TOTL</code>, valeurs pays 2023 via API. https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?format=json&amp;per_page=20000</li>
+      <li id="ref-8">Natural Earth. <em>Admin 0 - Countries</em>, vecteurs culturels au 1:50m. Geometrie cartographique utilisee pour la couche continentale du scrollytelling. https://www.naturalearthdata.com/</li>
+    </ol>
+  </div>
+</details>

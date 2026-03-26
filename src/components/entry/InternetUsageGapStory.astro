@@ -1,0 +1,964 @@
+---
+interface StoryLegendItem { color: string; label: string }
+interface StoryPill { value: string; label: string }
+
+interface StoryStep {
+  mode: string;
+  num: string;
+  title: string;
+  body: string[];
+  pills?: StoryPill[];
+  align?: "left" | "right";
+  hudCaption: string;
+  legend?: StoryLegendItem[];
+}
+
+interface CountryRow {
+  iso3: string;
+  name: string;
+  name_fr: string;
+  subregion: string;
+  subregion_fr: string;
+  frame: string;
+  internet_use_pct_2023: number;
+  price_1gb_usd_2023: number;
+  population_2023: number;
+  population_millions_2023: number;
+  map_x: number;
+  map_y: number;
+}
+
+interface MapPolygon { outer: number[][]; holes?: number[][][] }
+interface MapCountryGeometry {
+  iso3: string;
+  polygons: MapPolygon[];
+  centroid: { map_x: number; map_y: number };
+  uses_fallback_marker?: boolean;
+  no_data?: boolean;
+}
+
+interface Props {
+  steps: StoryStep[];
+  countries: CountryRow[];
+  mapGeometry?: { countries: MapCountryGeometry[] };
+  lang?: "en" | "fr";
+  entryNumber?: string;
+  id?: string;
+}
+
+const {
+  steps = [],
+  countries = [],
+  mapGeometry = { countries: [] },
+  lang = "en",
+  entryNumber = "008",
+  id = `iug-${Math.random().toString(36).slice(2, 8)}`
+}: Props = Astro.props;
+
+/* ── SVG coordinate system ── */
+
+const VB = { x: -5.2, y: -5.6, w: 11.4, h: 11.2 };
+const S = 80;
+const toX = (mx: number) => (mx - VB.x) * S;
+const toY = (my: number) => (VB.y + VB.h - my) * S;
+const svgW = VB.w * S;
+const svgH = VB.h * S;
+
+/* ── build paths at compile time ── */
+
+const polyToPath = (poly: MapPolygon) => {
+  let d = "";
+  const ring = (pts: number[][], cmd: string) => {
+    if (pts.length < 3) return;
+    d += `${cmd}${pts.map(([x, y]) => `${toX(x).toFixed(1)},${toY(y).toFixed(1)}`).join("L")}Z `;
+  };
+  ring(poly.outer, "M");
+  for (const h of poly.holes ?? []) ring(h, "M");
+  return d;
+};
+
+const dataByIso = new Map(countries.map((c) => [c.iso3, c]));
+
+const REGION_COLOR: Record<string, string> = {
+  west: "#d28e4d", east: "#4b7b66", central: "#8f5a67",
+  southern: "#8a8850", north: "#6982b5"
+};
+
+const NO_DATA_META: Record<string, { name: string; name_fr: string; subregion: string; subregion_fr: string }> = {
+  CAF: { name: "Central African Republic", name_fr: "Republique centrafricaine", subregion: "central", subregion_fr: "Afrique centrale" },
+  ERI: { name: "Eritrea", name_fr: "Erythree", subregion: "east", subregion_fr: "Afrique de l'Est" },
+  ETH: { name: "Ethiopia", name_fr: "Ethiopie", subregion: "east", subregion_fr: "Afrique de l'Est" },
+  SOM: { name: "Somalia", name_fr: "Somalie", subregion: "east", subregion_fr: "Afrique de l'Est" },
+  SSD: { name: "South Sudan", name_fr: "Soudan du Sud", subregion: "east", subregion_fr: "Afrique de l'Est" },
+  SDN: { name: "Sudan", name_fr: "Soudan", subregion: "north", subregion_fr: "Afrique du Nord" }
+};
+
+// All geometry countries (48 with data + 6 no-data)
+const allGeoCountries = mapGeometry.countries.map((geo) => {
+  const data = dataByIso.get(geo.iso3);
+  const hasData = !!data;
+  const d = geo.polygons.map(polyToPath).join("");
+  const cx = toX(geo.centroid.map_x);
+  const cy = toY(geo.centroid.map_y);
+
+  return {
+    iso3: geo.iso3,
+    d,
+    cx,
+    cy,
+    hasData,
+    regionColor: hasData ? (REGION_COLOR[data.subregion] ?? "#33404d") : "#1c2430",
+    dataIndex: hasData ? countries.indexOf(data) : -1
+  };
+}).filter((c) => c.d.length > 0);
+
+/* ── i18n ── */
+
+const t = (en: string, fr: string) => lang === "fr" ? fr : en;
+
+const labels = {
+  openOrdinal: "Open Ordinal",
+  srDesc: t(
+    "Interactive map of Africa showing internet usage and 1GB price by country for 2023.",
+    "Carte interactive de l\u2019Afrique montrant l\u2019usage internet et le prix de 1GB par pays pour 2023."
+  )
+};
+
+const payload = { steps, countries, lang, entryNumber, noDataMeta: NO_DATA_META };
+---
+
+<section class="iug" id={id} data-iug aria-label={labels.srDesc}>
+  <div class="iug__sticky">
+
+    <div class="iug__hud iug__hud--tl">
+      <span>{labels.openOrdinal}</span>
+      <span>{entryNumber}</span>
+    </div>
+    <div class="iug__hud iug__hud--tr">
+      <span data-scene-num>01</span>
+      <span>/</span>
+      <span>{String(steps.length).padStart(2, "0")}</span>
+    </div>
+
+    <!-- SVG map -->
+    <div class="iug__map">
+      <svg
+        viewBox={`0 0 ${svgW} ${svgH}`}
+        class="iug__svg"
+        data-svg
+        role="img"
+        aria-label={labels.srDesc}
+      >
+        <!-- country fills (choropleth) -->
+        <g data-layer="fills">
+          {allGeoCountries.map((c) => (
+            <path
+              d={c.d}
+              data-iso={c.iso3}
+              data-has-data={c.hasData ? "1" : "0"}
+              data-fill
+              fill={c.regionColor}
+              fill-opacity={c.hasData ? "0.55" : "0.08"}
+              stroke={c.hasData ? c.regionColor : "#1c2430"}
+              stroke-width="0.8"
+              stroke-opacity={c.hasData ? "0.35" : "0.12"}
+              stroke-linejoin="round"
+            />
+          ))}
+        </g>
+        <!-- full-country hit targets for interaction -->
+        <g data-layer="hits">
+          {allGeoCountries.map((c) => (
+            <path
+              d={c.d}
+              fill="transparent"
+              stroke="transparent"
+              stroke-width="8"
+              stroke-linejoin="round"
+              data-hit
+              data-iso={c.iso3}
+              data-has-data={c.hasData ? "1" : "0"}
+              data-idx={c.dataIndex}
+              style="cursor:pointer"
+            />
+          ))}
+        </g>
+
+        <!-- Ghana-Nigeria connector -->
+        {(() => {
+          const gh = allGeoCountries.find((c) => c.iso3 === "GHA");
+          const ng = allGeoCountries.find((c) => c.iso3 === "NGA");
+          if (!gh || !ng) return null;
+          return (
+            <line
+              x1={gh.cx.toFixed(1)} y1={gh.cy.toFixed(1)}
+              x2={ng.cx.toFixed(1)} y2={ng.cy.toFixed(1)}
+              stroke="#f0c38d" stroke-width="1.2"
+              stroke-dasharray="6 4" stroke-opacity="0"
+              data-connector
+            />
+          );
+        })()}
+
+        <!-- Ghana-Nigeria floating labels -->
+        {(() => {
+          const gh = allGeoCountries.find((c) => c.iso3 === "GHA");
+          const ng = allGeoCountries.find((c) => c.iso3 === "NGA");
+          if (!gh || !ng) return null;
+          return (
+            <>
+              <g data-gn-label="GHA" opacity="0">
+                <rect x={gh.cx - 52} y={gh.cy - 38} width="104" height="22" rx="3" fill="#c49662" />
+                <text x={gh.cx} y={gh.cy - 23} text-anchor="middle" fill="#f5f2eb"
+                  font-family="'Geist Mono', monospace" font-size="10" font-weight="600">
+                  Ghana 69.9%
+                </text>
+              </g>
+              <g data-gn-label="NGA" opacity="0">
+                <rect x={ng.cx - 56} y={ng.cy - 38} width="112" height="22" rx="3" fill="#777e7e" />
+                <text x={ng.cx} y={ng.cy - 23} text-anchor="middle" fill="#f5f2eb"
+                  font-family="'Geist Mono', monospace" font-size="10" font-weight="600">
+                  Nigeria 39.2%
+                </text>
+              </g>
+            </>
+          );
+        })()}
+      </svg>
+    </div>
+
+    <!-- bottom HUD -->
+    <div class="iug__hud-bottom">
+      <p class="iug__caption" data-caption>{steps[0]?.hudCaption ?? ""}</p>
+      <div class="iug__legend" data-legend>
+        {(steps[0]?.legend ?? []).map((item) => (
+          <span class="iug__legend-item">
+            <span class="iug__legend-dot" style={`background:${item.color}`}></span>
+            {item.label}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <div class="iug__progress">
+      <div class="iug__progress-bar" data-progress-bar></div>
+    </div>
+    <!-- country tooltip -->
+    <aside class="iug__tooltip" data-tooltip aria-live="polite">
+      <h3 class="iug__tooltip-name" data-tooltip-name></h3>
+      <div class="iug__tooltip-body" data-tooltip-body></div>
+    </aside>
+  </div>
+
+  <!-- scroll sections -->
+  <div class="iug__scroll-wrap">
+    {steps.map((step, i) => (
+      <section class="iug__step" data-step data-scene={i} data-mode={step.mode}>
+        <article
+          class:list={[
+            "iug__card",
+            step.align === "right" ? "iug__card--right" : "iug__card--left",
+            i === 0 && "is-visible"
+          ]}
+          data-card
+        >
+          <p class="iug__card-num">{step.num}</p>
+          <h2 class="iug__card-title">{step.title}</h2>
+          {step.body.map((p) => <p class="iug__card-copy">{p}</p>)}
+          {step.pills?.length && (
+            <div class="iug__pill-row">
+              {step.pills.map((pill) => (
+                <span class="iug__pill">
+                  <span class="iug__pill-value">{pill.value}</span>
+                  <span class="iug__pill-label">{pill.label}</span>
+                </span>
+              ))}
+            </div>
+          )}
+        </article>
+      </section>
+    ))}
+
+    <div class="iug__spacer" aria-hidden="true"></div>
+  </div>
+
+  <script is:inline type="application/json" data-payload set:html={JSON.stringify(payload)}></script>
+</section>
+
+<script>
+  function initIUG(root: HTMLElement) {
+    if (root.dataset.init === "1") return;
+    root.dataset.init = "1";
+
+    const payload = JSON.parse(root.querySelector("[data-payload]")?.textContent || "{}");
+    const countries: any[] = payload.countries || [];
+    const steps: any[] = payload.steps || [];
+    const lang: string = payload.lang || "en";
+    const noDataMeta: Record<string, any> = payload.noDataMeta || {};
+    if (!countries.length || !steps.length) return;
+
+    /* ── DOM refs ── */
+    const svg = root.querySelector("[data-svg]") as SVGSVGElement;
+    const fills = Array.from(root.querySelectorAll<SVGPathElement>("[data-fill]"));
+    const connector = root.querySelector<SVGLineElement>("[data-connector]");
+    const ghLabel = root.querySelector<SVGGElement>('[data-gn-label="GHA"]');
+    const ngLabel = root.querySelector<SVGGElement>('[data-gn-label="NGA"]');
+    const captionEl = root.querySelector<HTMLElement>("[data-caption]");
+    const legendEl = root.querySelector<HTMLElement>("[data-legend]");
+    const sceneNumEl = root.querySelector<HTMLElement>("[data-scene-num]");
+    const progressBar = root.querySelector<HTMLElement>("[data-progress-bar]");
+    const stepSections = Array.from(root.querySelectorAll<HTMLElement>("[data-step]"));
+    const cards = Array.from(root.querySelectorAll<HTMLElement>("[data-card]"));
+    const hitTargets = Array.from(root.querySelectorAll<SVGPathElement>("[data-hit]"));
+    const tooltip = root.querySelector<HTMLElement>("[data-tooltip]");
+    const tooltipName = root.querySelector<HTMLElement>("[data-tooltip-name]");
+    const tooltipBody = root.querySelector<HTMLElement>("[data-tooltip-body]");
+
+    /* ── helpers ── */
+    const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v));
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+    const smoothstep = (t: number) => t * t * (3 - 2 * t);
+    const easeInOut = (t: number) =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+    const REGION: Record<string, string> = {
+      west: "#d28e4d", east: "#4b7b66", central: "#8f5a67",
+      southern: "#8a8850", north: "#6982b5"
+    };
+    const MAP_BORDER_COLOR = "#5a5148";
+    const INTERNET_USE_DOMAIN = { min: 10, max: 90 };
+    const INTERNET_USE_STOPS = [
+      { t: 0, color: "#20364f" },
+      { t: 0.22, color: "#4a6179" },
+      { t: 0.5, color: "#a0927d" },
+      { t: 0.74, color: "#c39b67" },
+      { t: 1, color: "#c9783f" }
+    ];
+
+    const hexLerp = (a: string, b: string, t: number): string => {
+      const pa = parseInt(a.slice(1), 16);
+      const pb = parseInt(b.slice(1), 16);
+      const r = Math.round(lerp((pa >> 16) & 0xff, (pb >> 16) & 0xff, t));
+      const g = Math.round(lerp((pa >> 8) & 0xff, (pb >> 8) & 0xff, t));
+      const bv = Math.round(lerp(pa & 0xff, pb & 0xff, t));
+      return `#${((r << 16) | (g << 8) | bv).toString(16).padStart(6, "0")}`;
+    };
+
+    const rampColor = (stops: { t: number; color: string }[], t: number) => {
+      const clamped = clamp(t, 0, 1);
+      for (let i = 1; i < stops.length; i += 1) {
+        const prev = stops[i - 1];
+        const next = stops[i];
+        if (clamped <= next.t) {
+          const local = (clamped - prev.t) / Math.max(next.t - prev.t, 1e-6);
+          return hexLerp(prev.color, next.color, local);
+        }
+      }
+      return stops[stops.length - 1].color;
+    };
+
+    const internetColor = (pct: number) => {
+      const t = (pct - INTERNET_USE_DOMAIN.min) / (INTERNET_USE_DOMAIN.max - INTERNET_USE_DOMAIN.min);
+      return rampColor(INTERNET_USE_STOPS, t);
+    };
+
+    /* ── per-mode state for data countries ── */
+
+    interface FillState {
+      fillColor: string;
+      fillOp: number;
+      strokeColor: string;
+      strokeOp: number;
+    }
+
+    const buildMode = (c: any, mode: string): FillState => {
+      const reg = REGION[c.subregion] ?? "#33404d";
+      const useCol = internetColor(c.internet_use_pct_2023);
+      const isGH = c.iso3 === "GHA";
+      const isNG = c.iso3 === "NGA";
+      if (mode === "geography") return {
+        fillColor: reg, fillOp: 0.55,
+        strokeColor: reg, strokeOp: 0.35
+      };
+
+      if (mode === "internet") return {
+        fillColor: useCol, fillOp: 0.82,
+        strokeColor: MAP_BORDER_COLOR, strokeOp: 0.22
+      };
+
+      if (mode === "price") return {
+        fillColor: useCol, fillOp: 0.24,
+        strokeColor: MAP_BORDER_COLOR, strokeOp: 0.14
+      };
+
+      if (mode === "ghana-nigeria") {
+        if (isGH) return {
+          fillColor: useCol, fillOp: 0.9,
+          strokeColor: "#eadbc7", strokeOp: 0.62
+        };
+        if (isNG) return {
+          fillColor: useCol, fillOp: 0.9,
+          strokeColor: "#eadbc7", strokeOp: 0.62
+        };
+        return {
+          fillColor: "#1c2430", fillOp: 0.12,
+          strokeColor: "#1c2430", strokeOp: 0.06
+        };
+      }
+
+      return {
+        fillColor: reg, fillOp: 0.55,
+        strokeColor: reg, strokeOp: 0.35
+      };
+    };
+
+    /* ── no-data country states ── */
+
+    interface NoDataState {
+      fillOp: number;
+      strokeOp: number;
+    }
+
+    const noDataMode = (mode: string): NoDataState => {
+      if (mode === "ghana-nigeria") return { fillOp: 0.04, strokeOp: 0.03 };
+      return { fillOp: 0.08, strokeOp: 0.12 };
+    };
+
+    /* ── pre-compute ── */
+    const allModes = [...new Set(steps.map((s: any) => s.mode))];
+    const statesByMode: Record<string, FillState[]> = {};
+    const noDataByMode: Record<string, NoDataState> = {};
+    for (const mode of allModes) {
+      statesByMode[mode] = countries.map((c: any) => buildMode(c, mode));
+      noDataByMode[mode] = noDataMode(mode);
+    }
+
+    /* ── build iso→element maps ── */
+    // Separate data fills from no-data fills
+    const dataFills: { el: SVGPathElement; idx: number }[] = [];
+    const noDataFills: SVGPathElement[] = [];
+    fills.forEach((el) => {
+      if (el.dataset.hasData === "1") {
+        const c = countries.find((cc: any) => cc.iso3 === el.dataset.iso);
+        if (c) dataFills.push({ el, idx: countries.indexOf(c) });
+      } else {
+        noDataFills.push(el);
+      }
+    });
+
+    /* ── scroll state ── */
+    let hoveredIdx = -1;
+    let lastHudIdx = -1;
+    let scrollDirty = true;
+    let animFrame: number | null = null;
+    const tl = { progress: 0, raw: 0, from: 0, to: 0, mix: 0, active: 0 };
+
+    /* ── HUD ── */
+    const legendHtml = (legend: any[]) =>
+      (legend || []).map((it: any) =>
+        `<span class="iug__legend-item"><span class="iug__legend-dot" style="background:${it.color}"></span>${it.label}</span>`
+      ).join("");
+
+    const applyHud = (idx: number) => {
+      if (idx === lastHudIdx) return;
+      lastHudIdx = idx;
+      const s = steps[idx];
+      if (!s) return;
+      if (captionEl) captionEl.textContent = s.hudCaption;
+      if (legendEl) legendEl.innerHTML = legendHtml(s.legend);
+      if (sceneNumEl) sceneNumEl.textContent = String(idx + 1).padStart(2, "0");
+      cards.forEach((c, i) => c.classList.toggle("is-visible", i === idx));
+    };
+
+    const modeWeight = (mode: string) => {
+      const fm = steps[tl.from]?.mode;
+      const tm = steps[tl.to]?.mode;
+      if (fm === mode && tm === mode) return 1;
+      if (fm === mode) return 1 - tl.mix;
+      if (tm === mode) return tl.mix;
+      return 0;
+    };
+
+    const activeMode = () => steps[tl.active]?.mode ?? steps[0]?.mode;
+    const tooltipEnabled = () => {
+      const mode = activeMode();
+      return mode === "internet" || mode === "price";
+    };
+
+    /* ── tooltip ── */
+    const subregionLabel = (c: any) =>
+      lang === "fr" ? c.subregion_fr : ({
+        west: "West Africa", east: "East Africa", central: "Central Africa",
+        southern: "Southern Africa", north: "North Africa"
+      }[c.subregion as string] || c.subregion);
+
+    const noDataMetaByIso = new Map(
+      hitTargets
+        .filter((el) => el.dataset.hasData === "0")
+        .map((el) => {
+          const iso = el.dataset.iso || "";
+          return [iso, {
+            iso3: iso,
+            ...(noDataMeta[iso] || {
+              name: iso,
+              name_fr: iso,
+              subregion: "",
+              subregion_fr: ""
+            })
+          }];
+        })
+    );
+
+    const fmtPop = (v: number) => {
+      if (v >= 1e9) return `${(v / 1e9).toFixed(2)}B`;
+      if (v >= 1e6) return `${(v / 1e6).toFixed(1)}M`;
+      return `${Math.round(v / 1000)}K`;
+    };
+
+    const showTooltip = (target: { idx?: number; iso?: string } | null, ex: number, ey: number) => {
+      if (!target || !tooltip) { tooltip?.classList.remove("is-visible"); return; }
+      const idx = target.idx ?? -1;
+      const c = idx >= 0 ? countries[idx] : null;
+      const noData = !c && target.iso ? noDataMetaByIso.get(target.iso) : null;
+      if (!c && !noData) { tooltip.classList.remove("is-visible"); return; }
+      const mode = activeMode();
+
+      if (tooltipName) tooltipName.textContent = c
+        ? (lang === "fr" ? c.name_fr : c.name)
+        : (lang === "fr" ? noData!.name_fr : noData!.name);
+
+      if (tooltipBody) {
+        if (c) {
+          const pr = c.price_1gb_usd_2023 != null ? `$${c.price_1gb_usd_2023.toFixed(2)}` : (lang === "fr" ? "Pas de donnees" : "No data");
+          const rows = mode === "price"
+            ? [
+                [lang === "fr" ? "Prix de 1GB" : "1GB price", pr],
+                [lang === "fr" ? "Usage internet" : "Internet use", `${c.internet_use_pct_2023.toFixed(1)}%`],
+                [lang === "fr" ? "Population" : "Population", fmtPop(c.population_2023)],
+                [lang === "fr" ? "Sous-region" : "Sub-region", subregionLabel(c)]
+              ]
+            : [
+                [lang === "fr" ? "Usage internet" : "Internet use", `${c.internet_use_pct_2023.toFixed(1)}%`],
+                [lang === "fr" ? "Prix de 1GB" : "1GB price", pr],
+                [lang === "fr" ? "Population" : "Population", fmtPop(c.population_2023)],
+                [lang === "fr" ? "Sous-region" : "Sub-region", subregionLabel(c)]
+              ];
+          tooltipBody.innerHTML = rows.map(([l, v]) =>
+            `<div class="iug__tooltip-row"><span>${l}</span><span>${v}</span></div>`
+          ).join("");
+        } else {
+          tooltipBody.innerHTML = [
+            `<div class="iug__tooltip-row"><span>${lang === "fr" ? "Statut" : "Status"}</span><span>${lang === "fr" ? "Pas de donnees" : "No data"}</span></div>`,
+            `<div class="iug__tooltip-row"><span>${lang === "fr" ? "Sous-region" : "Sub-region"}</span><span>${lang === "fr" ? noData!.subregion_fr : subregionLabel(noData)}</span></div>`
+          ].join("");
+        }
+      }
+      const host = root.querySelector(".iug__sticky")!.getBoundingClientRect();
+      let x = ex - host.left + 18;
+      let y = ey - host.top - 10;
+      if (x + 250 > host.width) x = ex - host.left - 260;
+      if (y + 140 > host.height) y = host.height - 148;
+      tooltip.style.left = `${Math.max(12, x)}px`;
+      tooltip.style.top = `${Math.max(12, y)}px`;
+      tooltip.classList.add("is-visible");
+    };
+
+    /* ── scroll sync ── */
+    const syncScroll = () => {
+      const maxIdx = Math.max(steps.length - 1, 0);
+      const firstTop = stepSections[0]?.getBoundingClientRect().top ?? 0;
+      const span = Math.max(1, window.innerHeight * maxIdx);
+      const progress = clamp(-firstTop / span, 0, 1);
+      const raw = progress * maxIdx;
+      const from = Math.min(maxIdx, Math.floor(raw));
+      const to = Math.min(maxIdx, from + 1);
+      const mix = easeInOut(smoothstep(raw - from));
+      const active = clamp(Math.round(raw), 0, maxIdx);
+
+      tl.progress = progress; tl.raw = raw;
+      tl.from = from; tl.to = to;
+      tl.mix = mix; tl.active = active;
+
+      if (progressBar) progressBar.style.width = `${progress * 100}%`;
+      applyHud(active);
+      if (!tooltipEnabled()) {
+        hoveredIdx = -1;
+        showTooltip(null, 0, 0);
+      }
+    };
+
+    /* ── render loop ── */
+    const SP = 0.13;
+
+    const lerpAttr = (el: SVGElement, attr: string, target: number) => {
+      const cur = parseFloat(el.getAttribute(attr) || "0");
+      el.setAttribute(attr, (cur + (target - cur) * SP).toFixed(3));
+    };
+
+    const tick = () => {
+      animFrame = requestAnimationFrame(tick);
+      if (scrollDirty) { syncScroll(); scrollDirty = false; }
+
+      const fromMode = steps[tl.from]?.mode ?? steps[0].mode;
+      const toMode = steps[tl.to]?.mode ?? fromMode;
+      const blend = tl.mix;
+      const gnW = modeWeight("ghana-nigeria");
+
+      // Connector + labels
+      if (connector) lerpAttr(connector, "stroke-opacity", gnW * 0.65);
+      if (ghLabel) {
+        const cur = parseFloat(ghLabel.getAttribute("opacity") || "0");
+        ghLabel.setAttribute("opacity", (cur + (gnW - cur) * 0.15).toFixed(3));
+      }
+      if (ngLabel) {
+        const cur = parseFloat(ngLabel.getAttribute("opacity") || "0");
+        ngLabel.setAttribute("opacity", (cur + (gnW - cur) * 0.15).toFixed(3));
+      }
+
+      // Data country fills
+      for (const { el, idx } of dataFills) {
+        const fs = statesByMode[fromMode][idx];
+        const ts = statesByMode[toMode][idx];
+        const hover = tooltipEnabled() && hoveredIdx === idx;
+        const hoverFillBoost = activeMode() === "price" ? 0.28 : 0.15;
+        const hoverStrokeBoost = activeMode() === "price" ? 0.26 : 0.2;
+        const hoverStrokeWidth = activeMode() === "price" ? 2.2 : 2.0;
+
+        const tFillOp = lerp(fs.fillOp, ts.fillOp, blend) + (hover ? hoverFillBoost : 0);
+        const tStrokeOp = lerp(fs.strokeOp, ts.strokeOp, blend) + (hover ? hoverStrokeBoost : 0);
+        const tFillColor = blend < 0.5 ? fs.fillColor : ts.fillColor;
+        const tStrokeColor = blend < 0.5 ? fs.strokeColor : ts.strokeColor;
+
+        lerpAttr(el, "fill-opacity", tFillOp);
+        lerpAttr(el, "stroke-opacity", tStrokeOp);
+        el.setAttribute("fill", tFillColor);
+        el.setAttribute("stroke", tStrokeColor);
+
+        // Stroke width boost on hover
+        const sw = hover ? hoverStrokeWidth : 0.8;
+        const curSw = parseFloat(el.getAttribute("stroke-width") || "0.8");
+        el.setAttribute("stroke-width", (curSw + (sw - curSw) * SP).toFixed(2));
+      }
+
+      // No-data country fills
+      const ndFrom = noDataByMode[fromMode] || { fillOp: 0.08, strokeOp: 0.12 };
+      const ndTo = noDataByMode[toMode] || ndFrom;
+      const ndFillOp = lerp(ndFrom.fillOp, ndTo.fillOp, blend);
+      const ndStrokeOp = lerp(ndFrom.strokeOp, ndTo.strokeOp, blend);
+      for (const el of noDataFills) {
+        lerpAttr(el, "fill-opacity", ndFillOp);
+        lerpAttr(el, "stroke-opacity", ndStrokeOp);
+      }
+    };
+
+    /* ── pointer events ── */
+    const onPointerMove = (e: PointerEvent) => {
+      if (!tooltipEnabled()) return;
+      const target = (e.target as SVGElement).closest("[data-hit]") as SVGElement | null;
+      if (target) {
+        hoveredIdx = parseInt(target.dataset.idx || "-1", 10);
+        showTooltip({ idx: hoveredIdx, iso: target.dataset.iso }, e.clientX, e.clientY);
+      } else {
+        hoveredIdx = -1;
+        showTooltip(null, 0, 0);
+      }
+    };
+
+    const onPointerDown = (e: PointerEvent) => {
+      if (!tooltipEnabled()) return;
+      const target = (e.target as SVGElement).closest("[data-hit]") as SVGElement | null;
+      if (target) {
+        hoveredIdx = parseInt(target.dataset.idx || "-1", 10);
+        showTooltip({ idx: hoveredIdx, iso: target.dataset.iso }, e.clientX, e.clientY);
+      }
+    };
+
+    const onPointerLeave = () => {
+      hoveredIdx = -1;
+      showTooltip(null, 0, 0);
+    };
+
+    svg.addEventListener("pointermove", onPointerMove);
+    svg.addEventListener("pointerdown", onPointerDown);
+    svg.addEventListener("pointerleave", onPointerLeave);
+
+    /* ── init ── */
+    const onScroll = () => { scrollDirty = true; };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", () => { scrollDirty = true; }, { passive: true });
+
+    syncScroll();
+    applyHud(0);
+    tick();
+
+    /* ── cleanup ── */
+    window.addEventListener("pagehide", () => {
+      if (animFrame) cancelAnimationFrame(animFrame);
+      window.removeEventListener("scroll", onScroll);
+      svg.removeEventListener("pointermove", onPointerMove);
+      svg.removeEventListener("pointerdown", onPointerDown);
+      svg.removeEventListener("pointerleave", onPointerLeave);
+    }, { once: true });
+  }
+
+  document.querySelectorAll<HTMLElement>("[data-iug]").forEach(initIUG);
+</script>
+
+<style>
+  .iug {
+    position: relative;
+    margin: 3rem 0;
+    color: var(--ink, #0f0f0f);
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .iug__sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+
+  .iug__map {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    z-index: 0;
+  }
+
+  .iug__svg {
+    width: 100%;
+    height: 100%;
+    max-width: 960px;
+    max-height: 88vh;
+    object-fit: contain;
+  }
+
+  .iug__hud {
+    position: absolute;
+    z-index: 4;
+    display: inline-flex;
+    gap: 0.55rem;
+    font-family: "Geist Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--dim, #999);
+  }
+
+  .iug__hud--tl { top: 24px; left: 26px; }
+  .iug__hud--tr { top: 24px; right: 26px; }
+
+  .iug__hud-bottom {
+    position: absolute;
+    right: 0; bottom: 0; left: 0;
+    z-index: 4;
+    padding: 5rem 2rem 1.4rem;
+    background: linear-gradient(180deg, transparent, var(--paper, #f7f6f2));
+  }
+
+  .iug__caption {
+    max-width: 44rem;
+    margin: 0 0 0.6rem;
+    font-family: "Geist Mono", monospace;
+    font-size: 11px;
+    line-height: 1.65;
+    color: var(--dim, #999);
+    letter-spacing: 0.03em;
+  }
+
+  .iug__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.2rem;
+    min-height: 16px;
+  }
+
+  :global(.iug__legend-item) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: "Geist Mono", monospace;
+    font-size: 10px;
+    color: var(--dim, #999);
+    letter-spacing: 0.04em;
+  }
+
+  :global(.iug__legend-dot) {
+    width: 7px; height: 7px;
+    border-radius: 999px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+  }
+
+  .iug__progress {
+    position: absolute;
+    right: 0; bottom: 0; left: 0;
+    z-index: 5;
+    height: 2px;
+    background: var(--rule, #d8d6d0);
+  }
+
+  .iug__progress-bar {
+    width: 0;
+    height: 100%;
+    background: var(--rule, #d8d6d0);
+  }
+
+  .iug__tooltip {
+    position: absolute;
+    z-index: 6;
+    width: min(250px, calc(100vw - 2rem));
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--rule, #d8d6d0);
+    border-left: 2px solid #c17f4a;
+    background: var(--paper, #f7f6f2);
+    color: var(--ink, #0f0f0f);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.12s ease, transform 0.12s ease;
+    pointer-events: none;
+    border-radius: 2px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.28);
+  }
+
+  .iug__tooltip.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .iug__tooltip-name {
+    margin: 0 0 0.5rem;
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+
+  .iug__tooltip-body {
+    display: grid;
+    gap: 0.3rem;
+    font-family: "Geist Mono", monospace;
+    font-size: 11px;
+    color: #555;
+  }
+
+  :global(.iug__tooltip-row) {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .iug__scroll-wrap {
+    position: relative;
+    z-index: 4;
+    margin-top: -100vh;
+    pointer-events: none;
+  }
+
+  .iug__step {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    padding: 2rem 4vw;
+  }
+
+  .iug__card {
+    width: min(22rem, calc(100vw - 3rem));
+    padding: 1.4rem 1.45rem;
+    border: 1px solid var(--rule, #d8d6d0);
+    border-left: 2px solid #c17f4a;
+    background: var(--paper, #f7f6f2);
+    color: var(--ink, #0f0f0f);
+    pointer-events: auto;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+    border-radius: 2px;
+  }
+
+  .iug__card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .iug__card--right { margin-left: auto; }
+
+  .iug__card-num {
+    margin: 0 0 0.65rem;
+    font-family: "Geist Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #8b694b;
+  }
+
+  .entry-prose .iug__card-title {
+    margin: 0 0 0.65rem;
+    font-size: clamp(1.28rem, 2.4vw, 1.78rem);
+    line-height: 1.12;
+    color: #0f0f0f;
+  }
+
+  .entry-prose .iug__card-copy {
+    margin: 0 0 0.75rem;
+    font-size: 15px;
+    line-height: 1.68;
+    color: #3d3c39;
+  }
+
+  .entry-prose .iug__card-copy:last-of-type { margin-bottom: 0; }
+
+  .iug__pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+  }
+
+  .iug__pill {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    padding: 0.35rem 0.55rem;
+    background: rgba(15,15,15,0.04);
+    border-radius: 2px;
+  }
+
+  .iug__pill-value, .iug__pill-label { font-family: "Geist Mono", monospace; }
+  .iug__pill-value { font-size: 16px; color: #0f0f0f; }
+
+  .iug__pill-label {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6a6761;
+  }
+
+  .iug__spacer { height: 28vh; }
+
+  @media (max-width: 960px) {
+    .iug { margin-top: 2.25rem; margin-bottom: 2.25rem; }
+    .iug__hud--tl, .iug__hud--tr { top: 18px; }
+    .iug__hud--tl { left: 18px; }
+    .iug__hud--tr { right: 18px; }
+    .iug__hud-bottom { padding: 4rem 1rem 1rem; }
+    .iug__step { padding: 1.2rem; }
+    .iug__card { width: min(21rem, calc(100vw - 2.4rem)); padding: 1.2rem; }
+    .iug__card--right { margin-left: 0; }
+  }
+
+  @media (max-width: 640px) {
+    .iug__grain { opacity: 0.025; }
+    .iug__caption { max-width: 100%; font-size: 10px; }
+    .iug__legend { gap: 0.5rem 0.75rem; }
+    .iug__tooltip { width: min(230px, calc(100vw - 1rem)); }
+    .iug__step { padding: 1rem; }
+  }
+</style>

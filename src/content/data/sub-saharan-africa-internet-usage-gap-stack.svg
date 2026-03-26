@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 860 264" role="img" aria-label="Sub-Saharan Africa end-2023 mobile internet two-step decomposition">
+  <rect width="100%" height="100%" fill="var(--paper)" />
+  <text x="60" y="44" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">SSA end-2023 mobile internet split</text>
+  <line x1="60" y1="64" x2="800" y2="64" stroke="var(--rule)" stroke-width="1" />
+
+  <text x="60" y="90" font-family="Geist Mono, monospace" font-size="10" fill="var(--dim)">1. Coverage reaches most people</text>
+  <rect x="60" y="102" width="643.8" height="34" rx="2" fill="#eadfce" stroke="#cdb79d" stroke-width="1" />
+  <rect x="703.8" y="102" width="96.2" height="34" rx="2" fill="#8b2a2a" />
+  <text x="381.9" y="123" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="#5f5449">87% covered</text>
+  <text x="751.9" y="123" text-anchor="middle" font-family="Geist Mono, monospace" font-size="9.5" fill="#f7f6f2">13% uncovered</text>
+
+  <text x="60" y="160" font-family="Geist Mono, monospace" font-size="10" fill="var(--dim)">2. Within the covered 87%</text>
+
+  <rect x="60" y="170" width="199.8" height="38" rx="2" fill="#1f5c3f" />
+  <rect x="259.8" y="170" width="444" height="38" rx="2" fill="#c17f4a" />
+  <rect x="703.8" y="170" width="96.2" height="38" rx="2" fill="none" stroke="var(--rule)" stroke-width="1" stroke-dasharray="5 4" />
+  <text x="159.9" y="193" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="#f7f6f2">27% online</text>
+  <text x="481.8" y="193" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10.5" fill="#0f0f0f">60% covered, not using</text>
+
+  <text x="60" y="236" font-family="Geist Mono, monospace" font-size="11" fill="var(--ink)">710 million people in SSA were inside coverage but still not using mobile internet.</text>
+</svg>
