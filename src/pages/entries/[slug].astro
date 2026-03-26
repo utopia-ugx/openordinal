@@ -11,9 +11,10 @@ import LimitationsList from "../../components/entry/LimitationsList.astro";
 import SourcesList from "../../components/entry/SourcesList.astro";
 import SeeAlso from "../../components/entry/SeeAlso.astro";
 import { getRelatedEntries } from "../../utils/relatedEntries";
+import { filterVisibleEntries } from "../../utils/entryVisibility";
 
 export async function getStaticPaths() {
-  const entries = (await getCollection("entries")).filter((entry) => !entry.data.draft);
+  const entries = filterVisibleEntries(await getCollection("entries"));
 
   return entries.map((entry) => ({
     params: { slug: entry.slug },
@@ -24,7 +25,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
-const allEntries = (await getCollection("entries")).filter((item) => !item.data.draft);
+const allEntries = filterVisibleEntries(await getCollection("entries"));
 const correction = allEntries.find((item) => item.data.correction_of === entry.slug);
 const relatedEntries = getRelatedEntries(entry, allEntries, { limit: 3 });
 

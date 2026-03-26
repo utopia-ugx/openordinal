@@ -1,9 +1,9 @@
 ---
 import Layout from "../components/layout/Layout.astro";
 import { getCollection } from "astro:content";
+import { filterVisibleEntries } from "../utils/entryVisibility";
 
-const entries = (await getCollection("entries"))
-  .filter((entry) => !entry.data.draft)
+const entries = filterVisibleEntries(await getCollection("entries"))
   .sort((a, b) => {
     const aNum = Number.parseInt(a.data.entry_number, 10);
     const bNum = Number.parseInt(b.data.entry_number, 10);

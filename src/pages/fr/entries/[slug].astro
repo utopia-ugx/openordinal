@@ -12,16 +12,19 @@ import SourcesList from "../../../components/entry/SourcesList.astro";
 import SeeAlso from "../../../components/entry/SeeAlso.astro";
 import TranslationNotice from "../../../components/ui/TranslationNotice.astro";
 import { getRelatedEntries } from "../../../utils/relatedEntries";
+import { filterVisibleEntries } from "../../../utils/entryVisibility";
 
 export async function getStaticPaths() {
   const [entriesEn, entriesFr] = await Promise.all([
     getCollection("entries"),
     getCollection("entries-fr")
   ]);
+  const visibleEntriesEn = filterVisibleEntries(entriesEn);
+  const visibleEntriesFr = filterVisibleEntries(entriesFr);
 
   const slugs = new Set([
-    ...entriesEn.filter((entry) => !entry.data.draft).map((entry) => entry.slug),
-    ...entriesFr.filter((entry) => !entry.data.draft).map((entry) => entry.slug)
+    ...visibleEntriesEn.map((entry) => entry.slug),
+    ...visibleEntriesFr.map((entry) => entry.slug)
   ]);
 
   return Array.from(slugs).map((slug) => ({ params: { slug } }));
@@ -34,11 +37,11 @@ const [entriesEn, entriesFr] = await Promise.all([
   getCollection("entries-fr")
 ]);
 
-const entriesEnPublished = entriesEn.filter((entry) => !entry.data.draft);
-const entriesFrPublished = entriesFr.filter((entry) => !entry.data.draft);
+const entriesEnVisible = filterVisibleEntries(entriesEn);
+const entriesFrVisible = filterVisibleEntries(entriesFr);
 
-const frEntry = entriesFrPublished.find((entry) => entry.slug === slug);
-const enEntry = entriesEnPublished.find((entry) => entry.slug === slug);
+const frEntry = entriesFrVisible.find((entry) => entry.slug === slug);
+const enEntry = entriesEnVisible.find((entry) => entry.slug === slug);
 const entry = frEntry ?? enEntry;
 
 if (!entry) {
@@ -48,8 +51,8 @@ if (!entry) {
 const { Content } = await entry.render();
 const isFallback = !frEntry && Boolean(enEntry);
 
-const frBySlug = new Map(entriesFrPublished.map((entry) => [entry.slug, entry]));
-const enBySlug = new Map(entriesEnPublished.map((entry) => [entry.slug, entry]));
+const frBySlug = new Map(entriesFrVisible.map((entry) => [entry.slug, entry]));
+const enBySlug = new Map(entriesEnVisible.map((entry) => [entry.slug, entry]));
 const relatedPool = Array.from(new Set([...frBySlug.keys(), ...enBySlug.keys()]))
   .map((candidateSlug) => frBySlug.get(candidateSlug) ?? enBySlug.get(candidateSlug))
   .filter((candidate): candidate is NonNullable<typeof candidate> => Boolean(candidate));

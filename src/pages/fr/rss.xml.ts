@@ -1,9 +1,10 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 import { buildFeedXml } from "../../utils/rss";
+import { filterVisibleEntries } from "../../utils/entryVisibility";
 
 export const GET: APIRoute = async () => {
-  const entries = (await getCollection("entries-fr")).filter((entry) => !entry.data.draft);
+  const entries = filterVisibleEntries(await getCollection("entries-fr"));
 
   const body = buildFeedXml({
     description: "Analyses structurees des donnees africaines sur Open Ordinal.",

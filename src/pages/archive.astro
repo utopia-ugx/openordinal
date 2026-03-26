@@ -2,9 +2,9 @@
 import { getCollection } from "astro:content";
 import Layout from "../components/layout/Layout.astro";
 import EntryCard from "../components/entry/EntryCard.astro";
+import { filterVisibleEntries } from "../utils/entryVisibility";
 
-const entries = (await getCollection("entries"))
-  .filter((entry) => !entry.data.draft)
+const entries = filterVisibleEntries(await getCollection("entries"))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const categories = [

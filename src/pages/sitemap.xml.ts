@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
+import { filterVisibleEntries } from "../utils/entryVisibility";
 
 const site = "https://openordinal.org";
 
@@ -40,15 +41,13 @@ type SitemapUrl = {
 };
 
 export const GET: APIRoute = async () => {
-  const entries = (await getCollection("entries"))
-    .filter((entry) => !entry.data.draft)
+  const entries = filterVisibleEntries(await getCollection("entries"))
     .map((entry) => ({
       loc: buildUrl(`/entries/${entry.slug}`),
       lastmod: entry.data.date.toISOString().slice(0, 10)
     }));
 
-  const entriesFr = (await getCollection("entries-fr"))
-    .filter((entry) => !entry.data.draft)
+  const entriesFr = filterVisibleEntries(await getCollection("entries-fr"))
     .map((entry) => ({
       loc: buildUrl(`/fr/entries/${entry.slug}`),
       lastmod: entry.data.date.toISOString().slice(0, 10)

@@ -3,9 +3,10 @@ import { getCollection } from "astro:content";
 import Layout from "../../components/layout/Layout.astro";
 import EntryCard from "../../components/entry/EntryCard.astro";
 import SubscribeForm from "../../components/ui/SubscribeForm.astro";
+import { filterVisibleEntries } from "../../utils/entryVisibility";
 
-const entries = (await getCollection("entries-fr")).filter((entry) => !entry.data.draft);
-const fallbackEntries = (await getCollection("entries")).filter((entry) => !entry.data.draft);
+const entries = filterVisibleEntries(await getCollection("entries-fr"));
+const fallbackEntries = filterVisibleEntries(await getCollection("entries"));
 
 const source = entries.length > 0 ? entries : fallbackEntries;
 const sorted = source.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());

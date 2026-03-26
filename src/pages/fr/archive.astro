@@ -2,9 +2,10 @@
 import { getCollection } from "astro:content";
 import Layout from "../../components/layout/Layout.astro";
 import EntryCard from "../../components/entry/EntryCard.astro";
+import { filterVisibleEntries } from "../../utils/entryVisibility";
 
-const entriesFr = (await getCollection("entries-fr")).filter((entry) => !entry.data.draft);
-const entriesEn = (await getCollection("entries")).filter((entry) => !entry.data.draft);
+const entriesFr = filterVisibleEntries(await getCollection("entries-fr"));
+const entriesEn = filterVisibleEntries(await getCollection("entries"));
 
 const entries = (entriesFr.length > 0 ? entriesFr : entriesEn).sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime()
