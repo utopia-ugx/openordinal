@@ -3,13 +3,10 @@ const { lang = "en", compact = false } = Astro.props;
 
 const listmonkBaseUrl = import.meta.env.PUBLIC_LISTMONK_BASE_URL?.replace(/\/$/, "");
 const listUuid = import.meta.env.PUBLIC_LISTMONK_LIST_UUID;
+const isConfigured = Boolean(listmonkBaseUrl && listUuid);
 
-if (!listmonkBaseUrl || !listUuid) {
-  throw new Error("SubscribeForm requires PUBLIC_LISTMONK_BASE_URL and PUBLIC_LISTMONK_LIST_UUID.");
-}
-
-const formAction = `${listmonkBaseUrl}/api/public/subscription`;
-const subscriptionPageUrl = `${listmonkBaseUrl}/subscription/form`;
+const formAction = isConfigured ? `${listmonkBaseUrl}/api/public/subscription` : "";
+const subscriptionPageUrl = listmonkBaseUrl ? `${listmonkBaseUrl}/subscription/form` : "";
 const instanceId = `subscribe-${lang}-${compact ? "compact" : "full"}`;
 const frameName = `newsletter-subscribe-${instanceId}`;
 
@@ -21,6 +18,7 @@ const copy =
         button: "S'abonner",
         note: "Double opt-in. Confirmation requise par email.",
         link: "Ouvrir la page d'abonnement",
+        unavailable: "L'abonnement email n'est pas configure dans cet environnement.",
         pending: "Envoi en cours...",
         success:
           "Si cette adresse peut recevoir des emails, cherchez le message de confirmation dans votre boite de reception."
@@ -31,6 +29,7 @@ const copy =
         button: "Subscribe",
         note: "Double opt-in. Email confirmation required.",
         link: "Open the subscription page",
+        unavailable: "Email subscription is not configured in this environment.",
         pending: "Submitting...",
         success:
           "If this address can receive mail, look for the confirmation email in your inbox."
@@ -38,47 +37,63 @@ const copy =
 ---
 
 <div data-subscribe-root={instanceId}>
-  <form
-    class:list={[
-      "subscribe-form border border-rule p-4",
-      compact ? "max-w-sm" : "max-w-xl"
-    ]}
-    action={formAction}
-    method="post"
-    target={frameName}
-    data-subscribe-form
-    data-pending={copy.pending}
-    data-success={copy.success}
-  >
-    <p class="ui-meta text-[11px] uppercase tracking-[0.15em] text-dim">{copy.label}</p>
-    <div class="mt-3 flex flex-col gap-2 sm:flex-row">
-      <input
-        class="ui-meta w-full border border-rule bg-paper px-3 py-2 text-[13px] text-ink outline-none"
-        type="email"
-        name="email"
-        autocomplete="email"
-        placeholder={copy.placeholder}
-        required
-      />
-      <input type="hidden" name="l" value={listUuid} />
-      <button
-        class="ui-meta border border-rule px-4 py-2 text-[11px] uppercase tracking-[0.12em] hover:bg-ink hover:text-paper disabled:cursor-not-allowed disabled:opacity-60"
-        type="submit"
+  {
+    isConfigured ? (
+      <>
+        <form
+          class:list={[
+            "subscribe-form border border-rule p-4",
+            compact ? "max-w-sm" : "max-w-xl"
+          ]}
+          action={formAction}
+          method="post"
+          target={frameName}
+          data-subscribe-form
+          data-pending={copy.pending}
+          data-success={copy.success}
+        >
+          <p class="ui-meta text-[11px] uppercase tracking-[0.15em] text-dim">{copy.label}</p>
+          <div class="mt-3 flex flex-col gap-2 sm:flex-row">
+            <input
+              class="ui-meta w-full border border-rule bg-paper px-3 py-2 text-[13px] text-ink outline-none"
+              type="email"
+              name="email"
+              autocomplete="email"
+              placeholder={copy.placeholder}
+              required
+            />
+            <input type="hidden" name="l" value={listUuid} />
+            <button
+              class="ui-meta border border-rule px-4 py-2 text-[11px] uppercase tracking-[0.12em] hover:bg-ink hover:text-paper disabled:cursor-not-allowed disabled:opacity-60"
+              type="submit"
+            >
+              {copy.button}
+            </button>
+          </div>
+          <div class="mt-3 flex flex-col gap-2 text-[12px] text-dim">
+            <p>{copy.note}</p>
+            <p>
+              <a href={subscriptionPageUrl} target="_blank" rel="noreferrer">
+                {copy.link}
+              </a>
+            </p>
+            <p class="min-h-[1.2rem]" aria-live="polite" aria-atomic="true" data-subscribe-status></p>
+          </div>
+        </form>
+        <iframe class="hidden" name={frameName} tabindex="-1" data-subscribe-frame></iframe>
+      </>
+    ) : (
+      <div
+        class:list={[
+          "subscribe-form border border-rule p-4",
+          compact ? "max-w-sm" : "max-w-xl"
+        ]}
       >
-        {copy.button}
-      </button>
-    </div>
-    <div class="mt-3 flex flex-col gap-2 text-[12px] text-dim">
-      <p>{copy.note}</p>
-      <p>
-        <a href={subscriptionPageUrl} target="_blank" rel="noreferrer">
-          {copy.link}
-        </a>
-      </p>
-      <p class="min-h-[1.2rem]" aria-live="polite" aria-atomic="true" data-subscribe-status></p>
-    </div>
-  </form>
-  <iframe class="hidden" name={frameName} tabindex="-1" data-subscribe-frame></iframe>
+        <p class="ui-meta text-[11px] uppercase tracking-[0.15em] text-dim">{copy.label}</p>
+        <p class="mt-3 text-[14px] text-dim">{copy.unavailable}</p>
+      </div>
+    )
+  }
 </div>
 
 <script is:inline define:vars={{ instanceId }}>

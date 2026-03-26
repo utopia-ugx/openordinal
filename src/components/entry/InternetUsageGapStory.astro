@@ -7,6 +7,7 @@ interface StoryStep {
   num: string;
   title: string;
   body: string[];
+  highlightIso3s?: string[];
   pills?: StoryPill[];
   align?: "left" | "right";
   hudCaption: string;
@@ -371,25 +372,34 @@ const payload = { steps, countries, lang, entryNumber, noDataMeta: NO_DATA_META 
       strokeOp: number;
     }
 
-    const buildMode = (c: any, mode: string): FillState => {
+    const buildStepState = (c: any, step: any): FillState => {
+      const mode = step.mode;
       const reg = REGION[c.subregion] ?? "#33404d";
       const useCol = internetColor(c.internet_use_pct_2023);
       const isGH = c.iso3 === "GHA";
       const isNG = c.iso3 === "NGA";
+      const highlightIso3s = new Set(step.highlightIso3s || []);
+      const isHighlight = highlightIso3s.has(c.iso3);
       if (mode === "geography") return {
-        fillColor: reg, fillOp: 0.55,
-        strokeColor: reg, strokeOp: 0.35
+        fillColor: reg, fillOp: isHighlight ? 0.82 : 0.55,
+        strokeColor: isHighlight ? "#eadbc7" : reg, strokeOp: isHighlight ? 0.58 : 0.35
       };
 
       if (mode === "internet") return {
-        fillColor: useCol, fillOp: 0.82,
-        strokeColor: MAP_BORDER_COLOR, strokeOp: 0.22
+        fillColor: useCol, fillOp: isHighlight ? 0.94 : 0.82,
+        strokeColor: isHighlight ? "#eadbc7" : MAP_BORDER_COLOR, strokeOp: isHighlight ? 0.5 : 0.22
       };
 
-      if (mode === "price") return {
-        fillColor: useCol, fillOp: 0.24,
-        strokeColor: MAP_BORDER_COLOR, strokeOp: 0.14
-      };
+      if (mode === "price") {
+        if (isHighlight) return {
+          fillColor: useCol, fillOp: 0.88,
+          strokeColor: "#eadbc7", strokeOp: 0.52
+        };
+        return {
+          fillColor: useCol, fillOp: 0.24,
+          strokeColor: MAP_BORDER_COLOR, strokeOp: 0.14
+        };
+      }
 
       if (mode === "ghana-nigeria") {
         if (isGH) return {
@@ -425,13 +435,8 @@ const payload = { steps, countries, lang, entryNumber, noDataMeta: NO_DATA_META 
     };
 
     /* ── pre-compute ── */
-    const allModes = [...new Set(steps.map((s: any) => s.mode))];
-    const statesByMode: Record<string, FillState[]> = {};
-    const noDataByMode: Record<string, NoDataState> = {};
-    for (const mode of allModes) {
-      statesByMode[mode] = countries.map((c: any) => buildMode(c, mode));
-      noDataByMode[mode] = noDataMode(mode);
-    }
+    const statesByStep = steps.map((step: any) => countries.map((c: any) => buildStepState(c, step)));
+    const noDataByStep = steps.map((step: any) => noDataMode(step.mode));
 
     /* ── build iso→element maps ── */
     // Separate data fills from no-data fills
@@ -599,8 +604,6 @@ const payload = { steps, countries, lang, entryNumber, noDataMeta: NO_DATA_META 
       animFrame = requestAnimationFrame(tick);
       if (scrollDirty) { syncScroll(); scrollDirty = false; }
 
-      const fromMode = steps[tl.from]?.mode ?? steps[0].mode;
-      const toMode = steps[tl.to]?.mode ?? fromMode;
       const blend = tl.mix;
       const gnW = modeWeight("ghana-nigeria");
 
@@ -617,8 +620,8 @@ const payload = { steps, countries, lang, entryNumber, noDataMeta: NO_DATA_META 
 
       // Data country fills
       for (const { el, idx } of dataFills) {
-        const fs = statesByMode[fromMode][idx];
-        const ts = statesByMode[toMode][idx];
+        const fs = statesByStep[tl.from][idx];
+        const ts = statesByStep[tl.to][idx];
         const hover = tooltipEnabled() && hoveredIdx === idx;
         const hoverFillBoost = activeMode() === "price" ? 0.28 : 0.15;
         const hoverStrokeBoost = activeMode() === "price" ? 0.26 : 0.2;
@@ -641,8 +644,8 @@ const payload = { steps, countries, lang, entryNumber, noDataMeta: NO_DATA_META 
       }
 
       // No-data country fills
-      const ndFrom = noDataByMode[fromMode] || { fillOp: 0.08, strokeOp: 0.12 };
-      const ndTo = noDataByMode[toMode] || ndFrom;
+      const ndFrom = noDataByStep[tl.from] || { fillOp: 0.08, strokeOp: 0.12 };
+      const ndTo = noDataByStep[tl.to] || ndFrom;
       const ndFillOp = lerp(ndFrom.fillOp, ndTo.fillOp, blend);
       const ndStrokeOp = lerp(ndFrom.strokeOp, ndTo.strokeOp, blend);
       for (const el of noDataFills) {
