@@ -4,7 +4,7 @@ export const storyStepsEn = [
     num: "01 / 04",
     title: "One comparable frame.",
     body: [
-      "What you are looking at is every African country where we can match a 2023 internet-use figure with a 2023 price for 1GB of mobile data. That gives us 48 countries. Six drop out because one number or the other is missing.",
+      "What you are looking at is every African country where we can match a 2023 internet-use figure with a 2023 price for 1GB of mobile data. That matched panel gives us 48 countries. Six drop out because one number or the other is missing.",
     ],
     pills: [
       { value: "48", label: "matched countries" },
@@ -66,7 +66,7 @@ export const storyStepsEn = [
     highlightIso3s: ["GHA", "NGA"],
     body: [
       "Nigeria and Ghana pay almost the same price for 1GB: $0.39 and $0.40. One cent apart. But Ghana's internet-use rate in 2023 is 69.9%. Nigeria's is 39.2%.",
-      "That is a 30.7-point gap in internet use at near-identical price. This is the cleanest contrast in the panel, and it points away from a price-only explanation. Whatever else is keeping people offline in Nigeria, it is not the cost of 1GB."
+      "That is a 30.7-point gap in internet use at near-identical price. This is the cleanest contrast in the panel, and it weakens a price-only explanation. It does not prove that price never matters."
     ],
     pills: [
       { value: "69.9%", label: "Ghana" },
@@ -88,7 +88,7 @@ export const storyStepsFr = [
     num: "01 / 04",
     title: "Un cadre comparable.",
     body: [
-      "Ce que vous voyez, ce sont tous les pays africains ou l'on peut apparier un chiffre 2023 d'usage internet avec un prix 2023 pour 1GB de donnees mobiles. Cela donne 48 pays. Six en sortent parce qu'un chiffre ou l'autre manque.",
+      "Ce que vous voyez, ce sont tous les pays africains ou l'on peut apparier un chiffre 2023 d'usage internet avec un prix 2023 pour 1GB de donnees mobiles. Ce panneau apparie donne 48 pays. Six en sortent parce qu'un chiffre ou l'autre manque.",
     ],
     pills: [
       { value: "48", label: "pays apparies" },
@@ -150,7 +150,7 @@ export const storyStepsFr = [
     highlightIso3s: ["GHA", "NGA"],
     body: [
       "Le Nigeria et le Ghana paient presque le meme prix pour 1GB: 0.39 USD et 0.40 USD. Un centime d'ecart. Mais le taux d'usage internet du Ghana en 2023 est de 69.9%. Celui du Nigeria est de 39.2%.",
-      "C'est un ecart de 30.7 points en usage internet a prix quasi identique. C'est le contraste le plus net du panneau, et il s'eloigne d'une explication par le seul prix. Ce qui empeche les gens d'etre en ligne au Nigeria, ce n'est pas le cout de 1GB."
+      "C'est un ecart de 30.7 points en usage internet a prix quasi identique. C'est le contraste le plus net du panneau, et il affaiblit une explication par le seul prix. Il ne prouve pas que le prix ne compte jamais."
     ],
     pills: [
       { value: "69.9%", label: "Ghana" },
