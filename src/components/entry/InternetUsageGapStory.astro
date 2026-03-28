@@ -84,6 +84,8 @@ const REGION_COLOR: Record<string, string> = {
   west: "#d28e4d", east: "#4b7b66", central: "#8f5a67",
   southern: "#8a8850", north: "#6982b5"
 };
+const NO_DATA_FILL = "var(--iug-no-data-fill)";
+const NO_DATA_STROKE = "var(--iug-no-data-stroke)";
 
 const NO_DATA_META: Record<string, { name: string; name_fr: string; subregion: string; subregion_fr: string }> = {
   CAF: { name: "Central African Republic", name_fr: "Republique centrafricaine", subregion: "central", subregion_fr: "Afrique centrale" },
@@ -108,7 +110,7 @@ const allGeoCountries = mapGeometry.countries.map((geo) => {
     cx,
     cy,
     hasData,
-    regionColor: hasData ? (REGION_COLOR[data.subregion] ?? "#33404d") : "#1c2430",
+    regionColor: hasData ? (REGION_COLOR[data.subregion] ?? "#33404d") : NO_DATA_FILL,
     dataIndex: hasData ? countries.indexOf(data) : -1
   };
 }).filter((c) => c.d.length > 0);
@@ -160,7 +162,7 @@ const payload = { steps, countries, lang, entryNumber, noDataMeta: NO_DATA_META 
               data-fill
               fill={c.regionColor}
               fill-opacity={c.hasData ? "0.55" : "0.08"}
-              stroke={c.hasData ? c.regionColor : "#1c2430"}
+              stroke={c.hasData ? c.regionColor : NO_DATA_STROKE}
               stroke-width="0.8"
               stroke-opacity={c.hasData ? "0.35" : "0.12"}
               stroke-linejoin="round"
@@ -327,6 +329,8 @@ const payload = { steps, countries, lang, entryNumber, noDataMeta: NO_DATA_META 
       southern: "#8a8850", north: "#6982b5"
     };
     const MAP_BORDER_COLOR = "#5a5148";
+    const NO_DATA_FILL = "var(--iug-no-data-fill)";
+    const NO_DATA_STROKE = "var(--iug-no-data-stroke)";
     const INTERNET_USE_DOMAIN = { min: 10, max: 90 };
     const INTERNET_USE_STOPS = [
       { t: 0, color: "#20364f" },
@@ -411,8 +415,8 @@ const payload = { steps, countries, lang, entryNumber, noDataMeta: NO_DATA_META 
           strokeColor: "#eadbc7", strokeOp: 0.62
         };
         return {
-          fillColor: "#1c2430", fillOp: 0.12,
-          strokeColor: "#1c2430", strokeOp: 0.06
+          fillColor: NO_DATA_FILL, fillOp: 0.16,
+          strokeColor: NO_DATA_STROKE, strokeOp: 0.12
         };
       }
 
@@ -712,9 +716,24 @@ const payload = { steps, countries, lang, entryNumber, noDataMeta: NO_DATA_META 
     position: relative;
     margin: 3rem 0;
     color: var(--ink, #0f0f0f);
+    --iug-no-data-fill: #d9d4ca;
+    --iug-no-data-stroke: #b8b1a5;
+    --iug-pill-bg: rgba(15, 15, 15, 0.04);
+    --iug-pill-border: rgba(15, 15, 15, 0.08);
+    --iug-pill-value: var(--ink, #0f0f0f);
+    --iug-pill-label: #6a6761;
     width: 100vw;
     margin-left: 50%;
     transform: translateX(-50%);
+  }
+
+  :root[data-theme="dark"] .iug {
+    --iug-no-data-fill: #4c5561;
+    --iug-no-data-stroke: #6a7480;
+    --iug-pill-bg: rgba(240, 237, 230, 0.08);
+    --iug-pill-border: rgba(240, 237, 230, 0.14);
+    --iug-pill-value: #f0ede6;
+    --iug-pill-label: #a9a39a;
   }
 
   .iug__sticky {
@@ -930,18 +949,19 @@ const payload = { steps, countries, lang, entryNumber, noDataMeta: NO_DATA_META 
     align-items: baseline;
     gap: 0.4rem;
     padding: 0.35rem 0.55rem;
-    background: rgba(15,15,15,0.04);
+    background: var(--iug-pill-bg);
+    border: 1px solid var(--iug-pill-border);
     border-radius: 2px;
   }
 
   .iug__pill-value, .iug__pill-label { font-family: "Geist Mono", monospace; }
-  .iug__pill-value { font-size: 16px; color: #0f0f0f; }
+  .iug__pill-value { font-size: 16px; color: var(--iug-pill-value); }
 
   .iug__pill-label {
     font-size: 10px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #6a6761;
+    color: var(--iug-pill-label);
   }
 
   .iug__spacer { height: 28vh; }

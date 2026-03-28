@@ -1,7 +1,7 @@
 export const storyStepsEn = [
   {
     mode: "geography",
-    num: "01 / 04",
+    num: "01 / 05",
     title: "One comparable frame.",
     body: [
       "What you are looking at is every African country where we can match a 2023 internet-use figure with a 2023 price for 1GB of mobile data. That matched panel gives us 48 countries. Six drop out because one number or the other is missing.",
@@ -22,7 +22,7 @@ export const storyStepsEn = [
   },
   {
     mode: "internet",
-    num: "02 / 04",
+    num: "02 / 05",
     title: "Use separates quickly.",
     highlightIso3s: ["MAR", "BDI"],
     body: [
@@ -42,16 +42,16 @@ export const storyStepsEn = [
   },
   {
     mode: "price",
-    num: "03 / 04",
-    title: "Cheap data helps. But it does not settle the story.",
-    highlightIso3s: ["ZWE", "ZMB", "MWI"],
+    num: "03 / 05",
+    title: "Cheap data doesn't explain the gap.",
+    highlightIso3s: ["MWI", "SLE", "MOZ"],
     body: [
-      "The price story sits in the numbers. Zimbabwe pays $43.75 for 1GB of mobile data. Zambia pays $8.01.",
-      "But look at the cheap end. Malawi pays just $0.38 for 1GB, and only 18.0% of its population uses the internet. If cheap data were enough on its own, Malawi's colors in the previous step would have been much warmer. They were not."
+      "The cheap end does not automatically turn warm on the usage map. Malawi pays just $0.38 for 1GB, Sierra Leone pays $0.67, and Mozambique pays $0.78.",
+      "Yet internet use in those same countries is only 18.0%, 20.6%, and 19.8%. Cheap data helps, but these are some of the clearest cases where it still does not produce broad adoption."
     ],
     pills: [
-      { value: "$43.75", label: "Zimbabwe" },
-      { value: "$0.38", label: "Malawi" }
+      { value: "$0.38", label: "Malawi" },
+      { value: "19.8%", label: "Mozambique" }
     ],
     align: "left",
     hudCaption: "Map dimmed for context. 1GB price shown in card; hover a country for its price.",
@@ -60,19 +60,38 @@ export const storyStepsEn = [
     ]
   },
   {
+    mode: "price",
+    num: "04 / 05",
+    title: "North Africa pulls away.",
+    highlightIso3s: ["MAR", "LBY", "EGY", "DZA", "TUN"],
+    body: [
+      "The broad regional split still matters. In the matched panel, North Africa's simple average internet-use rate is 80.3%. In sub-Saharan Africa, the comparable figure is 42.5%.",
+      "That does not mean every country inside each zone looks the same. It means the broad continental divide is still visible even before we return to country-by-country contrasts."
+    ],
+    pills: [
+      { value: "80.3%", label: "North Africa" },
+      { value: "42.5%", label: "sub-Saharan Africa" }
+    ],
+    align: "right",
+    hudCaption: "North Africa's average internet use sits far above the sub-Saharan average in the matched panel.",
+    legend: [
+      { color: "#33404d", label: "Countries dimmed for context" }
+    ]
+  },
+  {
     mode: "ghana-nigeria",
-    num: "04 / 04",
+    num: "05 / 05",
     title: "Near-identical price, very different use.",
     highlightIso3s: ["GHA", "NGA"],
     body: [
       "Nigeria and Ghana pay almost the same price for 1GB: $0.39 and $0.40. One cent apart. But Ghana's internet-use rate in 2023 is 69.9%. Nigeria's is 39.2%.",
-      "That is a 30.7-point gap in internet use at near-identical price. This is the cleanest contrast in the panel, and it weakens a price-only explanation. It does not prove that price never matters."
+      "That is a 30.7-point gap in internet use at near-identical price. It is not the largest contrast in the panel, but it is the cleanest familiar pair, and it weakens a price-only explanation without claiming that price never matters."
     ],
     pills: [
       { value: "69.9%", label: "Ghana" },
       { value: "39.2%", label: "Nigeria" }
     ],
-    align: "right",
+    align: "left",
     hudCaption: "Nigeria and Ghana: a $0.01 price gap, but a 30.7-point internet-use gap.",
     legend: [
       { color: "#c49662", label: "Ghana" },
@@ -85,7 +104,7 @@ export const storyStepsEn = [
 export const storyStepsFr = [
   {
     mode: "geography",
-    num: "01 / 04",
+    num: "01 / 05",
     title: "Un cadre comparable.",
     body: [
       "Ce que vous voyez, ce sont tous les pays africains ou l'on peut apparier un chiffre 2023 d'usage internet avec un prix 2023 pour 1GB de donnees mobiles. Ce panneau apparie donne 48 pays. Six en sortent parce qu'un chiffre ou l'autre manque.",
@@ -106,7 +125,7 @@ export const storyStepsFr = [
   },
   {
     mode: "internet",
-    num: "02 / 04",
+    num: "02 / 05",
     title: "L'usage se separe vite.",
     highlightIso3s: ["MAR", "BDI"],
     body: [
@@ -126,16 +145,16 @@ export const storyStepsFr = [
   },
   {
     mode: "price",
-    num: "03 / 04",
-    title: "Les donnees bon marche aident. Mais elles ne tranchent pas.",
-    highlightIso3s: ["ZWE", "ZMB", "MWI"],
+    num: "03 / 05",
+    title: "Les donnees bon marche n'expliquent pas l'ecart.",
+    highlightIso3s: ["MWI", "SLE", "MOZ"],
     body: [
-      "L'histoire du prix est dans les chiffres. Le Zimbabwe paie 43.75 USD pour 1GB de donnees mobiles. La Zambie paie 8.01 USD.",
-      "Mais regardez le bas de l'echelle. Le Malawi paie seulement 0.38 USD pour 1GB, et seulement 18.0% de sa population utilise internet. Si les donnees bon marche suffisaient, les couleurs du Malawi a l'etape precedente auraient ete bien plus chaudes. Elles ne l'etaient pas."
+      "Le bas de l'echelle ne devient pas automatiquement plus chaud sur la carte d'usage. Le Malawi paie seulement 0.38 USD pour 1GB, la Sierra Leone paie 0.67 USD, et le Mozambique paie 0.78 USD.",
+      "Pourtant, l'usage internet dans ces pays n'est que de 18.0%, 20.6% et 19.8%. Un prix faible aide, mais ces cas montrent clairement qu'il ne produit pas, a lui seul, une adoption large."
     ],
     pills: [
-      { value: "$43.75", label: "Zimbabwe" },
-      { value: "$0.38", label: "Malawi" }
+      { value: "$0.38", label: "Malawi" },
+      { value: "19.8%", label: "Mozambique" }
     ],
     align: "left",
     hudCaption: "Carte attenuee pour le contexte. Prix de 1GB dans la fiche; survolez un pays pour son prix.",
@@ -144,19 +163,38 @@ export const storyStepsFr = [
     ]
   },
   {
+    mode: "price",
+    num: "04 / 05",
+    title: "L'Afrique du Nord se detache.",
+    highlightIso3s: ["MAR", "LBY", "EGY", "DZA", "TUN"],
+    body: [
+      "La grande fracture regionale compte toujours. Dans le panneau apparie, le taux moyen simple d'usage internet en Afrique du Nord est de 80.3%. En Afrique subsaharienne, la moyenne comparable est de 42.5%.",
+      "Cela ne veut pas dire que tous les pays de chaque zone se ressemblent. Cela signifie que la grande fracture continentale reste visible avant meme de revenir aux contrastes pays par pays."
+    ],
+    pills: [
+      { value: "80.3%", label: "Afrique du Nord" },
+      { value: "42.5%", label: "Afrique subsaharienne" }
+    ],
+    align: "right",
+    hudCaption: "La moyenne d'usage internet en Afrique du Nord reste bien au-dessus de celle de l'Afrique subsaharienne dans le panneau apparie.",
+    legend: [
+      { color: "#33404d", label: "Pays attenues pour le contexte" }
+    ]
+  },
+  {
     mode: "ghana-nigeria",
-    num: "04 / 04",
+    num: "05 / 05",
     title: "Prix presque identique, usage tres different.",
     highlightIso3s: ["GHA", "NGA"],
     body: [
       "Le Nigeria et le Ghana paient presque le meme prix pour 1GB: 0.39 USD et 0.40 USD. Un centime d'ecart. Mais le taux d'usage internet du Ghana en 2023 est de 69.9%. Celui du Nigeria est de 39.2%.",
-      "C'est un ecart de 30.7 points en usage internet a prix quasi identique. C'est le contraste le plus net du panneau, et il affaiblit une explication par le seul prix. Il ne prouve pas que le prix ne compte jamais."
+      "C'est un ecart de 30.7 points en usage internet a prix quasi identique. Ce n'est pas le plus grand contraste du panneau, mais c'est la paire la plus familiere et la plus lisible, ce qui affaiblit une explication par le seul prix sans pretendre que le prix ne compte jamais."
     ],
     pills: [
       { value: "69.9%", label: "Ghana" },
       { value: "39.2%", label: "Nigeria" }
     ],
-    align: "right",
+    align: "left",
     hudCaption: "Nigeria et Ghana: 0.01 USD d'ecart de prix, mais 30.7 points d'ecart d'usage internet.",
     legend: [
       { color: "#c49662", label: "Ghana" },
