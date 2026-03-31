@@ -4,11 +4,15 @@ import LanguageSwitcher from "../ui/LanguageSwitcher.astro";
 const { lang = "en", pathname = "/" } = Astro.props;
 const prefix = lang === "fr" ? "/fr" : "";
 
+const listmonkBaseUrl = import.meta.env.PUBLIC_LISTMONK_BASE_URL?.replace(/\/$/, "");
+const subscribeHref = listmonkBaseUrl ? `${listmonkBaseUrl}/subscription/form` : null;
+
 const links = [
   { key: "archive", en: "Archive", fr: "Archive", href: `${prefix}/archive` },
   { key: "data", en: "Data", fr: "Donnees", href: `${prefix}/data` },
   { key: "method", en: "Method", fr: "Methode", href: `${prefix}/method` },
-  { key: "about", en: "About", fr: "A propos", href: `${prefix}/about` }
+  { key: "about", en: "About", fr: "A propos", href: `${prefix}/about` },
+  ...(subscribeHref ? [{ key: "subscribe", en: "Subscribe", fr: "S'abonner", href: subscribeHref }] : [])
 ];
 
 const homeHref = prefix || "/";
