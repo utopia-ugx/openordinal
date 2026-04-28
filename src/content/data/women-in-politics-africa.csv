@@ -1,0 +1,43 @@
+dataset,indicator,country_or_group,value,unit,reference_date,source
+parliamentary_representation,women_in_parliament_pct,Rwanda,63.8,percent,2025-01-01,IPU Women in Politics 2025
+parliamentary_representation,women_in_parliament_pct,South Africa,44.6,percent,2025-01-01,IPU Women in Politics 2025
+parliamentary_representation,women_in_parliament_pct,Senegal,41.2,percent,2025-01-01,IPU Women in Politics 2025
+parliamentary_representation,women_in_parliament_pct,Mozambique,39.2,percent,2025-01-01,IPU Women in Politics 2025
+parliamentary_representation,women_in_parliament_pct,Tanzania,37.8,percent,2025-01-01,IPU Women in Politics 2025
+parliamentary_representation,women_in_parliament_pct,Kenya,23.3,percent,2025-01-01,IPU Women in Politics 2025
+parliamentary_representation,women_in_parliament_pct,Malawi,20.7,percent,2025-01-01,IPU Women in Politics 2025
+parliamentary_representation,women_in_parliament_pct,Ghana,14.6,percent,2025-01-01,IPU Women in Politics 2025
+parliamentary_representation,women_in_parliament_pct,Democratic Republic of the Congo,13.0,percent,2025-01-01,IPU Women in Politics 2025
+parliamentary_representation,women_in_parliament_pct,Liberia,11.0,percent,2025-01-01,IPU Women in Politics 2025
+parliamentary_representation,women_in_parliament_pct,Nigeria,3.9,percent,2025-01-01,IPU Women in Politics 2025
+parliamentary_representation,women_in_parliament_pct,SSA regional average (country-unweighted),27.1,percent,2025-01-01,IPU Women in Politics 2025
+parliamentary_representation,women_in_parliament_pct_population_weighted_estimate,Sub-Saharan Africa,25.0,percent (approx. derived),2025-01-01,Open Ordinal derived from IPU 2025 and UN Population Division 2024
+cabinet_parliament_gap,women_in_parliament_pct,Madagascar,14.1,percent,2025-01-01,IPU Women in Politics 2025
+cabinet_parliament_gap,women_in_cabinet_pct,Madagascar,42.3,percent,2025-01-01,IPU Women in Politics 2025
+cabinet_parliament_gap,gap_pp,Madagascar,28.2,percentage points (cabinet minus parliament),2025-01-01,Open Ordinal derived
+cabinet_parliament_gap,women_in_parliament_pct,Sao Tome and Principe,14.6,percent,2025-01-01,IPU Women in Politics 2025
+cabinet_parliament_gap,women_in_cabinet_pct,Sao Tome and Principe,41.7,percent,2025-01-01,IPU Women in Politics 2025
+cabinet_parliament_gap,gap_pp,Sao Tome and Principe,27.1,percentage points (cabinet minus parliament),2025-01-01,Open Ordinal derived
+cabinet_parliament_gap,women_in_parliament_pct,Liberia,11.0,percent,2025-01-01,IPU Women in Politics 2025
+cabinet_parliament_gap,women_in_cabinet_pct,Liberia,35.3,percent,2025-01-01,IPU Women in Politics 2025
+cabinet_parliament_gap,gap_pp,Liberia,24.3,percentage points (cabinet minus parliament),2025-01-01,Open Ordinal derived
+cabinet_parliament_gap,women_in_parliament_pct,Togo,15.0,percent,2025-01-01,IPU Women in Politics 2025
+cabinet_parliament_gap,women_in_cabinet_pct,Togo,32.3,percent,2025-01-01,IPU Women in Politics 2025
+cabinet_parliament_gap,gap_pp,Togo,17.3,percentage points (cabinet minus parliament),2025-01-01,Open Ordinal derived
+power_cascade,women_pct,Mayors of capital cities,30.0,percent,2024,International IDEA / Gender Links Africa Barometer 2024
+power_cascade,women_pct,Election management bodies,29.0,percent,2024,International IDEA / Gender Links Africa Barometer 2024
+power_cascade,women_pct,Parliament (lower house),26.0,percent,2024,International IDEA / Gender Links Africa Barometer 2024
+power_cascade,women_pct,Speakers of parliament,25.0,percent,2024,International IDEA / Gender Links Africa Barometer 2024
+power_cascade,women_pct,Local government,25.0,percent,2024,International IDEA / Gender Links Africa Barometer 2024
+power_cascade,women_pct,Cabinet,24.0,percent,2024,International IDEA / Gender Links Africa Barometer 2024
+power_cascade,women_pct,Top executive positions,13.0,percent,2024,International IDEA / Gender Links Africa Barometer 2024
+power_cascade,women_pct,Political party leadership,9.0,percent,2024,International IDEA / Gender Links Africa Barometer 2024
+power_cascade,women_pct_prior,Political party leadership,12.0,percent,2021,International IDEA / Gender Links Africa Barometer 2021
+electoral_system,system_type,PR with voluntary party quotas,44.0,percent women in parliament (Africa average),2024,International IDEA / Gender Links Africa Barometer 2024
+electoral_system,system_type,FPTP with no quota,8.0,percent women in parliament (Africa average),2024,International IDEA / Gender Links Africa Barometer 2024
+party_funding,public_funding_directed_to_women,Africa,17.0,percent of countries directing any public party funding to women's political participation,2024,International IDEA / Gender Links Africa Barometer 2024
+global_portfolio,women_in_portfolio,Gender equality and social affairs,87.0,percent,2025-01-01,IPU / UN Women Women in Politics 2025 (189-country global sample)
+global_portfolio,women_in_portfolio,Defence,12.0,percent,2025-01-01,IPU / UN Women Women in Politics 2025 (189-country global sample)
+global_portfolio,women_in_portfolio,Finance,14.0,percent,2025-01-01,IPU / UN Women Women in Politics 2025 (189-country global sample)
+global_portfolio,women_in_portfolio,Foreign affairs,13.0,percent,2025-01-01,IPU / UN Women Women in Politics 2025 (189-country global sample)
+global_portfolio,women_in_portfolio,Energy,12.0,percent,2025-01-01,IPU / UN Women Women in Politics 2025 (189-country global sample)

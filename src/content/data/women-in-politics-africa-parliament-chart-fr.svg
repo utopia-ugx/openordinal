@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="520" viewBox="0 0 860 520" role="img" aria-label="Femmes au parlement dans des pays d'Afrique subsaharienne sélectionnés, 1er janvier 2025" style="width:100%;height:auto;">
+  <rect width="100%" height="100%" fill="var(--paper)"/>
+  <line x1="220" y1="44" x2="220" y2="468" stroke="var(--rule)" stroke-width="1"/>
+  <line x1="300" y1="44" x2="300" y2="468" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+  <line x1="380" y1="44" x2="380" y2="468" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+  <line x1="460" y1="44" x2="460" y2="468" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+  <line x1="540" y1="44" x2="540" y2="468" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+  <line x1="620" y1="44" x2="620" y2="468" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+  <line x1="700" y1="44" x2="700" y2="468" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+  <line x1="780" y1="44" x2="780" y2="468" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 6"/>
+  <line x1="437" y1="44" x2="437" y2="468" stroke="var(--dim)" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <text x="440" y="56" font-family="Geist Mono, monospace" font-size="10" fill="var(--dim)">Moy. ASS 27,1 %</text>
+  <text x="215" y="76" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Rwanda</text>
+  <rect x="220" y="60" width="510" height="24" fill="#1a3a5c"/>
+  <text x="736" y="74" font-family="Geist Mono, monospace" font-size="12" fill="var(--dim)">63,8 %</text>
+  <text x="736" y="88" font-family="Geist Mono, monospace" font-size="10" fill="var(--dim)">pop. 14M</text>
+  <text x="215" y="116" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Afrique du Sud</text>
+  <rect x="220" y="100" width="357" height="24" fill="#1a3a5c"/>
+  <text x="583" y="116" font-family="Geist Mono, monospace" font-size="12" fill="var(--dim)">44,6 %</text>
+  <text x="215" y="154" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Sénégal</text>
+  <rect x="220" y="138" width="330" height="24" fill="#1a3a5c"/>
+  <text x="556" y="154" font-family="Geist Mono, monospace" font-size="12" fill="var(--dim)">41,2 %</text>
+  <text x="215" y="192" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Mozambique</text>
+  <rect x="220" y="176" width="314" height="24" fill="#1a3a5c"/>
+  <text x="540" y="192" font-family="Geist Mono, monospace" font-size="12" fill="var(--dim)">39,2 %</text>
+  <text x="215" y="230" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Tanzanie</text>
+  <rect x="220" y="214" width="302" height="24" fill="#1a3a5c"/>
+  <text x="528" y="230" font-family="Geist Mono, monospace" font-size="12" fill="var(--dim)">37,8 %</text>
+  <text x="215" y="268" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Kenya</text>
+  <rect x="220" y="252" width="186" height="24" fill="#1a3a5c"/>
+  <text x="412" y="268" font-family="Geist Mono, monospace" font-size="12" fill="var(--dim)">23,3 %</text>
+  <text x="215" y="306" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Malawi</text>
+  <rect x="220" y="290" width="166" height="24" fill="#1a3a5c"/>
+  <text x="392" y="306" font-family="Geist Mono, monospace" font-size="12" fill="var(--dim)">20,7 %</text>
+  <text x="215" y="344" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Ghana</text>
+  <rect x="220" y="328" width="117" height="24" fill="#1a3a5c"/>
+  <text x="343" y="344" font-family="Geist Mono, monospace" font-size="12" fill="var(--dim)">14,6 %</text>
+  <text x="215" y="382" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">RD Congo</text>
+  <rect x="220" y="366" width="104" height="24" fill="#1a3a5c"/>
+  <text x="330" y="382" font-family="Geist Mono, monospace" font-size="12" fill="var(--dim)">13,0 %</text>
+  <text x="215" y="420" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Libéria</text>
+  <rect x="220" y="404" width="88" height="24" fill="#1a3a5c"/>
+  <text x="314" y="420" font-family="Geist Mono, monospace" font-size="12" fill="var(--dim)">11,0 %</text>
+  <text x="215" y="458" text-anchor="end" font-family="Geist Mono, monospace" font-size="12" fill="var(--ink)">Nigeria</text>
+  <rect x="220" y="442" width="31" height="24" fill="#1a3a5c"/>
+  <text x="257" y="456" font-family="Geist Mono, monospace" font-size="12" fill="var(--dim)">3,9 %</text>
+  <text x="257" y="470" font-family="Geist Mono, monospace" font-size="10" fill="var(--dim)">pop. 220M</text>
+  <line x1="220" y1="468" x2="780" y2="468" stroke="var(--rule)" stroke-width="1"/>
+  <text x="220" y="486" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">0 %</text>
+  <text x="300" y="486" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">10</text>
+  <text x="380" y="486" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">20</text>
+  <text x="460" y="486" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">30</text>
+  <text x="540" y="486" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">40</text>
+  <text x="620" y="486" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">50</text>
+  <text x="700" y="486" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">60</text>
+  <text x="780" y="486" text-anchor="middle" font-family="Geist Mono, monospace" font-size="11" fill="var(--dim)">70 %</text>
+</svg>

@@ -1,0 +1,74 @@
+{
+  "metadata": {
+    "slug": "women-in-politics-africa",
+    "description": "Structured dataset for the Women in Politics in Africa entry. Combines IPU Women in Politics 2025 country-level parliamentary and cabinet shares with the International IDEA / Gender Links Africa Barometer 2024 ten-indicator power cascade, electoral-system interaction figures, and global portfolio context.",
+    "reference_date_ipu": "2025-01-01",
+    "reference_date_barometer": "2024",
+    "scope_ipu": "Sub-Saharan Africa (IPU country panel)",
+    "scope_barometer": "Africa, 54 states (International IDEA / Gender Links)",
+    "sources": {
+      "ipu_women_in_politics_2025": "https://www.ipu.org/resources/publications/infographics/2025-03/women-in-politics-2025",
+      "idea_gender_links_africa_barometer_2024": "https://www.idea.int/sites/default/files/2024-07/womens-political-participation-africa-barometer-2024.pdf",
+      "un_population_prospects_2024": "https://population.un.org/wpp/",
+      "idea_gender_quotas_database": "https://www.idea.int/data-tools/data/gender-quotas-database"
+    },
+    "notes": [
+      "The SSA regional average of 27.1% is the IPU country-unweighted mean as of 1 January 2025.",
+      "The population-weighted estimate of approximately 25% is an Open Ordinal derivation combining IPU 2025 country figures with UN Population Division 2024 mid-year estimates across a partial country panel; it is an approximate directional value, not a published statistic.",
+      "Power cascade figures are Africa-wide averages across the 54 states where International IDEA / Gender Links report data for a given indicator; not all positions are reported for all countries.",
+      "Cabinet and parliament figures for individual countries are both from the IPU 2025 dataset to keep the reference date aligned."
+    ]
+  },
+  "parliamentary_representation": [
+    { "country": "Rwanda", "women_in_parliament_pct": 63.8, "population_note": "approx. 14M" },
+    { "country": "South Africa", "women_in_parliament_pct": 44.6 },
+    { "country": "Senegal", "women_in_parliament_pct": 41.2 },
+    { "country": "Mozambique", "women_in_parliament_pct": 39.2 },
+    { "country": "Tanzania", "women_in_parliament_pct": 37.8 },
+    { "country": "Kenya", "women_in_parliament_pct": 23.3 },
+    { "country": "Malawi", "women_in_parliament_pct": 20.7 },
+    { "country": "Ghana", "women_in_parliament_pct": 14.6 },
+    { "country": "Democratic Republic of the Congo", "women_in_parliament_pct": 13.0 },
+    { "country": "Liberia", "women_in_parliament_pct": 11.0 },
+    { "country": "Nigeria", "women_in_parliament_pct": 3.9, "population_note": "approx. 220M" }
+  ],
+  "regional_aggregates": {
+    "ssa_country_unweighted_average_pct": 27.1,
+    "ssa_population_weighted_estimate_pct": 25.0,
+    "africa_barometer_continental_average_pct": 26.0,
+    "africa_barometer_prior_continental_average_pct": 25.0,
+    "africa_barometer_prior_year": 2021
+  },
+  "cabinet_parliament_gap": [
+    { "country": "Madagascar", "women_in_parliament_pct": 14.1, "women_in_cabinet_pct": 42.3, "gap_pp_cabinet_minus_parliament": 28.2 },
+    { "country": "Sao Tome and Principe", "women_in_parliament_pct": 14.6, "women_in_cabinet_pct": 41.7, "gap_pp_cabinet_minus_parliament": 27.1 },
+    { "country": "Liberia", "women_in_parliament_pct": 11.0, "women_in_cabinet_pct": 35.3, "gap_pp_cabinet_minus_parliament": 24.3 },
+    { "country": "Togo", "women_in_parliament_pct": 15.0, "women_in_cabinet_pct": 32.3, "gap_pp_cabinet_minus_parliament": 17.3 }
+  ],
+  "power_cascade_2024": [
+    { "position": "Mayors of capital cities", "women_pct": 30.0 },
+    { "position": "Election management bodies", "women_pct": 29.0 },
+    { "position": "Parliament (lower house)", "women_pct": 26.0 },
+    { "position": "Speakers of parliament", "women_pct": 25.0 },
+    { "position": "Local government", "women_pct": 25.0 },
+    { "position": "Cabinet", "women_pct": 24.0 },
+    { "position": "Top executive positions", "women_pct": 13.0 },
+    { "position": "Political party leadership", "women_pct": 9.0, "women_pct_prior_2021": 12.0, "direction_since_2021": "decline", "only_declining_indicator": true }
+  ],
+  "electoral_system_interaction": [
+    { "system_type": "PR with voluntary party quotas", "women_in_parliament_pct_africa_average": 44.0 },
+    { "system_type": "FPTP with no quota", "women_in_parliament_pct_africa_average": 8.0 }
+  ],
+  "party_funding": {
+    "share_of_african_countries_with_direct_public_party_funding_pct": 70,
+    "share_of_african_countries_directing_any_public_party_funding_to_womens_political_participation_pct": 17,
+    "reference_year": 2024
+  },
+  "global_portfolio_2025": [
+    { "portfolio": "Gender equality and social affairs", "women_pct": 87.0 },
+    { "portfolio": "Defence", "women_pct": 12.0 },
+    { "portfolio": "Finance", "women_pct": 14.0 },
+    { "portfolio": "Foreign affairs", "women_pct": 13.0 },
+    { "portfolio": "Energy", "women_pct": 12.0 }
+  ]
+}
