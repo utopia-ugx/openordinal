@@ -10,6 +10,7 @@ jobs:
     env:
       PUBLIC_LISTMONK_BASE_URL: https://newsletter.openordinal.org
       PUBLIC_LISTMONK_LIST_UUID: 3f806e6f-e1a7-4689-982b-ef913881db98
+      PUBLIC_TURNSTILE_SITE_KEY: 0x4AAAAAADIgcBZtNwyVKUkd
     steps:
       - name: Checkout
         uses: actions/checkout@v4
