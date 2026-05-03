@@ -6,9 +6,6 @@ const listUuid = import.meta.env.PUBLIC_LISTMONK_LIST_UUID;
 const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 const isConfigured = Boolean(listmonkBaseUrl && listUuid && turnstileSiteKey);
 
-const subscriptionPageUrl = listmonkBaseUrl
-  ? `${listmonkBaseUrl}/subscription/form`
-  : "";
 const instanceId = `subscribe-${lang}-${compact ? "compact" : "full"}`;
 
 const copy =
@@ -81,11 +78,6 @@ const copy =
         </div>
         <div class="mt-3 flex flex-col gap-2 text-[12px] text-dim">
           <p>{copy.note}</p>
-          <p>
-            <a href={subscriptionPageUrl} target="_blank" rel="noreferrer">
-              {copy.link}
-            </a>
-          </p>
           <p
             class="min-h-[1.2rem]"
             aria-live="polite"
